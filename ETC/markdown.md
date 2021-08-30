@@ -29,4 +29,40 @@
 
 </br>
 
-## **1.2.2.**
+***
+## **1.2.2.줄바꿈**
+- /br 명령어 활용 or 띄어쓰기 3번 활용
+
+### **예시코드**
+```
+줄바꿈을 하고 싶다면 
+</br>
+이렇게 하면 됩니다.
+```
+```
+줄바꿈을 하고 싶다면(띄어쓰기 3번)   
+이렇게 하면 됩니다.
+```
+### **실행 결과**
+>줄바꿈을 하고 싶다면 
+></br>
+>이렇게 하면 됩니다.
+
+>줄바꿈을 하고 싶다면   
+>이렇게 하면 됩니다.
+
+</br>
+
+## **1.2.2.텍스트 강조**
+- **볼드체**
+
+
+</br>
+
+***
+## **참고자료**
+
+https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4
+https://hongsii.github.io/2017/06/01/How-to-Write-with-Markdown/
+https://gist.github.com/ihoneymon/652be052a0727ad59601#file-how-to-write-by-markdown-md
+https://www.youtube.com/watch?v=kMEb_BzyUqk
