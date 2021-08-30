@@ -95,7 +95,9 @@ _이텔릭체를 원한다면_
 
 > ~~캔슬라인을 원한다면~~
 
-</br>
+</br
+
+
 
 ***
 
@@ -103,7 +105,7 @@ _이텔릭체를 원한다면_
 
 ## **참고자료**
 
-https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4
-https://hongsii.github.io/2017/06/01/How-to-Write-with-Markdown/
-https://gist.github.com/ihoneymon/652be052a0727ad59601#file-how-to-write-by-markdown-md
-https://www.youtube.com/watch?v=kMEb_BzyUqk
+https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4   
+https://hongsii.github.io/2017/06/01/How-to-Write-with-Markdown/   
+https://gist.github.com/ihoneymon/652be052a0727ad59601#file-how-to-write-by-markdown-md   
+https://www.youtube.com/watch?v=kMEb_BzyUqk   
