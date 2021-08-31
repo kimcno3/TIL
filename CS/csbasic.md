@@ -186,7 +186,7 @@
 ### **고수준 프로그래밍 언어**
 - 기계어로 쉽게 변환이 불가능해 변환기(컴파일러)가 필요한 언어
 - C언어, JAVA, Python 등 우리가 널리 사용하는 언어들이 바로 고수준 프로그래밍 언어이다.
-- "정적언어와 동적언어" 또는 "[컴파일 언어](https://github.com/kimcno3/TIL/blob/main/CS/csbasic.md#%EC%BB%B4%ED%8C%8C%EC%9D%BCcompile-%EC%96%B8%EC%96%B4)와 [인터프리터 언어](https://github.com/kimcno3/TIL/blob/main/CS/csbasic.md#%EC%9D%B8%ED%84%B0%ED%94%84%EB%A6%AC%ED%84%B0interpreter-%EC%96%B8%EC%96%B4)"로 구별이 된다.
+- "[정적언어](https://github.com/kimcno3/TIL/blob/main/CS/csbasic.md#%EC%A0%95%EC%A0%81-%EC%96%B8%EC%96%B4)와 [동적언어](https://github.com/kimcno3/TIL/blob/main/CS/csbasic.md#%EB%8F%99%EC%A0%81-%EC%96%B8%EC%96%B4)" 또는 "[컴파일 언어](https://github.com/kimcno3/TIL/blob/main/CS/csbasic.md#%EC%BB%B4%ED%8C%8C%EC%9D%BCcompile-%EC%96%B8%EC%96%B4)와 [인터프리터 언어](https://github.com/kimcno3/TIL/blob/main/CS/csbasic.md#%EC%9D%B8%ED%84%B0%ED%94%84%EB%A6%AC%ED%84%B0interpreter-%EC%96%B8%EC%96%B4)"로 구별이 된다.
 
 </br>
 
