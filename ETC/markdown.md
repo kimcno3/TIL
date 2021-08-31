@@ -269,7 +269,7 @@ _이탤릭체를 원한다면_
 - `|`키를 사용해서 열(column)을 추가 
 - 두번째 행에 `|--|`를 추가해야 테이블 생성
 - 행(row)추가는 다음 문장에 열 수에 맞춰서 동일하게 `|` 사용
-- `|--|` 에 `:`을 사용하여 좌, 우, 가운데 정렬 가능(기본값은 좌측 정렬)
+- `|--|` 에 `:`을 사용하여 좌, 우, 가운데 정렬 가능(기본값은 좌측 정렬  )
     - `|:--|` : 좌측 정렬 / `|--:|` : 우측 정렬 / `|:--:|` : 가운데정렬
 
 ### **예시코드**
@@ -350,7 +350,12 @@ _이탤릭체를 원한다면_
 
 ## **참고자료**
 
-https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4   
-https://hongsii.github.io/2017/06/01/How-to-Write-with-Markdown/   
-https://gist.github.com/ihoneymon/652be052a0727ad59601#file-how-to-write-by-markdown-md   
-https://www.youtube.com/watch?v=kMEb_BzyUqk   
+[위키백과 마크다운 정의](https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4   
+)
+
+[마크다운 6분 정의(드림코드 by 엘리)](https://www.youtube.com/watch?v=kMEb_BzyUqk)
+
+[김지현(ihoneymon
+) 님 Github 저장소](https://gist.github.com/ihoneymon/652be052a0727ad59601#file-how-to-write-by-markdown-md)
+
+[박시홍(hongsii) 님 블로그](https://hongsii.github.io/2017/06/01/How-to-Write-with-Markdown/)
