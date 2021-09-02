@@ -1,6 +1,6 @@
 # :pushpin: **목차**
-- [:pushpin:Markdown이란?](https://github.com/kimcno3/TIL/blob/main/ETC/markdown.md#pushpinmarkdown%EC%9D%B4%EB%9E%80)
-- [:pushpin:Markdown 기본 문법](https://github.com/kimcno3/TIL/blob/main/ETC/markdown.md#pushpinmarkdown-%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95)
+- [Markdown이란?](https://github.com/kimcno3/TIL/blob/main/ETC/markdown.md#pushpinmarkdown%EC%9D%B4%EB%9E%80)
+- [Markdown 기본 문법](https://github.com/kimcno3/TIL/blob/main/ETC/markdown.md#pushpinmarkdown-%EA%B8%B0%EB%B3%B8-%EB%AC%B8%EB%B2%95)
     - [1. Headers](https://github.com/kimcno3/TIL/blob/main/ETC/markdown.md#1-headers)
     - [2. 줄바꿈](https://github.com/kimcno3/TIL/blob/main/ETC/markdown.md#2-%EC%A4%84%EB%B0%94%EA%BF%88)
     - [3. 텍스트 강조](https://github.com/kimcno3/TIL/blob/main/ETC/markdown.md#3-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B0%95%EC%A1%B0)
