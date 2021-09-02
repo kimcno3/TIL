@@ -1,16 +1,16 @@
 # **:pushpin: 목차**
 1. [프로그램 / 프로그래밍 언어란?](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#1-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8--%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%96%B8%EC%96%B4%EB%9E%80)
-2. [저수준 vs 고수준 프로그래밍 언어]()
+2. [저수준 vs 고수준 프로그래밍 언어](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#2-%EC%A0%80%EC%88%98%EC%A4%80-vs-%EA%B3%A0%EC%88%98%EC%A4%80-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%96%B8%EC%96%B4)
     - [그 전에!! 기계어란?](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#%EA%B7%B8-%EC%A0%84%EC%97%90-%EA%B8%B0%EA%B3%84%EC%96%B4%EB%9E%80)
     - [저수준 프로그래밍 언어(=어셈블리어)](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#%EC%A0%80%EC%88%98%EC%A4%80-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%96%B8%EC%96%B4%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC%EC%96%B4)
     - [고수준 프로그래밍 언어](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#%EA%B3%A0%EC%88%98%EC%A4%80-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%96%B8%EC%96%B4)
 3. [정적(Static)언어 vs 동적(Dynamic)언어](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#3-%EC%A0%95%EC%A0%81static%EC%96%B8%EC%96%B4-vs-%EB%8F%99%EC%A0%81dynamic%EC%96%B8%EC%96%B4)
-    - [정적 언어]()
-    - [동적언어]()
-4. [컴파일(Compile)언어 vs 인터프리터(Interpreter)언어]()
-    - [컴파일 언어]()
-    - [인터프리터 언어]()
-
+    - [정적 언어](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#%EC%A0%95%EC%A0%81-%EC%96%B8%EC%96%B4)
+    - [동적언어](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#%EB%8F%99%EC%A0%81-%EC%96%B8%EC%96%B4)
+4. [컴파일(Compile)언어 vs 인터프리터(Interpreter)언어](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#4-%EC%BB%B4%ED%8C%8C%EC%9D%BCcompile%EC%96%B8%EC%96%B4-vs-%EC%9D%B8%ED%84%B0%ED%94%84%EB%A6%AC%ED%84%B0interpreter%EC%96%B8%EC%96%B4)
+    - [컴파일 언어](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#%EC%BB%B4%ED%8C%8C%EC%9D%BC-%EC%96%B8%EC%96%B4)
+    - [인터프리터 언어](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#%EC%9D%B8%ED%84%B0%ED%94%84%EB%A6%AC%ED%84%B0-%EC%96%B8%EC%96%B4)
+- [:pushpin: 참고자료](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#pushpin-%EC%B0%B8%EA%B3%A0%EC%9E%90%EB%A3%8C)
 
 
 </br>
