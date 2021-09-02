@@ -1,5 +1,5 @@
 # **:pushpin: 목차**
-1. [프로그램 / 프로그래밍 언어란?](#1.-프로그램-/-프로그래밍-언어란?)
+1. [프로그램 / 프로그래밍 언어란?](#1-프로그램--프로그래밍-언어란)
 2. [저수준 vs 고수준 프로그래밍 언어](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#2-%EC%A0%80%EC%88%98%EC%A4%80-vs-%EA%B3%A0%EC%88%98%EC%A4%80-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%96%B8%EC%96%B4)
     - [그 전에!! 기계어란?](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#%EA%B7%B8-%EC%A0%84%EC%97%90-%EA%B8%B0%EA%B3%84%EC%96%B4%EB%9E%80)
     - [저수준 프로그래밍 언어(=어셈블리어)](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#%EC%A0%80%EC%88%98%EC%A4%80-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%96%B8%EC%96%B4%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC%EC%96%B4)
