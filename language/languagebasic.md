@@ -1,10 +1,23 @@
-# **:pushpin:프로그래밍 언어 기초**
+# **:pushpin: 목차**
+1. [프로그램 / 프로그래밍 언어란?](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#1-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8--%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%96%B8%EC%96%B4%EB%9E%80)
+2. [저수준 vs 고수준 프로그래밍 언어]()
+    - [그 전에!! 기계어란?](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#%EA%B7%B8-%EC%A0%84%EC%97%90-%EA%B8%B0%EA%B3%84%EC%96%B4%EB%9E%80)
+    - [저수준 프로그래밍 언어(=어셈블리어)](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#%EC%A0%80%EC%88%98%EC%A4%80-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%96%B8%EC%96%B4%EC%96%B4%EC%85%88%EB%B8%94%EB%A6%AC%EC%96%B4)
+    - [고수준 프로그래밍 언어](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#%EA%B3%A0%EC%88%98%EC%A4%80-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%96%B8%EC%96%B4)
+3. [정적(Static)언어 vs 동적(Dynamic)언어](https://github.com/kimcno3/TIL/blob/main/language/languagebasic.md#3-%EC%A0%95%EC%A0%81static%EC%96%B8%EC%96%B4-vs-%EB%8F%99%EC%A0%81dynamic%EC%96%B8%EC%96%B4)
+    - [정적 언어]()
+    - [동적언어]()
+4. [컴파일(Compile)언어 vs 인터프리터(Interpreter)언어]()
+    - [컴파일 언어]()
+    - [인터프리터 언어]()
+
+
 
 </br>
 
 ## **1. 프로그램 / 프로그래밍 언어란?**
 - 프로그램이란 명령과 순서를 쓴 **문서**이며, 여기서 말하는 **문서**를 쓰는 언어가 **프로그래밍 언어**이다.
-- 프로그램을 컴퓨터가 바로 읽을 수 없으니 이 문서를 0,1 형태(기계어)로 바꿔주는 것도 프로그래밍 언어의 범주, 역할에 속한다.
+- 프로그램을 컴퓨터가 바로 읽을 수 없으니 이 문서를 0이나 1의 형태(기계어)로 바꿔주는 것도 프로그래밍 언어의 범주, 역할에 속한다.
 
 </br>
 
@@ -64,7 +77,7 @@
 ## **4. 컴파일(Compile)언어 vs 인터프리터(Interpreter)언어**
 
 
-### **컴파일(Compile) 언어**
+### **컴파일 언어**
 - 전체 코딩을 한꺼번에 기계어로 변환해서 명령을 실행하는 프로그래밍 언어
 - 문서 생성(코딩) -> 빌드(기계어로 변환) -> 실행파일 생성(기계어로 구성)
 - **컴파일 언어의 장점**
@@ -74,7 +87,7 @@
 
 </br>
 
-### **인터프리터(InterPreter) 언어**
+### **인터프리터 언어**
 - 중간언어를 실행하는 중간에 한줄 한줄 기계어로 변환해서 명령을 실행하는 프로그래밍 언어
 - 문서생성(코딩) → 빌드(매우 짧음 / C#, Java) → 중간언어(문서형태) → 기계어
 - **인터프리터 언어의 장점**
