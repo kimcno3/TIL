@@ -1,7 +1,9 @@
 # :pushpin: 목차
 ### [includes()](#includes)
-### [replace()()](#replace)
+### [replace()](#replace)
 ### [isNAN()](#isNAN)
+
+<br>
 
 # **includes**()
 문자열이 특정 문자열을 포함하는지 확인하는 메서드
