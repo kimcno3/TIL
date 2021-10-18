@@ -2,6 +2,9 @@
 ### [includes()](#includes)
 ### [replace()](#replace)
 ### [isNAN()](#isNAN)
+### [push() , pop()](#push--pop)
+### [unshift() , shift()](#unshift--shift)
+
 
 <br>
 
@@ -100,4 +103,54 @@ isNAN(number)
 
 // 결과물 : false
 
+```
+
+<br>
+
+# **push**() , **pop**()
+배열 가장 뒷 순서에서 값을 추가, 삭제하는 기능 <br>
+
+
+```jsx
+push(value) // 추가
+pop() // 삭제
+```
+
+**예시**
+```jsx
+let arr = [];
+
+arr.push(1);
+arr.push(2);
+
+arr // [1,2]
+
+arr.pop();
+
+arr // [1]
+```
+
+<br>
+
+# **unshift**() , **shift**()
+배열 가장 앞 순서에서 값을 추가, 삭제하는 기능 <br>
+
+
+```jsx
+unshift(value) // 새로운 값 추가
+shift() // 가장 맨 앞의 값 삭제
+```
+
+**예시**
+```jsx
+let arr = [];
+
+arr.unshift(1);
+arr.unshift(2);
+
+arr // [2,1]
+
+arr.shift();
+
+arr // [1]
 ```
