@@ -1,9 +1,9 @@
 # :pushpin: 목차
-### [includes()](#includes)
-### [replace()](#replace)
-### [isNAN()](#isNAN)
-### [push() , pop()](#push--pop)
-### [unshift() , shift()](#unshift--shift)
+[includes()](#includes) <br>
+[replace()](#replace) <br>
+[isNAN()](#isNAN) <br>
+[push() , pop()](#push--pop) <br>
+[unshift() , shift()](#unshift--shift)
 
 
 <br>
