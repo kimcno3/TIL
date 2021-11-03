@@ -8,9 +8,9 @@
 - []()
 
 ### [:pushpin: 개념 정리](#pushpin-개념-정리) 
-- [배열](#배열)
-
-
+- [배열(Array)](#배열Array)
+- [함수(Function)](#함수Function)
+- [객체(Object)](#객체Object)
 <br>
 
 # :pushpin: 함수 모음
@@ -171,7 +171,6 @@ arr // [1]
 # :pushpin: 개념 정리
 
 ## 배열(Array)
-
 ### 배열이란?
 - 배열(array)는 자바스크립트에서 가장 많이 사용하는 자료구조 종류 중 하나
 - 주로 같은 종류의 값을 여러개 묶어서 저장
@@ -203,3 +202,116 @@ hi[0]; = 'k';
 console.log(hi);
 ```
 > **결론 : 문자열은 배열과 달리 원하는 인덱스값만 바꿀 수 없다.**
+
+<br>
+
+## 함수(Function)
+### 함수 특징
+- return값이 있는 함수를 호출하는 경우, 변수에 값을 할당하기 위해 사용한다.
+    ```jsx
+    var five = function() {
+        return 5;
+    }
+
+    var n = five(); // 변수 n에 return값 5 할당
+    console.log(n); // 5
+    ```
+- return값이 없는 함수를 변수에 할당하면 undefined값이 된다.
+    ```jsx
+    var foo = function() {
+        console.log(5);
+    }
+
+    var n = foo();
+    console.log(n); // undefined
+    ```
+- 값이 없는 return은 해당 함수를 종료시키는 역할
+- 반복문에서 break와 비슷한 기능
+    ``` jsx
+    var test1 = function(text) {
+        // 매개변수가 'exit'일 경우 함수 종료
+        if (text === "exit") {
+            return;
+        }   
+        // 그 외 경우 log 출력
+        console.log("보이나요?");    
+    }
+
+    test1("hoho");
+    test1("exit");
+    ```
+### 함수 사용의 장점
+- 가독성이 좋아진다.
+- 유지보수하기 편하다.
+
+### 함수 활용 팁
+- **매개 변수**와 **리턴**을 적극적으로 활용하자.
+- 줄 수가 지나치게 길어지면 함수로 빼자.(함수 하나에 10줄 이하로 유지)
+- 인덴트가 지나치게 깊어져도 함수로 빼자.
+- 함수는 반드시 한 가지 일만 하도록 하자.
+
+<br>
+
+## 객체(Object)
+### 객체란 무엇인가?
+- 현실의 물체에 대응되는 개념입니다.
+- 객체를 사용하면 변수와 함수를 묶어서 관리하게 됩니다.
+- 객체는 속성(property)과 메소드(method)를 가집니다.
+
+### 객체 지향 프로그래밍
+- 유지보수가 쉬워진다.
+- 가독성이 높아진다.
+- 대형 프로그램을 짜기 쉬워진다.
+- 객체와 객체가 협력해서 일을 한다.
+- 객체는 일에 책임을 진다.
+- 객체는 객체에 메시지를 보낸다.
+- 객체는 자율적으로 일을 한다.
+
+### 객체 선언 방법
+- this 키워드 : 메소드 안에서 사용시 함수를 소유한 객체를 가르킨다.
+    ```jsx
+    var p2 = {}; // p2 객체 선언
+    p2.name = "crong"; // 이름 속성 
+    p2.weight = 80; // 몸무게 속성
+    p2.say = function(word) { // 말하는 메서드
+    console.log(this.name + " says, " + word); // this = p2 , word는 매개변수
+    };
+
+    console.log('My name is ' + p2.name); // My name is crong
+    console.log('My weight is ' + p2.weight + 'kg'); // My weight is 80kg
+    p2.say('Nice to meet you!') // crong says, Nice to meet you!
+    ```
+ - JSON 표기법 활용 객체 생성
+    > JSON : 서버에 저장되는 데이터의 표준 포맷 양식 , {키:값} 형태
+    ```jsx
+    // 사람 1
+    var m1 = {
+        "name": "Kim",
+        "hp": 100,
+        "power": 10,
+        "attack": function(target) {
+        target.hp -= this.power;
+        }
+    };
+    // 사람 2
+    var m2 = {
+        "name": "Shin",
+        "hp": 100,
+        "power": 20,
+        "attack": function(target) {
+        target.hp -= this.power;
+        }
+    };
+    // 커피
+    var c1 = {
+        type: "Coffee",
+        energy: 10
+    };
+    // eat 매소드 생성
+    m2.eat = function(food) {
+        this.hp += food.energy;
+    }
+
+    m1.attack(m2) // m1의 power만큼 m2의 hp 감소
+    m2.eat(c1) // c1의 energy 만큼 m2의 hp 증가
+    ```
