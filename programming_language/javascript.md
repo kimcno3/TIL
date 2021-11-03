@@ -1,14 +1,21 @@
 # :pushpin: 목차
-[includes()](#includes) <br>
-[replace()](#replace) <br>
-[isNAN()](#isNAN) <br>
-[push() , pop()](#push--pop) <br>
-[unshift() , shift()](#unshift--shift)
+### [:pushpin: 함수 모음](#pushpin-함수-모음) 
+- [includes()](#includes) 
+- [replace()](#replace) 
+- [isNAN()](#isNAN)
+- [push() , pop()](#push--pop) 
+- [unshift() , shift()](#unshift--shift)
+- []()
+
+### [:pushpin: 개념 정리](#pushpin-개념-정리) 
+- [배열](#배열)
 
 
 <br>
 
-# **includes**()
+# :pushpin: 함수 모음
+
+## **includes**()
 문자열이 특정 문자열을 포함하는지 확인하는 메서드
 ```jsx 
 .includes()
@@ -39,7 +46,7 @@ string.includes('h', 2)
 ```
 <br>
 
-# **replace**()
+## **replace**()
 특정 문자열을 원하는 문자열로 바꿔주는 메서드
 ```jsx 
 .replace()
@@ -80,7 +87,7 @@ sting.replace(/\-/g,'');
 
 <br>
 
-# **isNAN**()
+## **isNAN**()
 문자열이 숫자인지 체크하기 위해서 사용하는 함수 <br>
 
 
@@ -107,7 +114,7 @@ isNAN(number)
 
 <br>
 
-# **push**() , **pop**()
+## **push**() , **pop**()
 배열 가장 뒷 순서에서 값을 추가, 삭제하는 기능 <br>
 
 
@@ -132,7 +139,7 @@ arr // [1]
 
 <br>
 
-# **unshift**() , **shift**()
+## **unshift**() , **shift**()
 배열 가장 앞 순서에서 값을 추가, 삭제하는 기능 <br>
 
 
@@ -154,3 +161,45 @@ arr.shift();
 
 arr // [1]
 ```
+
+<br>
+
+***
+
+<br>
+
+# :pushpin: 개념 정리
+
+## 배열(Array)
+
+### 배열이란?
+- 배열(array)는 자바스크립트에서 가장 많이 사용하는 자료구조 종류 중 하나
+- 주로 같은 종류의 값을 여러개 묶어서 저장
+- 배열은 '객체'이다.
+
+### 배열 생성 방법
+``` jsx
+var scores = [50, 60, 70];
+console.log(scores);
+console.log(scores.length);
+```
+
+### 배열의 마지막 원소를 읽을라면?(배열이 너무 길 경우) 
+``` jsx
+scores[scores.length - 1];
+```
+
+### 문자열과 배열
+- 문자열과 배열은 비슷한 성질을 많이 가지고 있습니다.
+    - 문자열: Immutable 
+    - 배열: Mutable
+```jsx
+// 배열의 속성과 메소드를 문자열에도 테스트
+
+var hi = 'hello';
+hi[0];
+
+hi[0]; = 'k';
+console.log(hi);
+```
+> **결론 : 문자열은 배열과 달리 원하는 인덱스값만 바꿀 수 없다.**
