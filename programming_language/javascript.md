@@ -120,7 +120,7 @@ isNAN(number)
 
 
 ```jsx
-push(value) // 추가
+push(value) // 배열 가장 뒷 순서에 value 추가
 pop() // 삭제
 ```
 
@@ -168,7 +168,7 @@ arr // [1]
 ## **concat**()
 concat: 배열 합치기, 문자열도 가능
 ```jsx
-value1.concat(value2) // value1에 value2를 합친다. 
+value1.concat(value2) // value1에 value2를 합친다.
 ```
 
 **예시**
@@ -178,19 +178,45 @@ let arr2 = [5,6,7,8];
 
 let result = arr1.concat(arr2);
 console.log(result); // [1, 2, 3, 4, 5, 6, 7, 8]
+
+console.log(arr1) 
+// [1, 2, 3, 4]
+// concat()을 사용해도 value1은 변하지 않는다.
 ```
 
 <br>
 
 ## **join**()
-기능 설명
+배열을 문자열로 바꿀 때 사용합니다.
 ```jsx
-// 문법
+array.join('string')
+
+// array : 문자열로 바꿀 배열
+// string : 배열 각각의 값 사이에 추가할 문자열 , string을 기준으로 배열 안의 값이 나눠진디.
 ```
 
 **예시**
 ```jsx
+let arr = ['H' , 'E' , 'L' , 'L' , 'O']
 
+arr.join() 
+// 'H,E,L,L,O'
+// 기본적으로 ','가 사용된다.
+
+arr.join('')
+// 'HELLO'
+// 아무 문자열 없이 '' 만 사용
+
+arr.join(' ')
+// 'H E L L O'
+// 띄어쓰기 사용
+
+arr.join(' / ')
+// 'H / E / L / L / O'
+
+console.log(arr)
+// ['H', 'E', 'L', 'L', 'O']
+// join()을 사용해도 기존 배열은 변하지 않는다.
 ```
 
 <br>
