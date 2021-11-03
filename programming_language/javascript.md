@@ -5,7 +5,12 @@
 - [isNAN()](#isNAN)
 - [push() , pop()](#push--pop) 
 - [unshift() , shift()](#unshift--shift)
-- []()
+- [concat()](#concat)
+- [join()](#join)
+- [indexOf() , lastIndexOf()](#indexOf--lastIndexOf)
+- [slice()](#slice)
+- [splice()](#splice)
+- [split()](split)
 
 ### [:pushpin: 개념 정리](#pushpin-개념-정리) 
 - [배열(Array)](#배열Array)
@@ -17,14 +22,12 @@
 
 ## **includes**()
 문자열이 특정 문자열을 포함하는지 확인하는 메서드
-```jsx 
-.includes()
-```
 
-**searched_string** : 검색할 문자열로 필수 요소. 대소문자를 구분<br>
-**start_index** : 검색을 시작할 index 값. 선택 요소. 값이 없으면 문자열 전체 대상 지정
 ```jsx
 string.includes(searched_string, start_index)
+
+// searched_string : 검색할 문자열로 필수 요소. 대소문자를 구분
+// start_index : 검색을 시작할 index 값. 선택 요소. 값이 없으면 문자열 전체 대상 지정
 ```
 
 **예시**
@@ -48,13 +51,11 @@ string.includes('h', 2)
 
 ## **replace**()
 특정 문자열을 원하는 문자열로 바꿔주는 메서드
-```jsx 
-.replace()
-```
-**delete_string** :  삭제되는 문자열<br>
-**new_string** : `delete_string` 대신 추가되는 문자열
 ```jsx
 string.replace(delete_string, new_string)
+
+// delete_string : 삭제되는 문자열
+// new_string : delete_string 대신 추가되는 문자열
 ```
 **예시**
 ```jsx
@@ -66,7 +67,7 @@ string.replace('-', '')
 // 결과 값 : 0101234-5678
 ```
 - 모든 문자열을 한번에 교체하고 싶다면 **정규표현식**을 사용해야 한다.
-    - **정규표현식**: 문자열에 나타나는 특정 문자 조합과 대응시키기 위해 사용되는 패턴
+> 정규표현식**: 문자열에 나타나는 특정 문자 조합과 대응시키기 위해 사용되는 패턴
 
 ```jsx
 let string = '010-1234-5678'
@@ -160,6 +161,88 @@ arr // [2,1]
 arr.shift();
 
 arr // [1]
+```
+
+<br>
+
+## **concat**()
+concat: 배열 합치기, 문자열도 가능
+```jsx
+value1.concat(value2) // value1에 value2를 합친다. 
+```
+
+**예시**
+```jsx
+let arr1 = [1,2,3,4];
+let arr2 = [5,6,7,8];
+
+let result = arr1.concat(arr2);
+console.log(result); // [1, 2, 3, 4, 5, 6, 7, 8]
+```
+
+<br>
+
+## **join**()
+기능 설명
+```jsx
+// 문법
+```
+
+**예시**
+```jsx
+
+```
+
+<br>
+
+## **indexOf**() , **lastIndexOf**()
+기능 설명
+```jsx
+// 문법
+```
+
+**예시**
+```jsx
+
+```
+
+<br>
+
+## **slice**()
+기능 설명
+```jsx
+// 문법
+```
+
+**예시**
+```jsx
+
+```
+
+<br>
+
+## **splice**()
+기능 설명
+```jsx
+// 문법
+```
+
+**예시**
+```jsx
+
+```
+
+<br>
+
+## **split**()
+기능 설명
+```jsx
+// 문법
+```
+
+**예시**
+```jsx
+
 ```
 
 <br>
