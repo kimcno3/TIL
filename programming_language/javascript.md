@@ -19,7 +19,7 @@
 - [객체 생성자(Object Constructor)](#객체-생성자Object-Constructor)
 - [일반 변수와 참조 변수](#일반-변수와-참조-변수)
 - [프로토타입(Prototype)](#프로토타입Prototype)
-- [DOM(Document Object Model)](#DOMDocument Object Model)
+- [DOM(Document Object Model)](#DOMDocument-Object-Model)
 
 <br>
 
