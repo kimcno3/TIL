@@ -16,6 +16,11 @@
 - [배열(Array)](#배열Array)
 - [함수(Function)](#함수Function)
 - [객체(Object)](#객체Object)
+- [객체 생성자(Object Constructor)](#객체-생성자Object-Constructor)
+- [일반 변수와 참조 변수](#일반-변수와-참조-변수)
+- [프로토타입(Prototype)](#프로토타입Prototype)
+- [DOM(Document Object Model)](#DOMDocument Object Model)
+
 <br>
 
 # :pushpin: 함수 모음
@@ -492,3 +497,139 @@ console.log(string); // 'hello' , 값이 변하지 않는다.
     m1.attack(m2) // m1의 power만큼 m2의 hp 감소
     m2.eat(c1) // c1의 energy 만큼 m2의 hp 증가
     ```
+
+<br>
+
+## 객체 생성자(Object Constructor)
+### 객체 생성자란?
+자바스크립트에서는 객체를 만들어내는 기능을 수행하는 함수를 의미
+> 자바스크립트는 Class 기반이 아닌 Prototype 기반의 프로그래밍 언어
+>
+> 객체를 정의하는 Class가 없기 때문에 이를 대체할 객체 생성자 함수를 선언해야 한다. 
+### 예시
+```jsx
+// human(), food() 함수가 바로 객체 생성자 함수
+// JAVA에서 Class와 같은 역할
+var human = function(name, hp, power){
+    this.name = name;
+    this.hp = hp;
+    this.power = power;
+    this.attack = function(target) {
+        target.hp -= this.power;
+        console.log(this.name + '이 ' + target.name + '을 공격했습니다.')
+    }
+    this.eat = function(food) {
+        this.hp += food.energy;
+        console.log(this.name + '이 ' + food.name + '을 먹었습니다.')
+    }
+}
+var food = function(name, energy){
+    this.name = name;
+    this.energy = energy;
+}
+
+// p1, p2, f1는 객체, 인스턴스라고 한다.(참조변수라고 한다.)
+var p1 = new human('kim', 100, 10);
+var p2 = new human('lee', 200, 20);
+var f1 = new food('donut', 10);
+
+
+p1.attack(p2);
+p2; // p2.hp가 p1.power만큼 감소
+
+p2.eat(f1);
+p2; // p2.hp가 f1.energy만큼 증가
+```
+
+## 일반 변수와 참조 변수
+### 두 변수의 차이점
+- 기본 타입을 변수에 할당하면 일반 변수, 객체를 변수에 할당하면 참조 변수가 된다.
+- 배열도 객체이기 때문에 변수에 할당하면 참조 변수가 된다.
+- 다시 말해, 
+    - 문자열, 숫자 등을 변수에 할당하면 일반 변수
+    - 객체, 배열을 변수에 할당하면 참조 변수 
+
+
+### 값 전달 변수(call by value) 와 참조 전달 변수(call by reference)
+- 값 전달 변수는 함수 내부에서 값을 바꿔도 외부에서는 그대로다. (immutable)
+- 변수에 값을 재할당하지 않는 이상 함수에서는 바뀌지 않는다.
+- 참조 전달 변수는 함수 내부에서 값을 바꾸면 외부의 객체도 값이 바뀝니다. (mutable)
+
+<br>
+
+## 프로토타입(Prototype)
+### 프로토타입이란?
+- 생성자로 만든 객체는 프로토타입이라는 속성을 가집니다. 
+- 프로토타입을 활용하면 메모리를 절약하고 효율적으로 객체의 메소드를 생성할 수 있다.
+
+### 예시
+```jsx
+// 객체 생성자
+function Human(name, hp, mp, power) {
+  this.name = name; 
+  this.hp = hp;
+  this.mp = mp;
+  this.power = power;
+}
+// 프로토타입을 활용한 메소드 정의
+Human.prototype.attack = function(target) {
+    target.hp -= this.power;
+};
+
+//  Human의 객체를 100개 생성한다고 가정할 때, 각각의 객체가 모두 같은 기능을 하는 함수에 대한 메모리를 차지하게 된다.
+//  이를 프로토 타입을 통해 하나의 메모리 공간으로 같은 함수을 참조하여 활용할 수 있다.
+//  메모리 절약 효과 극대화
+```
+> 참고자료 : https://medium.com/@bluesh55/javascript-prototype-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-f8e67c286b67
+
+<br>
+
+## DOM(Document Object Model)
+### DOM이란?
+- 문서를 객체를 이용해서 계층 구조로 표현함
+- 표준: W3CDOM
+- 구현체: Gecko, Webkit 등
+
+### html 객체
+- HTML 문서도 객체로 간주된다.
+- window: 최상위 객체
+- document: dom의 최상위 객체이면서 window의 하위 객체
+
+    ```html
+    <!-- HTML 파일 -->
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>HTML Tutorial</title>
+        </head>
+        <body>
+            <script src = 'dom.js'></script>
+
+            <h1>This is a heading</h1>
+            <h1>Another h1 heading</h1>
+            <p id='main'>This is a paragraph.</p>
+        </body>
+    </html>
+    ```
+
+    ```jsx
+    // js 파일
+    var list = document.getElementsByTagName('h1'); // h1태그들의 코드를 배열에 원소로 저장
+
+    list[0].innerHTML; // 'This is a heading' , 태그 안에 있는 텍스트
+    list[0].innerHTML = "Hello"; // 텍스트 변경
+
+    var list = document.getElementById('main'); // id가 main인 태그를 지정하여 배열에 선언
+    main.innerHTML = "Hello"; // 텍스트 변경
+    ```
+
+### JS로 DOM 제어하기
+- 모든 HTML 엘리먼트는 객체이므로 다른 객체와 마찬가지로 JS로 제어가 가능하다.  
+
+### DOM 객체의 값 바꾸기
+```jsx
+var element = document.getElementById('test')
+element.innerHTML = '값'
+<h2>My First Page</h2>
+<p id="test"></p>
+```
