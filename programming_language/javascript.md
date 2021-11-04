@@ -10,7 +10,7 @@
 - [indexOf() , lastIndexOf()](#indexOf--lastIndexOf)
 - [slice()](#slice)
 - [splice()](#splice)
-- [split()](split)
+- [split()](#split)
 
 ### [:pushpin: 개념 정리](#pushpin-개념-정리) 
 - [배열(Array)](#배열Array)
@@ -222,53 +222,112 @@ console.log(arr)
 <br>
 
 ## **indexOf**() , **lastIndexOf**()
-기능 설명
+- indexOf() : 배열이나 문자열 안의 원소를 가지고 첫 인덱스를 찾는다.
+- lastIndexOf() : 배열이나 문자열 안의 원소를 가지고 마지마 인덱스를 찾는다.
 ```jsx
-// 문법
+indexOf(value) 
+lastIndexOf(value)
+
+// value : 인덱스를 찾고자 하는 값
 ```
 
 **예시**
 ```jsx
+// 배열 선언
+let arr = [10, 20, 30, 40, 10, 50];
+
+arr.indexOf(10); // 0 , 가장 앞에 있는 인덱스 출력
+arr.indexOf(65535); // -1 , 원소값이 해당 배열에 없는 경우 -1 출력
+arr.lastIndexOf(10); // 4 가장 마지막 인덱스 출력
+
+// indexOf() 가  -1이 나오는 것을 기준으로 중복여부를 판단할 수 있다.
+if (arr.indexOf(60) === -1){ // 60이 배열에 존재하는지 여부 판단
+    arr.push(60); // 중복되는 값이 아니라면 배열에 추가
+}
+console.log(arr) // [10, 20, 30, 40, 10, 50, 60];
+
+// indexOf() 나 lastIndexOf() 를 사용해도 기존 배열은 변하지 않는다.
+
+// 문자열 선언
+let string = 'booboo' 
+
+string.indexOf('b') // 0
+string.indexOf('a') // -1
+string.lastIndexOf('b') // 3 
+
+// 중복 여부 판단으로 활용
+if (string.indexOf('n') === -1){
+    string += 'n';
+}
+console.log(string); // booboon
+
+//문자열의 경우, 배열과 다르게 기존 문자열도 바뀐다.
+console.log(string); // booboon
 
 ```
 
 <br>
 
 ## **slice**()
-기능 설명
+기존 배열을 잘라 새로운 배열을 만든다.
 ```jsx
-// 문법
+slice(startIndex, endIndex) 
+
+// startIndex : 시작 index, 이 위치부터 배열을 자른다.(포함 O)
+// endIndex : 끝 index , 이 위치 직전의 index까지 배열을 자른다. (포함 X)
 ```
 
 **예시**
 ```jsx
+let arr = [1, 2, 3, 4, 5];
 
+let newArr = arr.slice(2, 4); // index 2 ~ index 4 직전의 위치 == index 3
+console.log(newArr); // [3, 4]
+
+// 기존 배열은 변하지 않는다.
+console.log (arr) // [1, 2, 3, 4, 5]
 ```
 
 <br>
 
 ## **splice**()
-기능 설명
-```jsx
-// 문법
-```
+- 기존 배열을 잘라 새로운 배열을 만든다.
+- **잘라낸 원소들은 원본 배열에서 사라진다.(slice()와 차이점)**
 
+```jsx
+splice(startIndex, numElement)
+
+// startIndex : 시작 index, 이 위치부터 배열을 자른다.(포함 O)
+// numElement : 잘라낼 원소의 수
+```
 **예시**
 ```jsx
+let arr = [1, 2, 3, 4, 5];
 
+arr.slice(2, 4); // [3, 4, 5] , index 2부터 3개의 원소 
+console.log(arr); // [1, 2] , 기존 배열이 수정된다. 
 ```
 
 <br>
 
 ## **split**()
-기능 설명
+문자열을 문자의 배열로 나누고 싶을 때 사용하는 메소드
+
 ```jsx
-// 문법
+string.split(value)
+
+// string : 배열로 나누고 싶은 문자열
+// value : 기준이 될 값, value를 기준으로 문자열을 잘라 배열의 원소를 만든다.
 ```
 
 **예시**
 ```jsx
+let string = "hello, world a-b-co,ltd";
+string.split(""); // ['h', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', ' ', 'a', '-', 'b', '-', 'c', 'o', ',', 'l', 't', 'd']
+string.split(",");// ['hello', ' world a-b-co', 'ltd']
+string.split("-"); // ['hello, world a', 'b', 'co,ltd']
 
+string // 기존 배열은 변하지 않는다.
 ```
 
 <br>
@@ -299,16 +358,25 @@ scores[scores.length - 1];
 
 ### 문자열과 배열
 - 문자열과 배열은 비슷한 성질을 많이 가지고 있습니다.
-    - 문자열: Immutable 
     - 배열: Mutable
+    - 문자열: Immutable 
+
 ```jsx
 // 배열의 속성과 메소드를 문자열에도 테스트
 
-var hi = 'hello';
-hi[0];
+// 배열 선언
+var arr = ['h', 'e', 'l' , 'l', 'o'];
+arr[0]; // 'h'
 
-hi[0]; = 'k';
-console.log(hi);
+arr[0] = 'k';
+console.log(arr); // ['k', 'e', 'l' , 'l', 'o'], 값이 변한다.
+
+// 문자열 선언
+var string = 'hello';
+string[0]; // 'h'
+
+string[0]; = 'k';
+console.log(string); // 'hello' , 값이 변하지 않는다. 
 ```
 > **결론 : 문자열은 배열과 달리 원하는 인덱스값만 바꿀 수 없다.**
 
