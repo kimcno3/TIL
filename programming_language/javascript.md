@@ -12,6 +12,7 @@
 - [splice()](#splice)
 - [split()](#split)
 - [Math.min() , Math.max()](#Mathmin--Mathmax)
+- [forEach() , map() , filter() , reduce()](#forEach--map--filter--reduce)
 
 ### [:pushpin: 개념 정리](#pushpin-개념-정리) 
 - [배열(Array)](#배열Array)
@@ -361,6 +362,115 @@ Math.min(...arr) // 1
 Math.max(...arr) // 5
 ```
 
+<br>
+
+## forEach() , map() , filter() , reduce()
+
+### **forEach()** : 반복문과 같은 기능
+```jsx
+arr.forEach(function callback(value, index) {} , thisArg) 
+
+// arr : 사용할 배열 
+// function callback : callback되는 함수(매개변수로 배열의 요소(value)와 index값(index)를 받는다.) 
+```
+> **thisArg** : callback 함수에서 this로 사용하는 값으로 Optional 인자다.
+
+**예시**
+```jsx
+let a = [10,11,12,13,14,15];
+
+a.forEach(function predicate(v, i){  // v : 배열 요소, i : 인덱스값
+                    console.log( v + ',' + i));
+                });
+
+// 결과
+// 10,1
+// 11,2
+// 12,3
+// 13,4
+// 14,5
+// 15,6
+
+// =>를 활용하면 간단하게 코드를 작성할 수 있다.
+a.forEach((v, i) => console.log(v + ',' + i));
+```
+<br>
+
+### **map()** : 기존 배열의 요소들에게 변화를 주는 함수
+```jsx
+arr.map(function callback(value, index) {} , thisArg) 
+
+// arr : 사용할 배열 
+// function callback : callback되는 함수(매개변수로 배열 요소(value)와 index값(index)를 받는다.) 
+```
+**예시**
+```jsx
+let a = [10,11,12,13,14,15];
+
+let answer = a.amp(function predicate(v, i){  // v : 배열 요소, i : 인덱스값
+                    return v*v; // 기존 배열 요소의 제곱값을 담은 새로운 배열 생성 
+                });
+console.log(answer);
+
+// 결과
+[100, 121, 144, 169, 196, 225]
+
+// =>를 활용하면 간단하게 코드를 작성할 수 있다.
+let answer = a.map((v) => v*v);
+```
+
+<br>
+
+### **filter()** : 기존 배열에서 특정 조건에 해당하는 요소만 가져오는 함수
+```jsx
+arr.map(function callback(value, index) {} , thisArg) 
+
+// arr : 사용할 배열 
+// function callback : callback되는 함수(매개변수로 배열 요소(value)와 index값(index)를 받는다.) 
+```
+**예시**
+```jsx
+let a = [10,11,12,13,14,15];
+
+let answer = a.filter(function predicate(v, i){  // v : 배열 요소, i : 인덱스값
+                    return v%2 === 0; // 특정 조건을 부여(짝수)
+                });
+console.log(answer);
+
+// 결과
+[10, 12, 14]
+
+// =>를 활용하면 간단하게 코드를 작성할 수 있다.
+let answer = a.filter((v) => v%2 === 0);
+```
+
+<br>
+
+### reduce() : 기존 배열의 요소를 활용해 특정 값을 생성해 내는 함수(전체합, 최대값 등)
+```jsx
+arr.reduce(function callback(makingValue , currentValue) {} , firstValue) 
+
+// arr : 사용할 배열 
+// function callback : callback되는 함수
+    // makingValue : 만들어지는 특정 값
+    // currentValue : sum에 추가될 현재 배열요소
+// firstValue : 초기값
+```
+**예시**
+```jsx
+let a = [10,11,12,13,14,15];
+
+let answer = a.reduce(function predicate(sum, v){  // sum : 만들어지는 값 , v : 현재 배열 요소
+                    return sum + v; // 전체합 공식 생성
+                } , 0); // 0 : 초기값
+console.log(answer);
+
+// 결과
+75
+
+// =>를 활용하면 간단하게 코드를 작성할 수 있다.
+let answer = a.reduce((sum, v) => sum + v, 0);
+```
 <br>
 
 ***
