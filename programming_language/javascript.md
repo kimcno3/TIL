@@ -11,6 +11,7 @@
 - [slice()](#slice)
 - [splice()](#splice)
 - [split()](#split)
+- [Math.min() , Math.max()](#Mathmin--Mathmax)
 
 ### [:pushpin: 개념 정리](#pushpin-개념-정리) 
 - [배열(Array)](#배열Array)
@@ -333,6 +334,31 @@ string.split(",");// ['hello', ' world a-b-co', 'ltd']
 string.split("-"); // ['hello, world a', 'b', 'co,ltd']
 
 string // 기존 배열은 변하지 않는다.
+```
+
+<br>
+
+## **Math.min**() , **Math.max**()
+인자값에 최소값과 최대값을 구하는 Math객체 메소드
+```jsx
+Math.min(value) 
+Math.max(value)
+
+// value : 최소값을 찾고 싶은 인자값들
+```
+
+**예시**
+```jsx
+Math.min(1,2,3,4,5) // 1
+Math.max(1,2,3,4,5) // 5
+
+// 배열에서 최소, 최대값을 구하고 싶은 경우
+// 전개연산자 ...을 활용해야 한다.
+// (...arr) === (arr[0] , arr[1] , arr[2] ... ) 
+
+let arr = [1,2,3,4,5]
+Math.min(...arr) // 1
+Math.max(...arr) // 5
 ```
 
 <br>
