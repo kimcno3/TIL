@@ -13,6 +13,7 @@
 - [split()](#split)
 - [Math.min() , Math.max()](#Mathmin--Mathmax)
 - [forEach() , map() , filter() , reduce()](#forEach--map--filter--reduce)
+- [substring() , substr()](#substring--substr)
 
 ### [:pushpin: 개념 정리](#pushpin-개념-정리) 
 - [배열(Array)](#배열Array)
@@ -407,7 +408,7 @@ arr.map(function callback(value, index) {} , thisArg)
 ```jsx
 let a = [10,11,12,13,14,15];
 
-let answer = a.amp(function predicate(v, i){  // v : 배열 요소, i : 인덱스값
+let answer = a.map(function predicate(v, i){  // v : 배열 요소, i : 인덱스값
                     return v*v; // 기존 배열 요소의 제곱값을 담은 새로운 배열 생성 
                 });
 console.log(answer);
@@ -470,6 +471,32 @@ console.log(answer);
 
 // =>를 활용하면 간단하게 코드를 작성할 수 있다.
 let answer = a.reduce((sum, v) => sum + v, 0);
+```
+<br>
+
+## substring() , substr()
+문자열에서 특정 위치에서 시작하여 특정 문자 수 만큼의 문자들을 반환
+```jsx
+substring(startIndex , lastIndex)
+// startIndex : 시작점이 될 문자열의 인덱스
+// lastIndex : 끝점이 될 문자열의 인덱스
+// startIndex부터 lastIndex 바로 전까지 반환한다.
+// slice() 와 같은 인자 규칙
+
+substr(startIndex , Number)
+// startIndex : 시작점이 될 문자열의 인덱스
+// value : startIndex 부터 반환할 문자열의 개수
+// splice() 와 같은 인자 규칙
+```
+
+**예시**
+```jsx
+let str = 'Hello'
+
+str.substing(0,3) // 'Hel' , 0~2까지의 문자열을 반환한다.
+str.substr(0,3) // 'Hel' , 0부터 3개의 문자열을 반환한다.
+
+// 문자열을 immutble 성격을 가지고 있기 때문에 메소드를 사용한다 해도 기존에 선언된 변수는 변하지 않는다.
 ```
 <br>
 
