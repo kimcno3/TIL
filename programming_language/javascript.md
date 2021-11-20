@@ -13,6 +13,7 @@
 - [split()](#split)
 - [Math.min() , Math.max()](#Mathmin--Mathmax)
 - [forEach() , map() , filter() , reduce()](#forEach--map--filter--reduce)
+- [sort()](#sort)
 - [substring() , substr()](#substring--substr)
 
 ### [:pushpin: 개념 정리](#pushpin-개념-정리) 
@@ -476,6 +477,26 @@ let answer = a.reduce((sum, v) => sum + v, 0);
 ```
 <br>
 
+## sort()
+배열을 오름차순 또는 내림차순으로 정렬
+```jsx
+arr.sort((a,b) => a-b); // 오름차순
+arr.sort((a,b) => b-a); // 내림차순
+
+// a : i번째 요소
+// b : i+1번째 요소
+```
+
+**예시**
+```jsx
+let arr = [2,4,1,3,5];
+
+arr.sort((a,b) => a-b); // [1,2,3,4,5]
+arr.sort((a,b) => b-a); // [5,4,3,2,1]
+```
+
+<br>
+
 ## substring() , substr()
 문자열에서 특정 위치에서 시작하여 특정 문자 수 만큼의 문자들을 반환
 ```jsx
@@ -500,6 +521,7 @@ str.substr(0,3) // 'Hel' , 0부터 3개의 문자열을 반환한다.
 
 // 문자열을 immutble 성격을 가지고 있기 때문에 메소드를 사용한다 해도 기존에 선언된 변수는 변하지 않는다.
 ```
+
 <br>
 
 ***
