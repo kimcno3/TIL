@@ -15,6 +15,7 @@
 - [forEach() , map() , filter() , reduce()](#forEach--map--filter--reduce)
 - [sort()](#sort)
 - [substring() , substr()](#substring--substr)
+- [Map()](#Map)
 
 ### [:pushpin: 개념 정리](#pushpin-개념-정리) 
 - [배열(Array)](#배열Array)
@@ -529,6 +530,58 @@ str.substr(0,3) // 'Hel' , 0부터 3개의 문자열을 반환한다.
 ```
 
 <br>
+
+## Map()
+### 기본 개념
+Object, Set과 같은 해쉬 테이블 유형 중 하나이며, `key : value` 구조로 이루어져 있다. 
+### Object와의 차이점
+|특징|Map|Object|
+|--|--|--|
+|키 자료형|어떤 자료형도 키값으로 지정 가능|`String` or `symbol`민 가능|
+|정렬|키가 자동으로 정렬|정렬 X|
+|크기|size로 파악 가능|직접 알아내야 한다.|
+
+### 사용 함수
+1. set() : 키와 value를 선언하는 함수
+2. get() : 선언된 키에 해당하는 value를 가져오는 함수
+3. has() : 키와 value의 존재여부를 파악하는 함수(boolean)
+    - 조건문 조건식으로 활용 가능
+4. keys() , values() : 선언된 모든 키값 또는 value값을 전부 가져오는 함수
+
+### 예시
+```jsx
+// map 객체 생성
+let m = new Map();
+
+// 키로 선언할 변수 선언
+let name = 'Kim';
+let age = 26;
+let phone = {'iphone' : 12}
+
+// set(key , value) 
+m.set(name, 0);
+m.set(age , 1);
+m.set(phone, 2);
+
+console.log(m); // Map(3) {'Kim' => 0, 26 => 1, {…} => 2}
+
+//get(key) 
+m.get(name); // 0
+m.get(age); // 1
+m.get(phone); // 2
+
+//get()을 활용한 value값 재할당
+m.set(age , m.get(age) + 1); // value값을 1 => 2 로 재할당
+m.get(age); // 2
+
+// has(key) 
+m.has(name) // true
+!m.has(name) // false
+
+// keys() , values()
+m.keys() // {'Kim', 26, {…}}
+m.values() // {0, 2, 2}
+```
 
 ***
 
