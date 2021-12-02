@@ -16,6 +16,7 @@
 - [sort()](#sort)
 - [substring() , substr()](#substring--substr)
 - [Map()](#Map)
+- [Array.from()](#Arrayfrom)
 
 ### [:pushpin: 개념 정리](#pushpin-개념-정리) 
 - [배열(Array)](#배열Array)
@@ -582,6 +583,32 @@ m.has(name) // true
 m.keys() // {'Kim', 26, {…}}
 m.values() // {0, 2, 2}
 ```
+
+<br>
+
+## Array.from()
+유사 배열 객체(array-like object)나 반복 가능한 객체(iterable object)를 얕게 복사해 새로운Array 객체를 생성하는 메소드
+### 예시
+```jsx
+// string, array에서 배열 생성
+Array.from('foo'); // ["f", "o", "o"]
+Array.from([1, 2, 3]); // [1, 2, 3]
+
+// Set객체로 배열 만들기
+let s = new Set('age' , 26);
+Array.from(s); // ['age' , 26]
+
+// Map객체로 배열 만들기
+let m = new Map(['name', 'kim'], ['age', 26]);
+Array.from(m); // [['name', 'kim'], ['age', 26]];
+Array.from(m.keys()) // ['name', 'age'];
+Array.from(m.values()) // ['kim', 26];
+
+// 화살표 함수 사용
+Array.from({length:5} (v,i) => i+1); //  [1, 2, 3, 4, 5]
+```
+
+<br>
 
 ***
 
