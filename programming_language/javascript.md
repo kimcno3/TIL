@@ -1,5 +1,5 @@
 # :pushpin: 목차
-### [:pushpin: 함수 모음](#pushpin-함수-모음) 
+**[:pushpin: 함수 모음](#pushpin-함수-모음)**
 - [includes()](#includes) 
 - [replace()](#replace) 
 - [isNAN()](#isNAN)
@@ -18,7 +18,8 @@
 - [Map()](#Map)
 - [Array.from()](#Arrayfrom)
 
-### [:pushpin: 개념 정리](#pushpin-개념-정리) 
+**[:pushpin: 개념 정리](#pushpin-개념-정리)**
+- [자료형(Types)](#자료형Types)
 - [배열(Array)](#배열Array)
 - [함수(Function)](#함수Function)
 - [객체(Object)](#객체Object)
@@ -615,6 +616,96 @@ Array.from({length:5} (v,i) => i+1); //  [1, 2, 3, 4, 5]
 <br>
 
 # :pushpin: 개념 정리
+
+## 자료형(Types)
+### 자료형이랑?
+우리가 변수에 담을 수 있는 존재를 **값**이라고 하는데, 이 값의 종류를 **자료형**이라고 한다. 자바스크립트에서 자료형은 **7가지**로 구분할 수 있다.
+
+### 1. String Type (문자열)
+- 따옴표를 이용해 표현합니다.
+- 문자열은 더 할 수 있습니다. 예) "a" + "b" === "ab"
+- 문자열은 유사배열입니다.
+- Index를 이용해 각 문자열에 접근할 수 있습니다.
+- .length 속성이 있습니다. 예) "abc".length === 3
+
+### 2. Number Type (숫자)
+- 숫자는 여러분이 이미 알고 계신 그대로 숫자일 뿐입니다.
+- 더하기, 빼기, 곱하기, 나누기 등의 연산이 가능합니다.
+- Infinity 혹은 -Infinity 등과 같이 무한대를 표현하는 숫자값도 있습니다.
+- NaN이라는 값 또한 숫자입니다.
+    - "Not A Number"를 의미합니다.
+    - 주로 숫자가 아닌 값을 숫자로 치환할때 의도치않게 자주 나타나는 값입니다. 예) Number("abc")
+
+### 3. Boolean Type
+- true, false 두 가지 값이 있습니다.
+- Boolean값 선언시 주의할 점
+    ```jsx
+    var o = new Boolean(true);  // 이렇게 만들어 사용하지 마세요.
+    var t = true; // 항상 이렇게 만들어 사용하세요.
+    ```
+### 4. Undefined Type
+- "없음"을 의미합니다.
+- undefined라는 값이 있습니다.
+- 초기값이 할당되지 않은 변수나 매개변수 등은 모두 undefined 값을 기본값으로 합니다.
+- 객체에서 없는 속성을 접근하는 경우, undefined 값이 결과로 도출됩니다.
+
+```jsx
+// 초기값이 할당되지 않은 변수
+let a;
+console.log(a); // undefined
+
+// 초기값이 할당되지 않은 매개변수
+function foo (a, b) {
+  console.log(a); // 1
+  console.log(b); // undefined
+}
+foo(1);
+
+// 객체에서 존재하지 않는 속성을 접근하는 경우
+const something = {
+  name: 'Ken'
+};
+console.log(something.age); // undefined
+```
+
+### 5. Null Type
+- "없음"을 의미합니다.
+- null이라는 값이 있습니다.
+- 명시적으로 "값이 없음"을 나타낼때 주로 사용됩니다.
+- 간혹 혼돈하시는 분들을 위해 명시하자면, null === null 은 true입니다.
+- 비록 undefined와 같이 "없음"을 나타내는 값일지라도, 대입한 적 없는 변수 혹은 속성과 명시적으로 "없음"을 나타내는 경우를 구분을 할 수 있어야 코드의 의미가 명확해 질 것입니다. undefined는 전자, null은 후자의 경우에 많이 쓰입니다.
+
+```jsx
+let bar = [ 1, 2, 3 ];
+bar = null; // bar라는 변수에 "값이 없음"이라고 표기함
+```
+
+> `Undifined` vs `Null` 용도의 차이
+>
+> `Undifinde` 값은 말그대로 **정의되지 않는 값**으로 값이 대입되지 않은 상태임을 표현 <br>
+> `Null` 값은 **의도적으로 값이 없음**을 표현
+
+
+### 6. Object Type
+- 일반 객체 뿐 아니라, 배열과 함수도 객체에 포함됩니다.
+
+```jsx
+const person = {};            // 빈 객체 생성
+person.name = 'ken';        // 객체 내 Key, Value 생성
+console.log(person.name);   // 'ken'
+console.log(person);        // { name: 'ken' }
+console.log(typeof person); // 'object'
+
+const list = [1, 2, 3];
+console.log(typeof list);   // 'object'
+
+function foo () {}
+console.log(typeof foo);    // 'function' (이상한 자바스크립트..)
+```
+
+### 7. Symbol Type (new in ES2015, the least of your concern)
+
+<br>
 
 ## 배열(Array)
 ### 배열이란?
