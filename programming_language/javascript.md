@@ -20,6 +20,7 @@
 
 **[:pushpin: 개념 정리](#pushpin-개념-정리)**
 - [자료형(Types)](#자료형Types)
+- [Truthy and Falsy](#Truthy-and-Falsy)
 - [배열(Array)](#배열Array)
 - [함수(Function)](#함수Function)
 - [객체(Object)](#객체Object)
@@ -704,6 +705,26 @@ console.log(typeof foo);    // 'function' (이상한 자바스크립트..)
 ```
 
 ### 7. Symbol Type (new in ES2015, the least of your concern)
+
+<br>
+
+## Truthy and Falsy
+### Truthy? Falsy?
+자료형과 더불어 자바스크립트의 값들을 나누는 또 다른 기준으로 해석하자면 "진실같은 성격"(Truthiness)와 "거짓같은 성격"(Falsiness)로 볼 수 있습니다. 자바스크립트의 모든 값들은 둘 중 한 가지에 속합니다.
+
+### Falsy인 경우
+```jsx
+0
+-0
+false
+undefined
+null
+""
+''
+``
+NaN
+```
+> 위의 경우를 제외한 모든 값은 Truthy입니다.
 
 <br>
 
