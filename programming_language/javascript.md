@@ -970,10 +970,18 @@ Human.prototype.attack = function(target) {
 <br>
 
 ## DOM(Document Object Model)
-### DOM이란?
-- 문서를 객체를 이용해서 계층 구조로 표현함
+### DOM이란? ([MDN 정의](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction))
+- HTML 문서를 계층 구조로 표현한 프로그래밍 인터페이스
+    - 브라우저는 HTML 문서의 요소들을 통해 계층구조의 DOM을 생성하고 화면에 출력(렌더링)한다.
+    - DOM은 사용자가 JS를 사용해 웹화면을 추가, 수정, 삭제할 수 있는 표면같은(인터페이스) 역할을 한다.
+    - 즉, JS가 DOM을 수정하는 것이고 HTML 문서 자체는 수정되지 않는다.
+
 - 표준: W3CDOM
 - 구현체: Gecko, Webkit 등
+
+> **DOM에 대한 추가 설명** <br>
+> - [유노코딩님 영상](https://www.youtube.com/watch?v=zyz1eJJjsNE) <br>
+> - [바닐라코딩 사전가이드](https://book.vanillacoding.co/starter-kit/step-4/interacting-with-webpages/dom-introduction)
 
 ### html 객체
 - HTML 문서도 객체로 간주된다.
@@ -1009,7 +1017,7 @@ Human.prototype.attack = function(target) {
     ```
 
 ### JS로 DOM 제어하기
-- 모든 HTML 엘리먼트는 객체이므로 다른 객체와 마찬가지로 JS로 제어가 가능하다.  
+- 모든 HTML 엘리먼트는 객체이므로 다른 객체와 마찬가지로 JS로 제어가 가능하다.
 
 ### DOM 객체의 값 바꾸기
 ```jsx
