@@ -1,9 +1,9 @@
 # :pushpin: 목차
 **[:pushpin: 함수 모음](#pushpin-함수-모음)**
-- [includes()](#includes) 
-- [replace()](#replace) 
+- [includes()](#includes)
+- [replace()](#replace)
 - [isNAN()](#isNAN)
-- [push() , pop()](#push--pop) 
+- [push() , pop()](#push--pop)
 - [unshift() , shift()](#unshift--shift)
 - [concat()](#concat)
 - [join()](#join)
@@ -28,6 +28,10 @@
 - [일반 변수와 참조 변수](#일반-변수와-참조-변수)
 - [프로토타입(Prototype)](#프로토타입Prototype)
 - [DOM(Document Object Model)](#DOMDocument-Object-Model)
+- [스코프(Scope)](#스코프Scope)
+- [호이스팅(Hoisting)](#호이스팅Hoisting)
+
+**[:pushpin: 참고 사이트](#pushpin-참고-사이트)**
 
 <br>
 
@@ -319,8 +323,8 @@ splice(startIndex, numElement)
 ```jsx
 let arr = [1, 2, 3, 4, 5];
 
-arr.slice(2, 4); // [3, 4, 5] , index 2부터 3개의 원소 
-console.log(arr); // [1, 2] , 기존 배열이 수정된다. 
+arr.slice(2, 4); // [3, 4, 5] , index 2부터 3개의 원소
+console.log(arr); // [1, 2] , 기존 배열이 수정된다.
 ```
 
 <br>
@@ -350,7 +354,7 @@ string // 기존 배열은 변하지 않는다.
 ## **Math.min**() , **Math.max**()
 인자값에 최소값과 최대값을 구하는 Math객체 메소드
 ```jsx
-Math.min(value) 
+Math.min(value)
 Math.max(value)
 
 // value : 최소값을 찾고 싶은 인자값들
@@ -1026,3 +1030,148 @@ element.innerHTML = '값'
 <h2>My First Page</h2>
 <p id="test"></p>
 ```
+
+<br>
+
+## 스코프(Scope)
+### Scope란?
+우리가 작성하는 코드의 **접근 범위**를 결정하는 개념을 의미합니다.
+
+### 함수 스코프(Function Scope)
+```jsx
+function foo () {
+  /* --- foo scope start --- */
+  var a = 1;
+  
+  console.log(a); // 로그 #1
+  /* --- foo scope end   --- */
+}
+
+foo();
+```
+로그 #1"에서는 `a` 라는 변수의 값(1)이 성공적으로 출력됩니다.
+
+그 이유는 자바스크립트에서 `var` 를 이용하여 선언한 변수는 **해당 변수 선언문을 감싸고 있는 함수를 기준으로 접근 범위가 설정되고 그 범위 내부에서는 자유롭게 접근하여 사용할 수 있기 때문**입니다.
+
+위 예제 코드에서 **"foo scope start"** 부분부터 **"foo scope end"** 부분 내에서는 언제든지 자유롭게 `a` 라는 변수에 접근하여 사용이 가능한 것입니다. 이 부분을 우리는 `foo` 함수 Scope라고 부를 수 있습니다.
+
+### Scope Chain
+- Scope는 아래 그림처럼 계층 구조로 형성됩니다.
+- 가장 최상위 Scope는 `Global Scope`라고 부릅니다.
+- `Global Scope` 하위에는 함수 생성을 기준으로 `하위 Scope`가 형성됩니다.
+
+[**상위**] `Global Scope` -> `Person Scope` -> `displayName Scope` [**하위**]
+
+![https://www.learnsimpli.com/scope-chain-in-javascript/
+](https://book.vanillacoding.co/~/files/v0/b/gitbook-28427.appspot.com/o/assets%2F-M-IhZy_qTGIqJrZSYiJ%2F-Me9-xqRQj7kQET48S-y%2F-Me93WPy0wKVw3DQtdHz%2F3-2.png?alt=media&token=06a45e40-d4aa-4767-a027-e6981c4e8f0d)
+참고 그림(https://www.learnsimpli.com/scope-chain-in-javascript/)
+
+
+**Scope 계층에서 가장 중요한 특징**
+- 상위에서 하위 Scope 내부 정보를 접근할 수 없다.
+- 반대로 하위에서 상위 Scope의 정보는 접근 가능합니다.
+- 실행문의 위치를 기준으로 하위 Scope부터 시작하여 원하는 값을 찾을때까지 상위로 탐색합니다.
+
+### 예제1
+```jsx
+var a = 1;
+
+function foo () {
+  var a = 2;
+  console.log(a); // 로그 #1
+}
+
+foo();
+```
+**로그 #1**에는 **2**가 찍혀 나옵니다.
+
+- 그 이유는 어떤 변수에 대한 정보를 필요로 할 때, 자바스크립트는 **현 실행문의 위치를 기준**으로 하위 Scope부터 시작하여 해당 변수의 값을 찾아나갑니다.
+- `foo` 함수 Scope 탐색 결과 a라는 변수에 2가 할당되어 있기 때문에 해당 값을 출력하게 되는 것입니다.
+
+### 예제2
+```jsx
+var a = 1;
+
+function foo () {
+  var a = 2;
+  console.log(a); // 로그 #1
+}
+
+foo();
+console.log(a);   // 로그 #2
+```
+**로그 #1**에는 2가 출력됩니다.
+- 그 이유는 예제1과 같은 이유입니다.
+
+**로그 #2**에는 1이 출력됩니다.
+- 그 이유는 로그 #2가 출력되는 실행문의 위치가 Global Scope이기에 그 하위 Scope에는 접근할 수 없습니다. 그러므로 같은 Global Scope에서 선언된 a값을 찾은 결과로 1이 출력되는 것입니다.
+
+### 예제3
+```jsx
+function foo () {
+  var a = 2;
+  console.log(a); // 로그 #1
+}
+
+foo();
+console.log(a);   // 로그 #2
+```
+**로그 #1**에는 2가 출력됩니다.
+- 그 이유는 예제1과 같은 이유입니다.
+
+**로그 #2**에는 에러가 납니다.("a is not defined")
+- 그 이유는 `Global Scope`에서 선언된 변수 `a`가 없기 때문입니다.
+- 만약 상위 Scope가 존재했다면, `상위 Scope에서 같은 변수를 탐색`했을 것이고, 같은 원리로 가장 높은 Scope(`Global Scope`)까지 변수 a의 존재 여부를 탐색하게 됩니다.
+- 위와 같은 과정 중간에 원하는 정보를 찾았다면 탐색을 멈춥니다.
+
+### Global Scope
+### 예제1
+```html
+<html>
+  <head>
+    <title>Global Scope Sample</title>
+  </head>
+  <body>
+    <h1>Hello World</h1>
+    <script>
+      var a = '바닐라코딩';
+
+      console.log(`우리는 ${a}입니다.`); //로그 #1
+
+      setTimeout(function () {
+        console.log(`[1초 후] 우리는 ${a}입니다.`); //로그 #2
+      }, 1000);
+    </script>
+    <script>
+      var a = '느린캠퍼스';
+
+      console.log(`우리는 ${a}입니다.`); //로그 #3
+    </script>
+  </body>
+</html>
+```
+**실행 결과**
+```jsx
+우리는 바닐라코딩입니다. // 로그 #1
+우리는 느린캠퍼스입니다. // 로그 #3
+[1초 후] 우리는 느린캠퍼스입니다. // 로그 #2
+
+`로그 #3`보다 `로그 #2`가 더 늦게 실행되면서 변수 a에 할당된 값이 다른 `Script`에서 할당된 값이 출력됩니다.
+```
+결국 `Global Scope`에서 선언된 변수는 **하나의 공용공간**으로 이해하면 좋습니다.
+
+즉, 하나의 HTML문서에는 하나의 `Global Scope`가 존재하고, 이 공간에서 선언된 변수는 여러 script에서 사용가능하단 의미가 됩니다.
+
+우리가 어떤 물건을 **공용공간**(`Global Scope`)에 배치해둔다면, 다른 누군가가 그 물건을 사용할 수도 있고 혹은 **수정/삭제**할 가능성도 있습니다.
+
+**물론 절대 사용하면 안된다는 의미는 아닙니다.** 필요하다면 반드시 사용해야 하지만, 주의를 기울여 신중하게 사용해야만 합니다.
+
+<br>
+
+## 호이스팅(Hoisting)
+
+<br>
+
+## :pushpin: 참고 사이트]
+- [자바스크립트 기초 강의 By 호눅스님](https://www.inflearn.com/course/javascript-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-codesquad-masters_lv1)
+- [바닐라코딩 사전가이드](https://book.vanillacoding.co/starter-kit/)
