@@ -1042,7 +1042,7 @@ element.innerHTML = '값'
 function foo () {
   /* --- foo scope start --- */
   var a = 1;
-  
+
   console.log(a); // 로그 #1
   /* --- foo scope end   --- */
 }
@@ -1059,15 +1059,13 @@ foo();
 - Scope는 아래 그림처럼 계층 구조로 형성됩니다.
 - 가장 최상위 Scope는 `Global Scope`라고 부릅니다.
 - `Global Scope` 하위에는 함수 생성을 기준으로 `하위 Scope`가 형성됩니다.
-
-[**상위**] `Global Scope` -> `Person Scope` -> `displayName Scope` [**하위**]
+- [**상위**] `Global Scope` -> `Person Scope` -> `displayName Scope` [**하위**]
 
 ![https://www.learnsimpli.com/scope-chain-in-javascript/
 ](https://book.vanillacoding.co/~/files/v0/b/gitbook-28427.appspot.com/o/assets%2F-M-IhZy_qTGIqJrZSYiJ%2F-Me9-xqRQj7kQET48S-y%2F-Me93WPy0wKVw3DQtdHz%2F3-2.png?alt=media&token=06a45e40-d4aa-4767-a027-e6981c4e8f0d)
 참고 그림(https://www.learnsimpli.com/scope-chain-in-javascript/)
 
-
-**Scope 계층에서 가장 중요한 특징**
+### Scope 계층에서 가장 중요한 특징
 - 상위에서 하위 Scope 내부 정보를 접근할 수 없다.
 - 반대로 하위에서 상위 Scope의 정보는 접근 가능합니다.
 - 실행문의 위치를 기준으로 하위 Scope부터 시작하여 원하는 값을 찾을때까지 상위로 탐색합니다.
@@ -1125,7 +1123,6 @@ console.log(a);   // 로그 #2
 - 위와 같은 과정 중간에 원하는 정보를 찾았다면 탐색을 멈춥니다.
 
 ### Global Scope
-### 예제1
 ```html
 <html>
   <head>
@@ -1150,7 +1147,7 @@ console.log(a);   // 로그 #2
   </body>
 </html>
 ```
-**실행 결과**
+### 실행 결과
 ```jsx
 우리는 바닐라코딩입니다. // 로그 #1
 우리는 느린캠퍼스입니다. // 로그 #3
@@ -1174,7 +1171,7 @@ console.log(a);   // 로그 #2
 - 코드가 실행되기 전에 진행되는 전처리 작업 중 하나입니다.
 - 중요한 부분은 **"변수 선언문"** 만 끌어올려진다는 점입니다. 변수에 값을 대입 혹은 할당하는 구문은 우리가 실제로 작성한 흐름과 같이 실행됩니다.
 
-#### **예제1**
+### **예제1**
 ```jsx
 console.log(a);
 var a = 1;
@@ -1186,7 +1183,7 @@ console.log(a);
 a = 1;
 ```
 
-#### **예제2**
+### **예제2**
 ```jsx
 var a = 1;
 
@@ -1211,7 +1208,7 @@ foo();
 ```
 함수 scope 안에서 변수 선언문만 가장 먼저 실행되었기 때문에 `"undifined"`가 출력되는 것입니다.
 
-#### **함수 표현식(Function Expression)**
+### **함수 표현식(Function Expression)**
 ```jsx
 d(); // 함수 #1
 
@@ -1227,7 +1224,7 @@ d();  // 함수 #1
 - 함수 #1 실행 결과 : Error(d is not a function) -> 변수에 함수가 할당X
 - 함수 #2 실행 결과 : 함수 #1에서 에러발생으로 실행 X
 
-#### **함수 선언식(Function Declaration)**
+### **함수 선언식(Function Declaration)**
 ```jsx
 j(); // 함수 #1
 
