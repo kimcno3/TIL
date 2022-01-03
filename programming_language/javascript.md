@@ -21,12 +21,12 @@
 **[:pushpin: 개념 정리](#pushpin-개념-정리)**
 - [자료형(Types)](#자료형Types)
 - [Truthy and Falsy](#Truthy-and-Falsy)
+- [Primitive vs Reference](#Primitive-vs-Reference)
+- [일반 변수와 참조 변수](#일반-변수와-참조-변수)
 - [배열(Array)](#배열Array)
 - [함수(Function)](#함수Function)
 - [객체(Object)](#객체Object)
 - [객체 생성자(Object Constructor)](#객체-생성자Object-Constructor)
-- [Primitive vs Reference](#Primitive-vs-Reference)
-- [일반 변수와 참조 변수](#일반-변수와-참조-변수)
 - [프로토타입(Prototype)](#프로토타입Prototype)
 - [DOM(Document Object Model)](#DOMDocument-Object-Model)
 - [스코프(Scope)](#스코프Scope)
@@ -733,6 +733,98 @@ NaN
 
 <br>
 
+## Primitive vs Reference
+### Primitive
+- 실제 값을 변수에 할당하는 Type
+- Object를 제외한 모든 자료형이 해당
+#### **Primitive 비유 설명**
+변수가 포스트잇이라 생각했을 때, **Primitive** 타입은 포스트잇에 실제 값을 적어 관리하는 형태라고 생각하면 됩니다.
+
+#### **예시 코드**
+```jsx
+let a = 10;
+const b = a;
+
+a = 30;
+
+console.log(b); // ?
+```
+#### **예시 코드 해석**
+- `let a = 10;` <br>
+  : a 포스트잇에 10을 적는다.
+- `const b = a;` <br>
+: b 포스트잇에 a 포스트잇에 적힌 내용을 똑같이 적는다.
+- `a = 30;` <br>
+  : 새로운 a 포스트잇에 30를 적고 기존 a 포스트잇은 버린다. (재활용 X)
+- `console.log(b);` <br>
+  : b 포스트잇에 적힌 값을 출력한다.
+
+<br>
+
+### Reference
+- 실제 값이 아님 참조 주소를 변수에 할당하는 Type
+- Object가 해당(Object, Array, Function ...)
+#### **Reference 비유 설명**
+변수가 포스트잇이라 생각했을 때, **Reference** 타입은 포스트잇에는 실제 값이 저장된 위치를 적고, 실제 값들은 다른 곳에 저장해 두는 것이라 생각하면 됩니다.
+
+#### **예시 코드**
+```jsx
+const list1 = [ 1, 2, 3 ];
+const list2 = [ 1, 2, 3 ];
+
+const result = list1 === list2;
+
+console.log(result); // ?
+```
+#### **예시 코드 해석**
+- `const list1 = [ 1, 2, 3 ];` <br>
+  : 포스트잇1에 해당 정보가 저장된 위치를 적는다.(위치1)
+- `const list2 = [ 1, 2, 3 ];` <br>
+  : 포스트잇2에 해당 정보가 저장된 위치를 적는다.(위치2)
+- `const result = list1 === list2;` <br>
+  : 포스트잇1과 2에 적힌 내용을 비교한다.(`위치1 === 위치2` ???)
+- `console.log(result);` <br>
+  : 비교한 결과를 출력한다. (`False`)
+
+#### **예시 코드2**
+```jsx
+const person1 = {
+  age: 10
+};
+const person2 = person1;
+
+person1.age = 20;
+
+console.log(person2); // ?
+```
+#### **예시 코드2 해석**
+- `const person1 = {age: 10};` <br>
+  : person1 포스트잇에 어떤 정보가 담긴 위치를 적는다.(위치1)
+- `const person2 = person1;` <br>
+  : person2 포스트잇에 person1 포스트잇에 적힌 정보를 적는다.(위치1)
+- `person1.age = 20;` <br>
+  : person1 포스트잇이 가르키는 정보를 수정한다.
+- `console.log(person2);` <br>
+  : person2 포스트잇에 적힌 위치정보가 가르키는 정보를 출력한다.(위치1)
+
+<br>
+
+## 일반 변수와 참조 변수
+### 두 변수의 차이점
+- 기본 타입을 변수에 할당하면 일반 변수, 객체를 변수에 할당하면 참조 변수가 된다.
+- 배열도 객체이기 때문에 변수에 할당하면 참조 변수가 된다.
+- 다시 말해
+    - 문자열, 숫자 등을 변수에 할당하면 일반 변수
+    - 객체, 배열을 변수에 할당하면 참조 변수
+
+
+### 값 전달 변수(call by value) 와 참조 전달 변수(call by reference)
+- 값 전달 변수는 함수 내부에서 값을 바꿔도 외부에서는 그대로다. (immutable)
+- 변수에 값을 재할당하지 않는 이상 함수에서는 바뀌지 않는다.
+- 참조 전달 변수는 함수 내부에서 값을 바꾸면 외부의 객체도 값이 바뀝니다. (mutable)
+
+<br>
+
 ## 배열(Array)
 ### 배열이란?
 - 배열(array)는 자바스크립트에서 가장 많이 사용하는 자료구조 종류 중 하나
@@ -930,95 +1022,6 @@ p2; // p2.hp가 p1.power만큼 감소
 p2.eat(f1);
 p2; // p2.hp가 f1.energy만큼 증가
 ```
-## Primitive vs Reference
-### Primitive
-- 실제 값을 변수에 할당하는 Type
-- Object를 제외한 모든 자료형이 해당
-#### **Primitive 비유 설명**
-변수가 포스트잇이라 생각했을 때, **Primitive** 타입은 포스트잇에 실제 값을 적어 관리하는 형태라고 생각하면 됩니다.
-
-#### **예시 코드**
-```jsx
-let a = 10;
-const b = a;
-
-a = 30;
-
-console.log(b); // ?
-```
-#### **예시 코드 해석**
-- `let a = 10;` <br>
-  : a 포스트잇에 10을 적는다.
-- `const b = a;` <br>
-: b 포스트잇에 a 포스트잇에 적힌 내용을 똑같이 적는다.
-- `a = 30;` <br>
-  : 새로운 a 포스트잇에 30를 적고 기존 a 포스트잇은 버린다. (재활용 X)
-- `console.log(b);` <br>
-  : b 포스트잇에 적힌 값을 출력한다.
-
-<br>
-
-### Reference
-- 실제 값이 아님 참조 주소를 변수에 할당하는 Type
-- Object가 해당(Object, Array, Function ...)
-#### **Reference 비유 설명**
-변수가 포스트잇이라 생각했을 때, **Reference** 타입은 포스트잇에는 실제 값이 저장된 위치를 적고, 실제 값들은 다른 곳에 저장해 두는 것이라 생각하면 됩니다.
-
-#### **예시 코드**
-```jsx
-const list1 = [ 1, 2, 3 ];
-const list2 = [ 1, 2, 3 ];
-
-const result = list1 === list2;
-
-console.log(result); // ?
-```
-#### **예시 코드 해석**
-- `const list1 = [ 1, 2, 3 ];` <br>
-  : 포스트잇1에 해당 정보가 저장된 위치를 적는다.(위치1)
-- `const list2 = [ 1, 2, 3 ];` <br>
-  : 포스트잇2에 해당 정보가 저장된 위치를 적는다.(위치2)
-- `const result = list1 === list2;` <br>
-  : 포스트잇1과 2에 적힌 내용을 비교한다.(`위치1 === 위치2` ???)
-- `console.log(result);` <br>
-  : 비교한 결과를 출력한다. (`False`)
-
-#### **예시 코드2**
-```jsx
-const person1 = {
-  age: 10
-};
-const person2 = person1;
-
-person1.age = 20;
-
-console.log(person2); // ?
-```
-#### **예시 코드2 해석**
-- `const person1 = {age: 10};` <br>
-  : person1 포스트잇에 어떤 정보가 담긴 위치를 적는다.(위치1)
-- `const person2 = person1;` <br>
-  : person2 포스트잇에 person1 포스트잇에 적힌 정보를 적는다.(위치1)
-- `person1.age = 20;` <br>
-  : person1 포스트잇이 가르키는 정보를 수정한다.
-- `console.log(person2);` <br>
-  : person2 포스트잇에 적힌 위치정보가 가르키는 정보를 출력한다.(위치1)
-
-<br>
-
-## 일반 변수와 참조 변수
-### 두 변수의 차이점
-- 기본 타입을 변수에 할당하면 일반 변수, 객체를 변수에 할당하면 참조 변수가 된다.
-- 배열도 객체이기 때문에 변수에 할당하면 참조 변수가 된다.
-- 다시 말해, 
-    - 문자열, 숫자 등을 변수에 할당하면 일반 변수
-    - 객체, 배열을 변수에 할당하면 참조 변수 
-
-
-### 값 전달 변수(call by value) 와 참조 전달 변수(call by reference)
-- 값 전달 변수는 함수 내부에서 값을 바꿔도 외부에서는 그대로다. (immutable)
-- 변수에 값을 재할당하지 않는 이상 함수에서는 바뀌지 않는다.
-- 참조 전달 변수는 함수 내부에서 값을 바꾸면 외부의 객체도 값이 바뀝니다. (mutable)
 
 <br>
 
