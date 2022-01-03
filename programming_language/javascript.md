@@ -12,11 +12,18 @@
 - [splice()](#splice)
 - [split()](#split)
 - [Math.min() , Math.max()](#Mathmin--Mathmax)
-- [forEach() , map() , filter() , reduce()](#forEach--map--filter--reduce)
 - [sort()](#sort)
 - [substring() , substr()](#substring--substr)
 - [Map()](#Map)
 - [Array.from()](#Arrayfrom)
+
+**[:pushpin: 고차함수 모음](#pushpin-고차함수-모음)**
+- [forEach()](#forEach)
+- [map()](#map)
+- [filter()](#filter)
+- [reduce()](#reduce)
+- [every() , some()](#every--some)
+- [flat()](#flat)
 
 **[:pushpin: 개념 정리](#pushpin-개념-정리)**
 - [자료형(Types)](#자료형Types)
@@ -291,7 +298,7 @@ console.log(string); // booboon
 ## **slice**()
 기존 배열을 잘라 새로운 배열을 만든다.
 ```jsx
-slice(startIndex, endIndex) 
+slice(startIndex, endIndex)
 
 // startIndex : 시작 index, 이 위치부터 배열을 자른다.(포함 O)
 // endIndex : 끝 index , 이 위치 직전의 index까지 배열을 자른다. (포함 X)
@@ -375,115 +382,6 @@ Math.min(...arr) // 1
 Math.max(...arr) // 5
 ```
 
-<br>
-
-## forEach() , map() , filter() , reduce()
-
-### **forEach()** : 반복문과 같은 기능
-```jsx
-arr.forEach(function callback(value, index) {} , thisArg) 
-
-// arr : 사용할 배열 
-// function callback : callback되는 함수(매개변수로 배열의 요소(value)와 index값(index)를 받는다.) 
-```
-> **thisArg** : callback 함수에서 this로 사용하는 값으로 Optional 인자다.
-
-**예시**
-```jsx
-let a = [10,11,12,13,14,15];
-
-a.forEach(function predicate(v, i){  // v : 배열 요소, i : 인덱스값
-                    console.log( v + ',' + i));
-                });
-
-// 결과
-// 10,1
-// 11,2
-// 12,3
-// 13,4
-// 14,5
-// 15,6
-
-// =>를 활용하면 간단하게 코드를 작성할 수 있다.
-a.forEach((v, i) => console.log(v + ',' + i));
-```
-<br>
-
-### **map()** : 기존 배열의 요소들에게 변화를 주는 함수
-```jsx
-arr.map(function callback(value, index) {} , thisArg) 
-
-// arr : 사용할 배열 
-// function callback : callback되는 함수(매개변수로 배열 요소(value)와 index값(index)를 받는다.) 
-```
-**예시**
-```jsx
-let a = [10,11,12,13,14,15];
-
-let answer = a.map(function predicate(v, i){  // v : 배열 요소, i : 인덱스값
-                    return v*v; // 기존 배열 요소의 제곱값을 담은 새로운 배열 생성 
-                });
-console.log(answer);
-
-// 결과
-[100, 121, 144, 169, 196, 225]
-
-// =>를 활용하면 간단하게 코드를 작성할 수 있다.
-let answer = a.map((v) => v*v);
-```
-
-<br>
-
-### **filter()** : 기존 배열에서 특정 조건에 해당하는 요소만 가져오는 함수
-```jsx
-arr.map(function callback(value, index) {} , thisArg) 
-
-// arr : 사용할 배열 
-// function callback : callback되는 함수(매개변수로 배열 요소(value)와 index값(index)를 받는다.) 
-```
-**예시**
-```jsx
-let a = [10,11,12,13,14,15];
-
-let answer = a.filter(function predicate(v, i){  // v : 배열 요소, i : 인덱스값
-                    return v%2 === 0; // 특정 조건을 부여(짝수)
-                });
-console.log(answer);
-
-// 결과
-[10, 12, 14]
-
-// =>를 활용하면 간단하게 코드를 작성할 수 있다.
-let answer = a.filter((v) => v%2 === 0);
-```
-
-<br>
-
-### reduce() : 기존 배열의 요소를 활용해 특정 값을 생성해 내는 함수(전체합, 최대값 등)
-```jsx
-arr.reduce(function callback(makingValue , currentValue) {} , firstValue) 
-
-// arr : 사용할 배열 
-// function callback : callback되는 함수
-    // makingValue : 만들어지는 특정 값
-    // currentValue : sum에 추가될 현재 배열요소
-// firstValue : 초기값
-```
-**예시**
-```jsx
-let a = [10,11,12,13,14,15];
-
-let answer = a.reduce(function predicate(sum, v){  // sum : 만들어지는 값 , v : 현재 배열 요소
-                    return sum + v; // 전체합 공식 생성
-                } , 0); // 0 : 초기값
-console.log(answer);
-
-// 결과
-75
-
-// =>를 활용하면 간단하게 코드를 작성할 수 있다.
-let answer = a.reduce((sum, v) => sum + v, 0);
-```
 <br>
 
 ## sort()
@@ -613,6 +511,186 @@ Array.from(m.values()) // ['kim', 26];
 
 // 화살표 함수 사용
 Array.from({length:5} (v,i) => i+1); //  [1, 2, 3, 4, 5]
+```
+
+<br>
+
+***
+
+<br>
+
+# :pushpin: 고차함수 모음
+## **forEach()**
+반복문과 같은 기능을 실행하는 함수입니다.
+
+### 함수 기본 구조
+```jsx
+arr.forEach(function callback(value, index) {} , thisArg)
+```
+- `arr` : 사용할 배열
+- `function callback` : callback되는 함수(매개변수로 배열의 요소(`value`)와 index값(`index`)를 받는다.)
+- `thisArg` : callback 함수에서 this로 사용하는 값으로 Optional 인자다.
+
+<br>
+
+### 예시
+```jsx
+let a = [10,11,12,13,14,15];
+
+a.forEach(function predicate(v, i){  // v : 배열 요소, i : 인덱스값
+                    console.log( v + ',' + i));
+                });
+
+// 결과
+// 10,1
+// 11,2
+// 12,3
+// 13,4
+// 14,5
+// 15,6
+
+// =>를 활용하면 간단하게 코드를 작성할 수 있다.
+a.forEach((v, i) => console.log(v + ',' + i));
+```
+<br>
+
+## **map()**
+기존 배열의 요소들에게 변화를 주는 함수
+
+### 함수 기본 구조
+```jsx
+arr.map(function callback(value, index) {} , thisArg)
+```
+- `arr` : 사용할 배열
+- `function callback` : callback되는 함수(매개변수로 배열 요소(`value`)와 index값(`index`)를 받는다.)
+
+### 예시
+```jsx
+let a = [10,11,12,13,14,15];
+
+let answer = a.map(function predicate(v, i){  // v : 배열 요소, i : 인덱스값
+                    return v*v; // 기존 배열 요소의 제곱값을 담은 새로운 배열 생성
+                });
+console.log(answer);
+
+// 결과
+[100, 121, 144, 169, 196, 225]
+
+// =>를 활용하면 간단하게 코드를 작성할 수 있다.
+let answer = a.map((v) => v*v);
+```
+
+<br>
+
+## **filter()**
+기존 배열에서 특정 조건에 해당하는 요소만 가져오는 함수
+
+### 함수 기본 구조
+```jsx
+arr.map(function callback(value, index) {} , thisArg)
+```
+- `arr` : 사용할 배열
+- `function callback` : callback되는 함수(매개변수로 배열 요소(`value`)와 index값(`index`)를 받는다.)
+
+<br>
+
+### 예시
+```jsx
+let a = [10,11,12,13,14,15];
+
+let answer = a.filter(function predicate(v, i){  // v : 배열 요소, i : 인덱스값
+                    return v%2 === 0; // 특정 조건을 부여(짝수)
+                });
+console.log(answer);
+
+// 결과
+[10, 12, 14]
+
+// =>를 활용하면 간단하게 코드를 작성할 수 있다.
+let answer = a.filter((v) => v%2 === 0);
+```
+
+<br>
+
+## **reduce()**
+기존 배열의 요소를 활용해 특정 값을 생성해 내는 함수(전체합, 최대값 등)
+
+### 함수 기본 구조
+```jsx
+arr.reduce(function callback(makingValue , currentValue) {} , firstValue)
+```
+- `arr` : 사용할 배열
+- `function callback` : callback되는 함수
+    - `makingValue` : 만들어지는 특정 값
+    - `currentValue` : `sum`에 추가될 현재 배열요소
+- `firstValue` : 초기값
+
+<br>
+
+### 예시
+```jsx
+let a = [10,11,12,13,14,15];
+
+let answer = a.reduce(function predicate(sum, v){  // sum : 만들어지는 값 , v : 현재 배열 요소
+                    return sum + v; // 전체합 공식 생성
+                } , 0); // 0 : 초기값
+console.log(answer);
+
+// 결과
+75
+
+// =>를 활용하면 간단하게 코드를 작성할 수 있다.
+let answer = a.reduce((sum, v) => sum + v, 0);
+```
+<br>
+
+## **every() , some()**
+- `every()` 함수는 원하는 배열의 요소들 전부 특정 조건에 부합해야만 `true`를 반환합니다.
+> [every() 함수 상세 설명](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
+- `some()` 함수는 배열의 요소들 중 하나라도 특정 조건에 부합한다면 `true`를 반환합니다.
+> [some() 함수 상세 설명](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+
+### **예제**
+```jsx
+var onlyEven = [2,4,6]; // 짝수만 있는 배열
+var mixedBag = [2,4,5,6]; // 섞여있는 배열
+
+// 홀수, 짝수를 구분하는 함수 선언
+var isEven = function(x) { return x % 2 === 0 };
+
+
+// every() 활용
+onlyEven.every(isEven); // 모든 요소가 짝수일 경우, true
+mixedBag.every(isEven); // 하나라도 짝수가 아니라면 false
+
+// some() 활용
+mixedBag.some(isEven);// 하나라도 짝수가 있다면 true
+```
+
+<br>
+
+## **flat()**
+모든 하위 배열 요소를 지정한 깊이까지 재귀적으로 이어붙인 새로운 배열을 생성
+> [flat() 상세 설명](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
+
+### 함수 기본 구조
+```jsx
+arr.flat(depth)
+```
+`depth`는 배열 중복의 깊이를 의미하며 기본값은 `1`입니다.
+
+<br>
+
+### 예제
+```jsx
+//배열깊이가 2일 경우
+[ [1, 2], [3, 4] ].flat(); // [1, 2, 3, 4]
+
+// 배열깊이가 3일 경우
+[ [1, 2, [3]], [4, 5] ].flat(); // [1, 2, [3], 4, 5]
+
+// 배열깊이가 3, 매개변수에 2를 지정
+[ [1, 2, [3]], [4, 5] ].flat(2); // [1, 2, 3, 4, 5]
 ```
 
 <br>
@@ -807,6 +885,8 @@ console.log(person2); // ?
 - `console.log(person2);` <br>
   : person2 포스트잇에 적힌 위치정보가 가르키는 정보를 출력한다.(위치1)
 
+> [**Reference 추가 예제 설명**](https://github.com/kimcno3/vanillaCoding/blob/main/step5/javascript_koans.md#reference)
+
 <br>
 
 ## 일반 변수와 참조 변수
@@ -832,21 +912,26 @@ console.log(person2); // ?
 - 배열은 '객체'이다.
 
 ### 배열 생성 방법
+배열의 Literal은 다음과 같습니다.
+> [Literal 상세 설명](https://github.com/kimcno3/vanillaCoding/blob/main/step5/javascript_koans.md#%EB%B0%B0%EC%97%B4-literals)
+
 ``` jsx
 var scores = [50, 60, 70];
 console.log(scores);
 console.log(scores.length);
 ```
 
-### 배열의 마지막 원소를 읽을라면?(배열이 너무 길 경우) 
+### 배열의 마지막 원소를 읽을라면?(배열이 너무 길 경우)
 ``` jsx
 scores[scores.length - 1];
 ```
 
 ### 문자열과 배열
 - 문자열과 배열은 비슷한 성질을 많이 가지고 있습니다.
-    - 배열: Mutable
-    - 문자열: Immutable 
+<br> **배열**: Mutable
+<br> **문자열**: Immutable
+
+> [Mutable 상세 설명](https://github.com/kimcno3/vanillaCoding/blob/main/step5/javascript_koans.md#pushpin-mutable)
 
 ```jsx
 // 배열의 속성과 메소드를 문자열에도 테스트
@@ -871,39 +956,43 @@ console.log(string); // 'hello' , 값이 변하지 않는다.
 
 ## 함수(Function)
 ### 함수 특징
-- return값이 있는 함수를 호출하는 경우, 변수에 값을 할당하기 위해 사용한다.
-    ```jsx
-    var five = function() {
-        return 5;
-    }
+return값이 있는 함수를 호출하는 경우, 변수에 값을 할당하기 위해 사용한다.
+```jsx
+var five = function() {
+    return 5;
+}
 
-    var n = five(); // 변수 n에 return값 5 할당
-    console.log(n); // 5
-    ```
-- return값이 없는 함수를 변수에 할당하면 undefined값이 된다.
-    ```jsx
-    var foo = function() {
-        console.log(5);
-    }
+var n = five(); // 변수 n에 return값 5 할당
+console.log(n); // 5
+```
+<br>
 
-    var n = foo();
-    console.log(n); // undefined
-    ```
-- 값이 없는 return은 해당 함수를 종료시키는 역할
-- 반복문에서 break와 비슷한 기능
-    ``` jsx
-    var test1 = function(text) {
-        // 매개변수가 'exit'일 경우 함수 종료
-        if (text === "exit") {
-            return;
-        }   
-        // 그 외 경우 log 출력
-        console.log("보이나요?");    
-    }
+return값이 없는 함수를 변수에 할당하면 undefined값이 된다.
+```jsx
+var foo = function() {
+    console.log(5);
+}
 
-    test1("hoho");
-    test1("exit");
-    ```
+var n = foo();
+console.log(n); // undefined
+```
+<br>
+
+값이 없는 return은 해당 함수를 종료시키는 역할을 합니다.<br>
+(반복문에서 break와 비슷한 기능)
+``` jsx
+var test1 = function(text) {
+    // 매개변수가 'exit'일 경우 함수 종료
+    if (text === "exit") {
+        return;
+    }
+    // 그 외 경우 log 출력
+    console.log("보이나요?");
+}
+
+test1("hoho");
+test1("exit");
+```
 ### 함수 사용의 장점
 - 가독성이 좋아진다.
 - 유지보수하기 편하다.
@@ -913,6 +1002,60 @@ console.log(string); // 'hello' , 값이 변하지 않는다.
 - 줄 수가 지나치게 길어지면 함수로 빼자.(함수 하나에 10줄 이하로 유지)
 - 인덴트가 지나치게 깊어져도 함수로 빼자.
 - 함수는 반드시 한 가지 일만 하도록 하자.
+
+### 함수 오버라이딩(Overriding)
+- 상위 Scope에서 선언한 변수 또는 메소드를 자식 Scope에서 재선언하여 사용하는 것을 의미합니다.
+- 오버라이딩된 변수, 메소드는 하위 Scope 안에서만 유효하고 상위 Scope에서는 유효하지 않습니다.
+> [자바스크립트 오버라이딩 상세 설명](https://beomy.tistory.com/5)
+
+#### **예제**
+```jsx
+// 전역변수 선언
+var message = "Outer";
+
+// 전역변수 return
+function getMessage() {
+    return message;
+}
+
+// 오버라이딩
+function overrideMessage() {
+    var message = "Inner";
+    return message;
+}
+
+// 전역변수로 선언된 변수값 return
+getMessage(); // log : "Outer"
+
+// 오버라이딩한 변수값 return
+overrideMessage(); // log : "Inner"
+
+// 오버라이딩 아후 다시 변수값을 출력해보면 바뀌어 있지 않습니다.(오버라이딩하는 함수 내에서만 변경내용 유효)
+message // log : "Outer"
+```
+
+<br>
+
+만약 오버라이딩이 아니라 함수 실행시 전역변수를 재할당하는 경우, Global Scope에서도 재할당된 변수값이 유효합니다.
+```jsx
+// 전역변수 선언
+var message = "Outer";
+
+// 전역변수 return
+function getMessage() {
+    return message;
+}
+
+// 오버라이딩
+function overrideMessage() {
+    message = "Inner"; // 전역변수 자체를 재할당
+    return message;
+}
+
+overrideMessage() // 함수 실행 -> 전역변수 재할당
+
+message // log : "Inner"
+```
 
 <br>
 
@@ -932,10 +1075,10 @@ console.log(string); // 'hello' , 값이 변하지 않는다.
 - 객체는 자율적으로 일을 한다.
 
 ### 객체 선언 방법
-- this 키워드 : 메소드 안에서 사용시 함수를 소유한 객체를 가르킨다.
+- `this` 키워드 : 메소드 안에서 사용시 함수를 소유한 객체를 가르킨다.
     ```jsx
     var p2 = {}; // p2 객체 선언
-    p2.name = "crong"; // 이름 속성 
+    p2.name = "crong"; // 이름 속성
     p2.weight = 80; // 몸무게 속성
     p2.say = function(word) { // 말하는 메서드
     console.log(this.name + " says, " + word); // this = p2 , word는 매개변수
@@ -945,8 +1088,10 @@ console.log(string); // 'hello' , 값이 변하지 않는다.
     console.log('My weight is ' + p2.weight + 'kg'); // My weight is 80kg
     p2.say('Nice to meet you!') // crong says, Nice to meet you!
     ```
- - JSON 표기법 활용 객체 생성
-    > JSON : 서버에 저장되는 데이터의 표준 포맷 양식 , {키:값} 형태
+    <br>
+
+ - **JSON** 표기법 활용 객체 생성 <br>
+  **JSON**이란, 서버에 저장되는 데이터의 표준 포맷 양식 , {키:값} 형태를 의미합니다.
     ```jsx
     // 사람 1
     var m1 = {
@@ -979,6 +1124,59 @@ console.log(string); // 'hello' , 값이 변하지 않는다.
     m1.attack(m2) // m1의 power만큼 m2의 hp 감소
     m2.eat(c1) // c1의 energy 만큼 m2의 hp 증가
     ```
+<br>
+
+### **`in` Keyword**
+-  `in` 연산자는 명시된 속성이 명시된 객체에 존재하면 `true`를 반환합니다.
+- 기본 형태 : `속성명 in 객체명`
+
+> [in 연산자 상세 설명](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/in)
+
+#### **예제**
+```jsx
+// 객체 생성
+var megalomaniac;
+
+megalomaniac = {
+    mastermind: "The Monarch",
+    henchwoman: "Dr Girlfriend",
+    theBomb: true
+};
+
+// 해당 객체에 속성이 존재하면 true
+var hasBomb = "theBomb" in megalomaniac;
+
+hasBomb; // log : true
+
+// 해당 객체에 속성이 없으면 false
+var hasDetonator = "theDetonator" in megalomaniac;
+
+hasDetonator; // log : false
+```
+
+<br>
+
+### **속성 추가(add) & 삭제(delete)**
+- **속성 추가** : 객체에 새로운 속성 선언
+- **속성 삭제** : `delete` 연산자 활용
+> [delete 연산자 상세 설명](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/delete)
+
+#### **예제**
+```jsx
+// 객체 생성
+var megalomaniac = { mastermind : "Agent Smith", henchman: "Agent Smith" };
+
+// 속성 존재 여부 파악
+"secretary" in megalomaniac; // log : false
+
+// 없는 속성을 객체에 추가
+megalomaniac.secretary = "Agent Smith";
+"secretary" in megalomaniac; // log : true
+
+// 기존에 존재하던 속성 삭제
+delete megalomaniac.henchman;
+"henchman" in megalomaniac; // log : false
+```
 
 <br>
 
@@ -987,7 +1185,7 @@ console.log(string); // 'hello' , 값이 변하지 않는다.
 자바스크립트에서는 객체를 만들어내는 기능을 수행하는 함수를 의미
 > 자바스크립트는 Class 기반이 아닌 Prototype 기반의 프로그래밍 언어
 >
-> 객체를 정의하는 Class가 없기 때문에 이를 대체할 객체 생성자 함수를 선언해야 한다. 
+> 객체를 정의하는 Class가 없기 때문에 이를 대체할 객체 생성자 함수를 선언해야 한다.
 ### 예시
 ```jsx
 // human(), food() 함수가 바로 객체 생성자 함수
@@ -1027,14 +1225,14 @@ p2; // p2.hp가 f1.energy만큼 증가
 
 ## 프로토타입(Prototype)
 ### 프로토타입이란?
-- 생성자로 만든 객체는 프로토타입이라는 속성을 가집니다. 
+- 생성자로 만든 객체는 프로토타입이라는 속성을 가집니다.
 - 프로토타입을 활용하면 메모리를 절약하고 효율적으로 객체의 메소드를 생성할 수 있다.
 
 ### 예시
 ```jsx
 // 객체 생성자
 function Human(name, hp, mp, power) {
-  this.name = name; 
+  this.name = name;
   this.hp = hp;
   this.mp = mp;
   this.power = power;
@@ -1128,7 +1326,7 @@ function foo () {
 
 foo();
 ```
-로그 #1"에서는 `a` 라는 변수의 값(1)이 성공적으로 출력됩니다.
+`로그 #1`에서는 `a` 라는 변수의 값(1)이 성공적으로 출력됩니다.
 
 그 이유는 자바스크립트에서 `var` 를 이용하여 선언한 변수는 **해당 변수 선언문을 감싸고 있는 함수를 기준으로 접근 범위가 설정되고 그 범위 내부에서는 자유롭게 접근하여 사용할 수 있기 때문**입니다.
 
@@ -1226,7 +1424,7 @@ console.log(a);   // 로그 #2
   </body>
 </html>
 ```
-### 실행 결과
+#### **실행 결과**
 ```jsx
 우리는 바닐라코딩입니다. // 로그 #1
 우리는 느린캠퍼스입니다. // 로그 #3
@@ -1236,11 +1434,20 @@ console.log(a);   // 로그 #2
 ```
 결국 `Global Scope`에서 선언된 변수는 **하나의 공용공간**으로 이해하면 좋습니다.
 
-즉, 하나의 HTML문서에는 하나의 `Global Scope`가 존재하고, 이 공간에서 선언된 변수는 여러 script에서 사용가능하단 의미가 됩니다.
+즉, 하나의 HTML문서에는 하나의 `Global Scope`가 존재하고, 이 공간에서 선언된 변수는 여러 `script`에서 사용가능하단 의미가 됩니다.
 
 우리가 어떤 물건을 **공용공간**(`Global Scope`)에 배치해둔다면, 다른 누군가가 그 물건을 사용할 수도 있고 혹은 **수정/삭제**할 가능성도 있습니다.
 
 **물론 절대 사용하면 안된다는 의미는 아닙니다.** 필요하다면 반드시 사용해야 하지만, 주의를 기울여 신중하게 사용해야만 합니다.
+
+<br>
+
+### **렉시컬 스코핑(lexical scoping)**
+-  **함수를 어디에 선언했는지**에 따라 Scope가 결정되는 방식
+- 반대로 **어디서 호출되었는지**에 따라 Scope가 결정되는 방식을 **Dynamic scoping** 이라고 합니다.
+> [스코핑 상세설명](https://im-developer.tistory.com/63)
+
+> [예시문제 설명 링크](https://github.com/kimcno3/vanillaCoding/blob/main/step5/javascript_koans.md#%EB%A0%89%EC%8B%9C%EC%BB%AC-%EC%8A%A4%EC%BD%94%ED%95%91lexical-scoping)
 
 <br>
 
