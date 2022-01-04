@@ -3,17 +3,17 @@
 
 </br>
 
-# :pushpin: CS(Computer Science)
+## :pushpin: CS(Computer Science)
 - ### [CS 기초](https://github.com/kimcno3/TIL/blob/main/CS/csbasic.md)
 
 </br>
 
-# :pushpin: Programming Language
+## :pushpin: Programming Language
 - ### [Javascript](https://github.com/kimcno3/TIL/blob/main/programming_language/javascript.md)
 
 </br>
 
-# :pushpin: ETC
+## :pushpin: ETC
 - ### [미정리파일](https://github.com/kimcno3/TIL/blob/main/ETC/unprocessed.md)
 - ### [취업관련](https://github.com/kimcno3/TIL/blob/main/ETC/recruitment.md)
 - ### [Markdown 문법](https://github.com/kimcno3/TIL/blob/main/ETC/markdown.md)
