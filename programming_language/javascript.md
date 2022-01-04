@@ -1,4 +1,6 @@
-# :pushpin: 목차
+# :pushpin: Javascript
+
+## :pushpin: 목차
 **[:pushpin: 함수 모음](#pushpin-함수-모음)**
 - [includes()](#includes)
 - [replace()](#replace)
