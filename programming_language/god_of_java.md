@@ -6,7 +6,9 @@
 ## :pushpin: 목차
 **:pushpin: Volume 1**
 - [:pushpin: Chapter1](#pushpin-Chapter1)
+- [:pushpin: Chapter2](#pushpin-Chapter2)
 
+<br>
 
 ## :pushpin: Chapter1
 > 프로그래밍이란 무엇인가?
@@ -81,3 +83,27 @@ public class ClassName {
 
 #### **6. 메소드에서 결과를 돌려주면 어떤 예약어를 사용해야 하나요?**
 `return`을 사용합니다.
+
+<br>
+
+***
+
+<br>
+
+## :pushpin: Chapter2
+### 직접해 봅시다.
+
+### 정리해 봅시다.
+
+### 추가 내용
+#### **사용자변수와 시스템변수의 차이**
+> https://wikim.tistory.com/232
+
+#### **JDK와 JRE의 차이**
+> https://developerntraveler.tistory.com/49
+
+#### **JVM이란?**
+> https://d2.naver.com/helloworld/1230
+
+#### **java파일 실행시 파일명만 필요한 이유**
+> https://8iggy.tistory.com/m/238
