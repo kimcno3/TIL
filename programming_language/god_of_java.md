@@ -7,7 +7,7 @@
 **:pushpin: Volume 1**
 - [:pushpin: Chapter1](#pushpin-Chapter1)
 - [:pushpin: Chapter2](#pushpin-Chapter2)
-
+- [:pushpin: Chapter3](#pushpin-Chapter3)
 <br>
 
 ## :pushpin: Chapter1
@@ -96,6 +96,8 @@ public class ClassName {
 <br>
 
 ## :pushpin: Chapter2
+> Hello God Of Java
+
 ### 직접해 봅시다.
 #### **문제 설명**
 1. Profile 클래스를 만들고 그 안에 main() 메소드를 만들어보자.
@@ -196,3 +198,182 @@ JVM을 구동하기 위해 `java filename` 명령어를 실행하는데, 이는 
 ***
 
 <br>
+
+## :pushpin: Chapter3
+> 자바를 제대로 알려면 객체가 무엇인지 알아야 해요
+
+### 직접해봅시다
+#### **1. `Profile` 클래스에 변수 추가(`name`, `age`)**
+```java
+public class Profile{
+  String name; // 이름
+  int age; // 나이
+  public static void main(String[] args){
+  }
+}
+```
+
+#### **2. `setName()` 메소드 생성**
+`setName()` 메소드는 `str`을 매개변수로 받아 `name`으로 지정해 주는 기능
+
+```java
+public void setName(String str){
+    name = str;
+}
+```
+
+#### **3. `setAge()` 메소드 생성**
+2와 같은 방법으로 `val`을 매개변수로 받아 `age`에 할당
+```java
+public void setAnge(int val){
+    age = val;
+}
+```
+
+#### **4. `printName()` 메소드 생성**
+`name`을 출력해주는 기능
+
+```java
+public void printName(){ // 매개변수 불필요
+    System.out.println("이름 : " + name);
+}
+```
+
+#### **5. `printAge()` 메소드 생성**
+`age`을 출력해주는 기능
+
+```java
+public void printAge(){ // 매개변수 불필요
+    System.out.println("나이 : "+ age);
+}
+```
+
+> 4, 5번 메소드 생성시 매개변수로 name이나 age를 가져오지 않아도 사용할 수 있습니다. (name은 **멤버변수**이기 때문!!)
+
+> 상세설명은 아래 추가 내용에서 자세히 다루겠습니다. [바로 가기](#1-멤버변수)
+
+#### **6.` main()` 메소드에서 profile 이름으로 객체 생성**
+```java
+public static void main(String args[]){
+    Profile profile = new Profile();
+}
+```
+
+#### **7. `setName()`, `setAge()` 메소드를 사용하여 이름과 나이값을 할당**
+```java
+public static void main(String args[]){
+    Profile profile = new Profile();
+
+    profile.setName("Kim"); // 이름 할당
+    profile.setAge(27); // 나이 할당
+}
+```
+
+#### **8. `printName()` , `printAge()` 메소드를 사용하여 이름과 나이 출력**
+```java
+public static void main(String args[]){
+    Profile profile = new Profile();
+
+    profile.setName("Kim"); // 이름 할당
+    profile.setAge(27); // 나이 할당
+
+    profile.printName(); // 이름 출력
+    profile.printAge(); // 나이 출력
+}
+```
+
+#### **전체 코드**
+```java
+public class Profile{
+    // main 함수
+    public static void main(String[] args){
+        Profile profile = new Profile();
+        profile.setName("Kim");
+        profile.setAge(27);
+        profile.printName();
+        profile.printAge();
+    }
+
+    // 필드
+    String name;
+    int age;
+
+    //메소드
+    public void setName(String str){
+        name = str;
+    }
+    public void setAge(int val){
+        age = val;
+    }
+    public void printName(){
+        System.out.println("이름 : " + name);
+    }
+    public void printAge(){
+        System.out.println("나이 : "+ age);
+    }
+}
+```
+
+#### **최종 결과**
+```java
+이름 : KIM
+나이 : 27
+```
+
+<br>
+
+### 정리해봅시다
+#### **1. 클래스와 객체의 차이점을 말해 주세요.**
+답 : 클래스를 통해서 객체를 생성할 수 있다. 즉, 하나의 클래스를 만들면 그 클래스의 모습을 갖는 여러 객체들을 생성 할 수 있다.
+
+클래스 범주 안에 객체가 포함되어 있고, 클래스의 복제품 격에 객체라고 할 수 있다.
+
+#### **2. 객체를 생성하기 위해서 꼭 사용해야 하는 예약어는 뭐라고 했죠?**
+답 : **new 키워드**를 사용하여 클래스의 객체를 생성한다.
+
+#### **3. 객체를 생성하기 위해서 사용하는 메소드 같이 생긴 클래스 이름에 소괄호가 있는 것을 뭐라고 하나요?**
+답 : **생성자(Constructor)**를 통하여 클래스의 객체를 생성한다.
+
+#### **4. 객체의 메소드를 사용하려면 어떤 기호를 객체이름과 메소드 이름 사이에 넣어주어야 하나요?**
+답 : **마침표(.)**를 사용합니다.
+
+클래스의 변수나 메소드를 호출하려면 "객체이름.변수", "객체이름.메소드이름()"와 같이 사용하면 된다.
+
+#### **5. 여러분들이 메소드를 사용하기 위해서는 어떤 것을 만들어야 하나요?**
+답 : 클래스의 **객체**를 생성해야만 메소드를 사용할 수 있다.
+
+#### **6. 위의 문제에서 만들어야 하는 것은 어떤 예약어를 사용하고, 클래스의 무엇을 사용해야 하나요?**
+답 : **new 키워드**를 사용하여 **생성자**를 호출해야만 된다.
+
+<br>
+
+### 추가내용
+#### **1. 멤버변수**
+> [참고 사이트](https://digiconfactory.tistory.com/entry/%EC%9E%90%EB%B0%94-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-5-9-%EB%B3%80%EC%88%98-%EC%9C%A0%ED%9A%A8%EB%B2%94%EC%9C%84-Scope)
+
+**멤버변수(Instance Variable)**는 객체를 생성해야만 사용할 수 있는 변수를 의미하며 **객체 생성시, 해당 객체의 메소드에서 사용가능**합니다.
+
+위에 **직접해봅시다**에서 4,5번 메소드 또한 멤버변수를 사용하는 메소드였기에 따로 매개변수로 지정하지 않아도 사용이 가능했던 것입니다.
+
+#### **2. main 함수 실행 순서**
+> [참고사이트](https://codingffler.tistory.com/16)
+
+자바의 신 Github 저장소에서 찾은 **직접해봅시다** 의 [모범 코드](https://github.com/godofjava/GodOfJava2nd/blob/master/Chapter03/src/Profile.java)와 내가 작성한 코드를 비교해봤을 때, main() 메소드의 위치가 다른 것을 볼 수 있었다.
+
+모범 코드에서는 `main()` 메소드가 가장 먼저 작성되어 있고, 그 이후로 클래스의 필드와 메소드가 선언되어 있었다.
+
+이 부분에서 단순한 생각으로 클래스의 필드와 메소드가 먼저 선언된 다음, main() 메소드가 실행되어야 하는 것이 맞지 않은가 하는 의문이 생겼다.
+
+자바스크립트에서 호이스팅 개념이 있듯이 자바에서도 비슷한 개념이 있나 궁금증이 생겨 찾아본 결과, 간단한 해답을 찾았다.
+
+바로 자바로 구성된 프로그램, 파일을 실행시에는 **main() 메소드가 가장 먼저 실행된다**는 것이다.
+
+즉, `main()` 메소드가 가장 먼저 실행되면서 객체를 생성하고 그 이후로 생성된 객체의 메소드를 호출하는 순서로 코드가 진행되는 것이다.
+
+그렇기 때문에 main 메소드가 클래스 내에서 가장 먼저 작성되어도 문제될 점은 없다.
+<br>
+
+***
+
+<br>
+
