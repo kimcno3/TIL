@@ -8,6 +8,7 @@
 - [:pushpin: Chapter1](#pushpin-Chapter1)
 - [:pushpin: Chapter2](#pushpin-Chapter2)
 - [:pushpin: Chapter3](#pushpin-Chapter3)
+- [:pushpin: Chapter4](#pushpin-Chapter4)
 <br>
 
 ## :pushpin: Chapter1
@@ -377,3 +378,23 @@ public class Profile{
 
 <br>
 
+## :pushpin: Chapter4
+> 정보를 어디에 넣고 싶은데
+
+### ✔️ 추가 내용
+#### 1. **shortMax+1 === 32768???**
+> [참고 사이트1](https://kephilab.tistory.com/27)
+
+> [참고 사이트2](https://stackoverflow.com/questions/42682558/largest-java-short-32767-plus-1-not-turning-negative)
+
+**4장 89페이지**에서 **shortMax**에서 1을 더하면 최소값이 나와야 하는데 최대값을 넘어선 값이 나와 당황했다. 그 이유를 찾아보니 short 타입의 값에 단순히 1을 더하면 **int 타입으로 타입이 자동 변환된다**고 한다.
+
+구체적으로 설명하면
+
+1. 정수 연산시에 int가 기본 타입이다.
+2. 게다가 다른 타입을 연산할 때 큰 타입으로 자동 변환된다고 한다.(int가 short보다 큽니다.)
+3. 또한 피연산자는 4byte 단위로 계산되어 4byte보다 작은 byte, short, char은 int로 자동 변환된다.
+
+그렇기 때문에 계산 오류를 막기 위해서는 (byte), (short) 코드를 연산식 앞에 추가해줘야 자동 타입 변환을 방지하여 예제에서 원하는 값을 구할 수 있습니다.
+
+> **4장 87페이지** 에서도 언급되는 부분입니다.
