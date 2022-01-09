@@ -333,10 +333,10 @@ public class Profile{
 답 : **new 키워드**를 사용하여 클래스의 객체를 생성한다.
 
 #### **3. 객체를 생성하기 위해서 사용하는 메소드 같이 생긴 클래스 이름에 소괄호가 있는 것을 뭐라고 하나요?**
-답 : **생성자(Constructor)**를 통하여 클래스의 객체를 생성한다.
+답 : **생성자(Constructor)** 를 통하여 클래스의 객체를 생성한다.
 
 #### **4. 객체의 메소드를 사용하려면 어떤 기호를 객체이름과 메소드 이름 사이에 넣어주어야 하나요?**
-답 : **마침표(.)**를 사용합니다.
+답 : **마침표(.)** 를 사용합니다.
 
 클래스의 변수나 메소드를 호출하려면 "객체이름.변수", "객체이름.메소드이름()"와 같이 사용하면 된다.
 
@@ -380,6 +380,144 @@ public class Profile{
 
 ## :pushpin: Chapter4
 > 정보를 어디에 넣고 싶은데
+### ✔️ 직접해 봅시다
+#### **1. ProfilePrint 클래스 생성 및 age,name 이름의 인스턴스 변수 선언**
+```java
+public class ProfilePrint{
+    byte age;
+    String name; // 또는 String name = new String();
+}
+```
+
+#### **2. boolean 타입의 "isMarried" 인스턴트 변수 선언**
+```java
+public class ProfilePrint{
+    // 이전 실습코드 생략
+    boolean isMarried;
+}
+```
+#### **3, 5, 7. 각 인스턴스 변수으 값을 매개변수로 지정하는 메소드 생성 -> `setOOOO(parameter)`**
+```java
+public class ProfilePrint{
+    // 이전 실습코드 생략
+    public void setAge(byte age2){
+        age = age2;
+    }
+    public void setName(String name2){
+        name = name2;
+    }
+    public void setMarried(boolean flag){
+        isMarried = flag;
+    }
+}
+```
+
+#### **4, 6, 8. 인스턴트 변수의 값을 리턴하는 메소드 생성 -> `getOOO()`**
+```java
+public class ProfilePrint{
+    // 이전 실습코드 생략
+    public byte getAge(){
+        return age;
+    }
+    public String getName(){
+        return name;
+    }
+    public boolean getMarried(){
+        return isMarried;
+    }
+}
+```
+#### 9. **main()메소드 생성**
+```java
+public class ProfilePrint{
+    public static void main(String args[]){
+
+    }
+    // 이전 실습코드 생략
+}
+```
+
+#### 10. **set메소드를 호출하여 매개변수를 통해 나이, 이름, 결혼여부 설정**
+```java
+public class ProfilePrint{
+    public static void main(String args[]){
+        ProfilePrint profile = new ProfilePrint();
+
+        profile.setAge((byte)27);
+        profile.setName((String)"김선호");
+        profile.setMarried((boolean)false);
+    }
+    // 이전 실습코드 생략
+```
+
+#### 11. **get메소드를 호출하여 결과 출력**
+```java
+public class ProfilePrint{
+    public static void main(String args[]){
+        ProfilePrint profile = new ProfilePrint();
+
+        profile.setAge((byte)27);
+        profile.setName((String)"김선호");
+        profile.setMarried((boolean)false);
+
+        System.out.println("나이: " + profile.getAge());
+        System.out.println("이름: " + profile.getName());
+        System.out.println("결혼여부: " + profile.getMarried());
+    }
+    // 이전 실습코드 생략
+```
+
+#### **최종 코드**
+```java
+public class ProfilePrint{
+    public static void main(String args[]){
+        ProfilePrint profile = new ProfilePrint();
+
+        profile.setAge((byte)27);
+        profile.setName((String)"김선호");
+        profile.setMarried((boolean)false);
+
+        System.out.println("나이: " + profile.getAge());
+        System.out.println("이름: " + profile.getName());
+        System.out.println("결혼여부: " + profile.getMarried());
+    }
+    byte age;
+    String name;
+    boolean isMarried;
+
+    public void setAge(byte age2){
+        age = age2;
+    }
+    public void setName(String name2){
+        name = name2;
+    }
+    public void setMarried(boolean flag){
+        isMarried = flag;
+    }
+    public byte getAge(){
+        return age;
+    }
+    public String getName(){
+        return name;
+    }
+    public boolean getMarried(){
+        return isMarried;
+    }
+}
+```
+매개변수 이름을 좀 더 의미있게 설정했으면 좋았을 것 같다...
+
+#### **출력 결과**
+```java
+나이: 27
+이름: 김선호
+결혼여부: false
+```
+<br>
+
+### ✔️ 정리해 봅시다.
+
+<br>
 
 ### ✔️ 추가 내용
 #### 1. **shortMax+1 === 32768???**
@@ -392,7 +530,7 @@ public class Profile{
 구체적으로 설명하면
 
 1. 정수 연산시에 int가 기본 타입이다.
-2. 게다가 다른 타입을 연산할 때 큰 타입으로 자동 변환된다고 한다.(int가 short보다 큽니다.)
+2. 게다가 다른 타입을 연산할 때 큰 타입으로 자동 변환된다고 한다.
 3. 또한 피연산자는 4byte 단위로 계산되어 4byte보다 작은 byte, short, char은 int로 자동 변환된다.
 
 그렇기 때문에 계산 오류를 막기 위해서는 (byte), (short) 코드를 연산식 앞에 추가해줘야 자동 타입 변환을 방지하여 예제에서 원하는 값을 구할 수 있습니다.
