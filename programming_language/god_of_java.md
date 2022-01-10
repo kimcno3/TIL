@@ -159,8 +159,7 @@ String문자열의 배열이 들어갑니다.
 <br>
 
 ### ✔ 추가 내용
-#### **사용자변수와 시스템변수의 차이**
-> [참고 사이트](https://wikim.tistory.com/232)
+#### **1. 사용자변수와 시스템변수의 차이**
 - 사용자 변수
     - 로그인된 계정 내에서 사용하는 변수
     - 사용자 계정별로 설정되어 있는 PATH가 다릅니다.
@@ -168,12 +167,9 @@ String문자열의 배열이 들어갑니다.
 - 시스템 변수
     - 컴퓨터 내에서 사용하는 변수
     - 한번 PATH를 설정해 두면 어떤 계정이든 사용 가능합니다.
+> [참고 사이트](https://wikim.tistory.com/232)
 
-#### **JVM, JRE, JDK 란?**
-> [참고 사이트1](https://goodgid.github.io/Java-JDK-JRE/)
-
-> [참고 사이트2](https://velog.io/@ggob_2/java-study-1#7-jvm%EC%9D%98-%EA%B5%AC%EC%84%B1-%EC%9A%94%EC%86%8C)
-
+#### **2. JVM, JRE, JDK 란?**
 - JVC(Java Virtual Machine)
     - 컴파일 이후, 바이트코드로 구성된 자바 파일(`.class` 확장자)을 기계어로 해석하여 운영체제에서 실행시키는 역할을 합니다.
 
@@ -186,13 +182,15 @@ String문자열의 배열이 들어갑니다.
 - JDK(Java Development Kit)
     - 자바 프로그래밍을 위해 필요한 도구
     - 대표적으로 컴파일러(javac.exe)가 JDK에 포함됩니다.
+> [참고 사이트1](https://goodgid.github.io/Java-JDK-JRE/)
 
-#### **java파일 실행시 파일명만 필요한 이유**
-> [참고 사이트](https://8iggy.tistory.com/m/233)
+> [참고 사이트2](https://velog.io/@ggob_2/java-study-1#7-jvm%EC%9D%98-%EA%B5%AC%EC%84%B1-%EC%9A%94%EC%86%8C)
 
+#### **3. java파일 실행시 파일명만 필요한 이유**
 JVM을 구동하기 위해 `java filename` 명령어를 실행하는데, 이는 "JVM이 filename에 해당하는 파일을 실행한다"가 아니라 "filename을 가진 바이트코드에 main메소드가 존재한다" 라는 사실을 전달하는 의미입니다.
 
 그래서 확장자명을 포함하여 java.exe 파일을 실행시키면 확장자명까지 파일명으로 인식하여 main 메소드가 없다 또는 해당 파일명을 찾을 수 없습니다 라는 에러가 발생합니다.
+> [참고 사이트](https://8iggy.tistory.com/m/233)
 
 <br>
 
@@ -350,15 +348,12 @@ public class Profile{
 
 ### ✔ 추가내용
 #### **1. 멤버변수**
-> [참고 사이트](https://digiconfactory.tistory.com/entry/%EC%9E%90%EB%B0%94-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-5-9-%EB%B3%80%EC%88%98-%EC%9C%A0%ED%9A%A8%EB%B2%94%EC%9C%84-Scope)
-
 **멤버변수(Instance Variable)** 는 객체를 생성해야만 사용할 수 있는 변수를 의미하며 **객체 생성시, 해당 객체의 메소드에서 사용가능**합니다.
 
 위에 **직접해봅시다**에서 4,5번 메소드 또한 멤버변수를 사용하는 메소드였기에 따로 매개변수로 지정하지 않아도 사용이 가능했던 것입니다.
+> [참고 사이트](https://digiconfactory.tistory.com/entry/%EC%9E%90%EB%B0%94-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-5-9-%EB%B3%80%EC%88%98-%EC%9C%A0%ED%9A%A8%EB%B2%94%EC%9C%84-Scope)
 
 #### **2. main 함수 실행 순서**
-> [참고사이트](https://codingffler.tistory.com/16)
-
 자바의 신 Github 저장소에서 찾은 **직접해봅시다** 의 [모범 코드](https://github.com/godofjava/GodOfJava2nd/blob/master/Chapter03/src/Profile.java)와 내가 작성한 코드를 비교해봤을 때, main() 메소드의 위치가 다른 것을 볼 수 있었다.
 
 모범 코드에서는 `main()` 메소드가 가장 먼저 작성되어 있고, 그 이후로 클래스의 필드와 메소드가 선언되어 있었다.
@@ -372,6 +367,8 @@ public class Profile{
 즉, `main()` 메소드가 가장 먼저 실행되면서 객체를 생성하고 그 이후로 생성된 객체의 메소드를 호출하는 순서로 코드가 진행되는 것이다.
 
 그렇기 때문에 main 메소드가 클래스 내에서 가장 먼저 작성되어도 문제될 점은 없다.
+> [참고사이트](https://codingffler.tistory.com/16)
+
 <br>
 
 ***
@@ -557,17 +554,12 @@ public class ProfilePrint{
 
 ### ✔️ 추가 내용
 #### 1. 가비지 콜렉터(Garbage Collector)
-> [참고 사이트](https://madplay.github.io/post/java-garbage-collection)
-
 - **가비지(Garbage)** 란 객체나 배열을 가르키는 레퍼런스가 없는 경우를 의미합니다.
 - 메모리 확보 위해 가비지를 삭제하는 작업 자체는 **가비지 콜렉션**
 - 가비지 콜렉션을 하는 것이 **가비지 콜렉터**라고 합니다.
+> [참고 사이트](https://madplay.github.io/post/java-garbage-collection)
 
 #### 2. shortMax+1 === 32768???
-> [참고 사이트1](https://kephilab.tistory.com/27)
-
-> [참고 사이트2](https://stackoverflow.com/questions/42682558/largest-java-short-32767-plus-1-not-turning-negative)
-
 **4장 89페이지**에서 **shortMax**에서 1을 더하면 최소값이 나와야 하는데 최대값을 넘어선 값이 나와 당황했다. 그 이유를 찾아보니 short 타입의 값에 단순히 1을 더하면 **int 타입으로 타입이 자동 변환된다**고 한다.
 
 구체적으로 설명하면
@@ -579,3 +571,12 @@ public class ProfilePrint{
 그렇기 때문에 계산 오류를 막기 위해서는 (byte), (short) 코드를 연산식 앞에 추가해줘야 자동 타입 변환을 방지하여 예제에서 원하는 값을 구할 수 있습니다.
 
 해당 내용은 **4장 87페이지** 에서도 언급되는 부분입니다.
+> [참고 사이트1](https://kephilab.tistory.com/27)
+
+> [참고 사이트2](https://stackoverflow.com/questions/42682558/largest-java-short-32767-plus-1-not-turning-negative)
+
+<br>
+
+***
+
+<br>
