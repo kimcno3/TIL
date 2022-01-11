@@ -583,3 +583,131 @@ public class ProfilePrint{
 <br>
 
 ## :pushpin: Chapter5
+> 계산을 하고 싶어요
+### ✔️ 직접해 봅시다
+#### 작성코드
+```java
+public class SalaryManager{
+    public static void main(String Args[]){
+        SalaryManager person = new SalaryManager();
+
+        // 세후월급 계산 및 결과 출력
+        System.out.println("세 후 월 급 : " + person.getMonthlySalary(20000000) + "원");
+
+    }
+
+    // 세후월급 계산 메소드
+    public double getMonthlySalary(int yearlySalary){
+        // 세전월급 계산
+        double monthSalary = yearlySalary / 12.0;
+        System.out.println("세 전 월 급 : " + monthSalary + "원");
+
+        // 근로 소득세 계산
+        double MonthTax = calculateTax(monthSalary);
+        System.out.println("근로 소득세 : " + MonthTax + "원");
+
+        // 국민 연금 계산
+        double MonthNationalPersion = calculateNationalPersion(monthSalary);
+        System.out.println("국민   연금 : " + MonthNationalPersion + "원");
+
+        // 건강 보험료 계산
+        double MonthHealthInsurance = calculateHealthInsurance(monthSalary);
+        System.out.println("견강 보험료 : " + MonthHealthInsurance + "원");
+
+        // 세전월급에서 세금 총액 차감
+        monthSalary -= (MonthTax + MonthNationalPersion + MonthHealthInsurance);
+
+        // 계산완료된 세후월급 return
+        return monthSalary;
+    }
+
+    // 근로 소득세 계산 메소드
+    public double calculateTax(double monthSalary){
+        double tax = monthSalary * 0.125;
+        return tax;
+    }
+
+    // 국민 연금 계산 메소드
+    public double calculateNationalPersion(double monthSalary){
+        double nationalPersion = monthSalary * 0.081;
+        return nationalPersion;
+    }
+
+    // 건강 보험료 계산 메소드
+    public double calculateHealthInsurance(double monthSalary){
+        double healthInsurance = monthSalary * 0.135;
+        return healthInsurance;
+    }
+}
+```
+
+#### 출력 결과
+```
+근로 소득세 : 208333.33333333334원
+국민   연금 : 135000.0원
+견강 보험료 : 225000.00000000003원
+월       급 : 1098333.3333333335원
+```
+
+<br>
+
+### ✔️ 추가 내용
+#### 1. 오버플로우(Intager Overflow)
+- 데이터 유형별 범위를 초과한 값을 할당한 경우 발생
+- `최대값+1`을 하면 `최소값`이 되는 경우를 의미합니다.
+- `최소값-1`을 하면 `최대값`이 되는 경우는 언더플로우라고 합니다.
+
+121 ~ 122페이지에 나오는 예제에서 short의 값으로 할당한 `256`과 `255`를 byte로 캐스팅 하는 경우, 0과 -1값이 나오는데 이런 경우를 오버플로우라고 하고, 두 경우를 자세히 살펴보면 다음과 같습니다.
+
+- (short)256 -> (byte)256
+```
+0000 0001 0000 0000 -> short일때 256이지만
+
+          0000 0000 -> byte로 형변환을 하면 0이 된다.
+```
+
+- (short)255 -> (byte)255
+```
+0000 0000 1111 1111 -> short일때 255의 모습
+
+          1111 1111 -> byte로 형변환을 했을 때
+```
+근데 위처럼 `1111 1111`이 `-1`이 되는 이유를 이해하지 못했다.
+
+개인적으로 생각해낸 해답은 최소값인 `-128`을 이진수로 표현하면 `1000 0000`이니까 이 점을 이용해서 `1111 1111`을 다시 표현해보면
+```
+1111 1111 -> 256
+= 1000 0000 + 0111 1111
+= -128 + 127
+= -1
+```
+그래서 `(byte)255`가 `-1`이 나오는 것이 아닐까 싶었다.
+
+<br>
+
+하지만 위와같은 계산법이 아니라 처음부터 컴퓨터는 **2진법에서 음수**를 **2의 보수**로 표현하기 때문이였다.
+
+**2의 보수**란 **양수를 표현하는 2진수에서 0과 1을 뒤집은 다음, +1을 해주는 방법**을 뜻하는데
+
+이를 예시로 자세히 살펴보면
+```
+(byte)1은 2진수로
+0000 0001 로 표현한다.
+
+그렇다면 (byte)-1을 2의 보수를 활용한 2진수로 표현할 때
+
+1. 0과 1의 위치를 뒤집는다.
+1111 1110
+
+2. +1을 해준다.
+1111 1111
+
+즉 8비트에서 1111 1111 은 -1이다.
+```
+
+**그렇기 때문에 255(2진수로 1111 1111)를 byte로 표현했을 때 -1값이 나오는 것이다.**
+
+좀 더 자세한 설명은 아레 참고 사이트에 잘 설명되어 있다.
+
+
+> [참고사이트](https://wikidocs.net/81918)
