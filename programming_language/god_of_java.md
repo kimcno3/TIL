@@ -590,10 +590,8 @@ public class ProfilePrint{
 public class SalaryManager{
     public static void main(String Args[]){
         SalaryManager person = new SalaryManager();
-
         // 세후월급 계산 및 결과 출력
         System.out.println("세 후 월 급 : " + person.getMonthlySalary(20000000) + "원");
-
     }
 
     // 세후월급 계산 메소드
