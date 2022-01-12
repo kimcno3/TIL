@@ -10,6 +10,7 @@
 - [:pushpin: Chapter3](#pushpin-Chapter3)
 - [:pushpin: Chapter4](#pushpin-Chapter4)
 - [:pushpin: Chapter5](#pushpin-Chapter5)
+- [:pushpin: Chapter6](#pushpin-Chapter6)
 <br>
 
 ## :pushpin: Chapter1
@@ -749,3 +750,66 @@ public class SalaryManager{
 
 
 > [참고사이트](https://wikidocs.net/81918)
+
+<br>
+
+***
+
+<br>
+
+## :pushpin: Chapter6
+
+### ✔️ 직접해봅시다.
+
+#### 작성코드
+```java
+public class InterestManager{
+    public static void main(String[] args){
+        InterestManager sample = new InterestManager();
+        // 1 ~ 365일 for구문
+        for (int day=1; day<=365; day++){
+            // 해당 일자의 이자율 계산
+            double sampleRate = sample.getInterestRate(day);
+            // 100만원 기준 일자별 예치금액 계산
+            double sampleTotalAmount = sample.calculateAmount(day , 1000000);
+
+            // 10일 단위로 이자율, 예치금액 출력
+            if(day%10 == 0){
+                System.out.println(day + "일 차, 이자율: " + (sampleRate*100) + "% , 예치금+이자: " + sampleTotalAmount + "원");
+            }
+        }
+    }
+    // 이자율 계산 메소드
+    public double getInterestRate(int day){
+        double rate = 0.0;
+        if(day>=1 && day<=90){
+            rate = (0.005);
+        } else if(day <= 180){
+            rate = (0.01);
+        } else if(day <= 364){
+            rate = (0.02);
+        } else {
+            rate = (0.056);
+        }
+        return rate;
+    }
+    // 총액 계산 메소드
+    public double calculateAmount(int day, long amount){
+        double rate = getInterestRate(day);
+        double totalAmount = amount + (amount*rate);
+        return totalAmount;
+    }
+}
+```
+#### 실행 결과
+```java
+10일 차, 이율: 0.5% , 예치금+이자: 1005000.0원
+// 생략
+90일 차, 이율: 0.5% , 예치금+이자: 1005000.0원
+100일 차, 이율: 1.0% , 예치금+이자: 1010000.0원
+// 생략
+180일 차, 이율: 1.0% , 예치금+이자: 1010000.0원
+190일 차, 이율: 2.0% , 예치금+이자: 1020000.0원
+// 생략
+360일 차, 이율: 2.0% , 예치금+이자: 1020000.0원
+```
