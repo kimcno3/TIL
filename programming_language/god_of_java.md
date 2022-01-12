@@ -772,7 +772,6 @@ public class InterestManager{
             double sampleRate = sample.getInterestRate(day);
             // 100만원 기준 일자별 예치금액 계산
             double sampleTotalAmount = sample.calculateAmount(day , 1000000);
-
             // 10일 단위로 이자율, 예치금액 출력
             if(day%10 == 0){
                 System.out.println(day + "일 차, 이자율: " + (sampleRate*100) + "% , 예치금+이자: " + sampleTotalAmount + "원");
@@ -804,12 +803,18 @@ public class InterestManager{
 #### 실행 결과
 ```java
 10일 차, 이율: 0.5% , 예치금+이자: 1005000.0원
+
 // 생략
+
 90일 차, 이율: 0.5% , 예치금+이자: 1005000.0원
 100일 차, 이율: 1.0% , 예치금+이자: 1010000.0원
+
 // 생략
+
 180일 차, 이율: 1.0% , 예치금+이자: 1010000.0원
 190일 차, 이율: 2.0% , 예치금+이자: 1020000.0원
+
 // 생략
+
 360일 차, 이율: 2.0% , 예치금+이자: 1020000.0원
 ```
