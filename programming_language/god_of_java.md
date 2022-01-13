@@ -774,7 +774,7 @@ public class InterestManager{
     }
     // 이자율 계산 메소드
     public double getInterestRate(int day){
-        double rate = 0.0;
+        double rate;
         if(day>=1 && day<=90){
             rate = (0.005);
         } else if(day <= 180){
