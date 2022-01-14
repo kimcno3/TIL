@@ -1038,7 +1038,7 @@ false값이 기본값으로 설정됩니다.
 #### 6. 2차원 배열을 정의할 때에는 대괄호를 몇 개 지정해야 하나요?
 두개 지정합니다.
 
-**예시**
+##### 예시
 ```java
 int [][] arr = new int[5][5];
 ```
@@ -1048,7 +1048,7 @@ int [][] arr = new int[5][5];
 
 배열의 값들을 선언한 변수 이름에 하나씩 **순서대로 할당**하고 loop합니다.
 
-**예시**
+##### 예시
 ```java
 int [] array = {0, 1, 2, 3, 4, 5};
 
@@ -1056,7 +1056,7 @@ for(int index : array){
     System.out.println(index);
 }
 ```
-**실행결과**
+##### 실행결과
 ```
 0
 1
@@ -1069,7 +1069,7 @@ for(int index : array){
 #### 8. 자바 프로그램에 데이터를 전달해 주려면 클래스 이름 뒤에 어떻게 구분하여 나열하면 되나요?
 문자열 사이사이에 공백을 주면 이 공백을 기준으로 데이터를 나눠 전달합니다.
 
-**예시**
+##### 예시
 ```java
 public class className{
     public static void main(String[] args){
@@ -1080,7 +1080,7 @@ public class className{
 }
 ```
 
-**실행결과**
+##### 실행결과
 ```
 $ java className a b c d e
 a
