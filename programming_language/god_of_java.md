@@ -1114,7 +1114,81 @@ String 배열입니다.
 ## :pushpin: Chapter8
 
 ### ✔️직접해봅시다.
+#### Student 클래스
+```java
+public class Student{
+    // 1번, 인스턴스 변수 선언
+    String name;
+    String address;
+    String phone;
+    String email;
+    
+    // 2번, 생성자 선언(name만)
+    public Student(String name){
+        this.name = name;
+    }
+    // 3번, 생성자 선언(모든 변수)
+    public Student(String name, String address, String phone, String email){
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+    }
+    // 4번, toString 메소드 오버라이딩(재정의)
+    public String toString(){
+        return name + " " + address + " " + phone + " " + email;
+    }
+}
+```
+4번에서 선언한 toString() 메소드는 선언이 아닌 오버라이딩이다. toString은 상위 객체에서 이미 생성되어 있는 메소드고 Student 객체에서 메소드 실행 결과를 다르게 하기 위해 재정의한 것으로 이해해야 한다.
 
+#### ManageStudent 클래스
+```java
+// 5번, 클래스 선언
+public class ManageStudent{
+    // 6번, main 메소드 생성
+    public static void main(String[] args){
+        // 8번, 객체 생성(초기화X, 기본값 null)
+        Student[] student;
+        // 9번, 7번 메소드 호출
+        ManageStudent manage = new ManageStudent();
+        student = manage.addStudent();
+        // 12번, 10번 메소드 호출
+        manage.printStudents(student);
+    }
+    // 7번, 메소드 생성(배열에 객체 생성)
+    public Student[] addStudent(){
+        Student[] student = new Student[3];
+        student[0] = new Student("Kim");
+        student[1] = new Student("Lee");
+        student[2] = new Student("Park", "Icheon", "010-xxxx-xxxx", "kimcno3@naver.com");
+        return student;
+    }
+    // 10번, 메소드 생성(배열값 출력)
+    public void printStudents(Student[] student){
+        // 11번, for문으로 배열내 값을 순서대로 출력
+        for(int i=0; i< student.length; i++){
+            System.out.println(student[i]);
+        }
+    }
+}
+```
+#### 결과값
+```
+Kim null null null
+Lee null null null
+Park Icheon 010-xxxx-xxxx kimcno3@naver.com
+```
+8번에서 배열만 생성하고 초기화하지 않았다. 이렇게 초기화하지 않으면 배열의 기본값은 null로 설정된다.
+
+11번에서 for문의 조건식은 아래와 같이 `:`(콜론)을 이용해서 설정할 수도 있다.
+```java
+    public void printStudents(Student[] student){
+        for(Student info : student){
+            System.out.println(student[i]);
+        }
+    }
+```
 
 <br>
 
