@@ -1173,12 +1173,6 @@ public class ManageStudent{
     }
 }
 ```
-#### 결과값
-```
-Kim null null null
-Lee null null null
-Park Icheon 010-xxxx-xxxx kimcno3@naver.com
-```
 8번에서 배열만 생성하고 초기화하지 않았다. 이렇게 초기화하지 않으면 배열의 기본값은 null로 설정된다.
 
 11번에서 for문의 조건식은 아래와 같이 `:`(콜론)을 이용해서 설정할 수도 있다.
@@ -1190,6 +1184,12 @@ Park Icheon 010-xxxx-xxxx kimcno3@naver.com
     }
 ```
 
+#### 결과값
+```
+Kim null null null
+Lee null null null
+Park Icheon 010-xxxx-xxxx kimcno3@naver.com
+```
 <br>
 
 ### ✔️정리해봅시다.
