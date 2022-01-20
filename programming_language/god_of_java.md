@@ -1305,6 +1305,80 @@ public class ReferenceStaticVariable{
 ## :pushpin: Chapter9
 
 ### ✔️직접해봅시다.
+#### 1. godofjava 폴더 아래에 b 폴더 생성
+```
+C:\godofjava>mkdir b
+```
+
+#### 2. b 폴더 아래 array, control, operator, variable 폴도 생성
+```
+// b 폴더로 이동
+C:\godofjava>cd b
+
+// 폴더 생성
+C:\godofjava\b> mkdir array
+C:\godofjava\b> mkdir control
+C:\godofjava\b> mkdir operator
+C:\godofjava\b> mkdir variable
+```
+
+#### 3. Array.main.java 파일을 godofjava/b/array 폴더로 이동
+```
+C:\godofjava> mv ArrayMain.java b/array
+```
+
+#### 4. ArrayMain.java package 선언
+```java
+package b.array;
+
+public class ArrayMain{
+    public static void main(String[] args){
+            for(String arg : args){
+                System.out.println(arg);
+            }
+    }
+}
+```
+
+#### 5. ArrayMain.java 컴파일
+```
+// 컴파일
+C:\godofjava> javac b/array/ArrayMain.java
+
+// 실행
+C:\godofjava> java b/array/ArrayMain a b c d
+a
+b
+c
+d
+```
+
+#### 6. ControlIf 파일은 b.control , OperatorConditional 파일은 b.operator , VariableTypes 파일은 b.variable 폴더로 이동 후 컴파일
+
+```
+// 파일이동
+C:\godofjava> mv ControlIf.java b/control
+C:\godofjava> mv OperatorConditional.java b/operator
+C:\godofjava> mv VariableTypes.java b/variable
+
+// 컴파일
+C:\godofjava> javac b/control/ControlIf.java
+C:\godofjava> javac b/operator/OperatorConditional.java
+C:\godofjava> javac b/variable/VariableTypes.java
+
+// 실행결과
+C:\godofjava> java b/control/ControlIf
+It's smaller or equal than 5.
+It's smaller than 5.
+
+C:\godofjava> java b/operator/OperatorConditional
+80 : true
+30 : false
+
+C:\godofjava> java b/variable/VariableTypes
+It's VariableTypes Class
+
+```
 
 <br>
 
@@ -1314,6 +1388,5 @@ public class ReferenceStaticVariable{
 <br>
 
 ### ✔️추가내용
-
 
 <br>
