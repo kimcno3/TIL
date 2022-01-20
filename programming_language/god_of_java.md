@@ -13,6 +13,7 @@
 - [:pushpin: Chapter6](#pushpin-Chapter6)
 - [:pushpin: Chapter7](#pushpin-Chapter7)
 - [:pushpin: Chapter8](#pushpin-Chapter8)
+- [:pushpin: Chapter9](#pushpin-Chapter9)
 <br>
 
 ## :pushpin: Chapter1
@@ -1291,8 +1292,28 @@ public class ReferenceStaticVariable{
 
 이는 매개변수값을 할당하는 변수 `name`이 클래스변수, 즉 **static**변수이기 때문에 위와 같은 결과값을 가지게 된건데, 자세히 설명하면 클래스 변수는 객체에 상관없이 하나의 메모리 주소만을 가지게 된다. 그렇기에 위 예제는 `reference1`만의 **인스턴스 변수**인 `name`에 매개변수값을 할당한 것이 아니라, 클래스 전체에 하나만 존재하는 **클래스변수**인 `name`에 매개변수 값을 할당한 것이다.(객체와는 무관하게 name이라는 변수는 해당 클래스에서 하나라는 뜻!)
 
-그러므로 `name`은 `Kim`으로 한번, `Lee`로 한번 값을 할당받은 것이다.
+그러므로 `name`은 `Kim`으로 한번, `Lee`로 한번씩 값을 할당받은 것이다.
 
 > [참고 사이트](https://wikidocs.net/228)
+
+<br>
+
+***
+
+<br>
+
+## :pushpin: Chapter9
+
+### ✔️직접해봅시다.
+
+<br>
+
+### ✔️정리해봅시다.
+
+
+<br>
+
+### ✔️추가내용
+
 
 <br>
