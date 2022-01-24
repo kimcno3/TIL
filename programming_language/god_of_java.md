@@ -1491,6 +1491,97 @@ public
 <br>
 
 ### ✔️추가내용
+#### 1. super() 상세 내용
+p.245 ~ 247에 super()에 대한 설명이 나오는데 몇몇 문장들이 이해가 안가서 추가 설명을 찾아봤다.
 
+super()가 정확히 어떤 의미를 가지는지 간단하게 설명하자면 **부모 클래스**를 가르킨다고 말할 수 있다. 반대의 개념으로는 this가 될 것이다.
+
+##### 예시
+```java
+public class PrintInfo{
+    public static void main(String[] args){
+        Child child = new Child(); // 자식 클래스 생성
+
+        child.printParentAge(); // 부모클래스의 변수를 출력
+        child.printChildAge(); // 자식클래스의 변수를 출력
+    }
+}
+// 부모 클래스
+class Parent{
+    public Parent(){}
+    String name = "Kim";
+    int age = 56;
+}
+// 자식 클래스
+class Child extends Parent{
+    public Child(){}
+    String name = "Lee";
+    int age = 27;
+    // 자식클래스에서 부모클래스 변수 지정(super)
+    public void printParentAge(){
+        System.out.println(super.name + "의 나이는" + super.age + "입니다.");
+    }
+    // 자식클래스에서 자식클래스 변수 지정(this)
+    public void printChildAge(){
+        System.out.println(this.name + "의 나이는" + this.age + "입니다.");
+    }
+}
+```
+##### 실행결과
+```
+Kim의 나이는56입니다.
+Lee의 나이는27입니다.
+```
+
+위 예시에서 보면 자식 클래스에서 `super.변수명`의 형식으로 코드를 작성하면 **부모클래스의 인스턴스변수를 지정**할 수 있다.
+
+반대로 `this.변수명`은 **해당 클래스의 인스턴스 변수를 지정**하게 된다.
+
+`자식 클래스를 컴파일할 때, 자동으로 super()이란 코드가 추가되어 컴파일한다??`
+
+super에 대한 개념을 간단하게 이해했어도 위 문장은 이해되지 않았는데 천천히 읽어보니 말 그대로 자식클래스를 컴파일할 때 코드 작성자가 적지 않아도 `super()`라는 코드가 추가된다는 말이였다. 이 말을 코드로 표현해보면 아래 예시와 같다.
+
+##### 예시
+```java
+// 위 코드 생략
+
+class Child extends Parent{
+    public Child(){
+        // super();  -> 이 코드가 자동으로 추가된다.
+    }
+
+    // 아래 코드 생략
+}
+```
+
+그렇다면 부모 클래스의 생성자가 매개변수를 가지고 있다면 당연히 문제가 생기는 구조였다.
+
+자식 클래스에서 자동으로 생성되면서 부모클래스의 생성자를 가르키는 `super()` 코드는 매개변수값이 지정되어있지 않기 때문에 부모 클래스에서 매개변수를 가진 생성자를 선언했다면 자식 클래스에서도 매개변수값을 지정해줘야 하는 것이 맞다.
+
+##### 예시
+```java
+// 위 코드 생략
+
+class Parent{
+    // 매개변수를 가진 생성자 선언
+    public Parent(String name){
+        this.name = name; // 매개변수를 인스턴스 변수로 지정
+    }
+    String name;
+    int age = 56;
+}
+
+class Child extends Parent{
+    public Child(){
+        // 부모클래스의 매개변수값 지정
+        super("Kim");
+    }
+
+    // 아래 코드 생략
+
+}
+```
+
+위 예제처럼 부모 클래스에서 매개변수를 가진 생성자를 선언했다면 자식클래스의 생성자에서 super() 를 사용해 매개변수값을 동일한 자료형으로 지정해줘야 한다.
 
 <br>
