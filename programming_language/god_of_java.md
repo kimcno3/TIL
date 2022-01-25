@@ -1481,7 +1481,62 @@ public
 
 
 ### ✔️직접해봅시다.
+#### 작성 코드 - Animal.java
+```java
+package c.inheritance;
 
+public class Animal {
+    // 변수 선언
+    String name;
+    String kind;
+    String foodType;
+    int legCount;
+    int iq;
+    boolean hasWing;
+    // Refactorting한 변수
+    String color;
+    int weight;
+    int height;
+    // 메소드 선언
+    public void move(){
+        System.out.println("This is Animal method - move()");
+    }
+    public void eatFood(){
+        System.out.println("This is Animal method - eatFood()");
+    }
+}
+```
+#### 작성 코드 - Dog.java
+```java
+package c.inheritance;
+
+public class Dog extends Animal {
+    String breed;
+    // Overriding
+    public void move(){
+        System.out.println("The Dog is moving");
+    }
+    public void eatFood(){
+        System.out.println("The Dog is eating food");
+    }
+}
+
+```
+#### 작성 코드 - Cat.java
+```java
+package c.inheritance;
+
+public class Cat extends Animal {
+    String breed;
+    // Overriding
+    public void move(){
+        System.out.println("The Cat is moving");
+    }
+    public void eatFood(){
+        System.out.println("The Cat is eating food");
+    }
+}
+```
 
 <br>
 
