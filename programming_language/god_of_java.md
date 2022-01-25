@@ -1448,7 +1448,7 @@ c\javapackage\AccessCall.java:5: error: <identifier> expected // 식별자 미�
 주의할 점은 상위 패키지에 있는 클래스라도 하위 패키지에서 선언해야 할 때 import 선언을 해야한다. 다시 말해 같은 패키지가 아니라면 무조건 import를 해야한다.
 
 #### 7. 특정 패키지에 있는 클래스들을 모두 import할 때 사용하는 기호는 무엇인가요?
-*
+`*`
 
 ##### 사용 예시
 ```java
