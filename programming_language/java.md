@@ -685,7 +685,7 @@ public class Sample{
 
 <br>
 
-## ✔️gitignore 파일 활용법
+## :pushpin: gitignore 파일 활용법
 ### gitignore 파일이란?
 원격 저장소에서 사용되지 않는 파일들을 지정하여 커밋하지 못하게 설정하는 파일로 설정된 확장자 파일은 commit track에 올라오지 않는다.
 
@@ -828,7 +828,7 @@ $RECYCLE.BIN/
 
 <br>
 
-## ✔️constant pool
+## :pushpin: constant pool
 JAVA에서 String 객체를 생성하는 방법은 두가지가 있다.
 
 1. `new` 예약어 사용하는 방법
@@ -847,7 +847,7 @@ JAVA에서 String 객체를 생성하는 방법은 두가지가 있다.
 
 <br>
 
-## ✔️객체를 비교할 때 `==`는 사용하지 말아야 하는 이유
+## :pushpin: 객체를 비교할 때 `==`는 사용하지 말아야 하는 이유
 
 `==`는 두 객체의 메모리 주소를 비교하여 메모리 주소가 다르다면 false를 결과로 내놓는다. 근데 만약 두 객체에 할당된 값은 같다면 에러를 발생시키는 것이다.
 
@@ -861,7 +861,7 @@ JAVA에서 String 객체를 생성하는 방법은 두가지가 있다.
 
 을 권장하는 것이다.
 
-## :pushpin:String, CharSequence 추가 설명
+## :pushpin: String, CharSequence 추가 설명
 ### String 객체 리터럴 생성 방법(`""` 사용)으로 CharSequence 객체를 선언
 
 CharSequence는 인터페이스이며 String은 클래스이다. 그리고 String은 CharSequence를 구현한 클래스이다.
