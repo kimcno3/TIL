@@ -194,6 +194,10 @@ VO(Value Object)
 - 값을 위해서만 사용되는 값 오브젝트
 - ReadOnly 특징을 가지고 있다.
 
+> [참고 사이트 1(DTO, DAO)](https://java117.tistory.com/8?category=806351)
+
+> [참고 사이트 2(DTO, VO)](https://java117.tistory.com/9?category=806351)
+
 <br>
 
 ## :pushpin: static 변수 추가 설명
