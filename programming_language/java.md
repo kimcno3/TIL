@@ -329,6 +329,65 @@ class Child extends Parent{
 
 <br>
 
+## :pushpin: 부모객체 메소드 호출 시 주의사항
+상속관계에서 부모 클래스에만 선언된 메소드를 자식 클래스에서도 호출해 올 수 있다고 했다.
+
+이는 위에서 설명한대로 자식 클래스를 생성할 때, 자식 클래스 생성자 코드의 가장 첫 줄에 부모 생성자를 의미하는 **super()가 자동으로 추가**되면서 부모 생성자가 자식 생성자와 함께 호출되기 때문에 가능하다.
+
+그래서 자식 객체에서 호출한 메소드가 자식 클래스에 선언되어 있지 않다면, 자식 클래스에 호출되어있는 부모 클래스에서 호출해온다.
+
+### 예제
+```java
+public class Sample{
+    public static void main(String[] args){
+        Child child = new Child("BABY", 20); // 자식 객체 생성
+        System.out.println(child.getParentName()); // 자식객체에서 부모 클래스에 선언된 메소드 호출
+        System.out.println(child.getChildName()); // 자식 객체에서 자식 클래스에 선언된 메소드 호출
+    }
+}
+
+class Parent{
+    String name;
+    int age;
+
+    public Parent(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getParentName(){
+        return this.name;
+    }
+}
+
+class Child extends Parent{
+    String name;
+    int age;
+
+    public Child(String name, int age){
+        super("PAPA", 50); // 부모 객체 생성 -> 부모 클래스에만 선언된 메소드는 이 객체에서 호출해온다.
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getChildName(){
+        return this.name;
+    }
+}
+```
+
+### 결과값
+```
+PAPA // 부모객체 name
+BABY // 자시객체 name
+```
+
+위 예제에서 보면 자식 클래스에 선언되어 있지 않다면 부모 클래스에서 호출해온다. 이때 부모 클래스의 메소드를 호출하는 것이기 때문에 메소드에서 가르키는 **this의 대상은 부모 클래스**가 된다.
+
+이처럼 부모 클래스에만 선언된 메소드를 통해 자식 클래스의 변수를 가져오려 하는 것이 불가능하기 때문에 **오버라이딩**을 활용해야 한다.
+
+<br>
+
 ## :pushpin: 참조자료형 형변환 & `instanceof` 예약어 활용시 주의사항
 **참조자료형 형변환**
 - 자식 객체를 부모 객체로 형변환은 가능
