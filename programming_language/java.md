@@ -301,25 +301,22 @@ class Child extends Parent{
 
 **예제 코드**
 ```java
-// 위 코드 생략
-
 class Parent{
+    String name;
+
     // 매개변수를 가진 생성자 선언
     public Parent(String name){
-        this.name = name; // 매개변수를 인스턴스 변수로 지정
+        this.name = name; // 매개변수 -> 인스턴스 변수로 지정
     }
-    String name;
-    int age = 56;
 }
 
 class Child extends Parent{
-    public Child(){
-        // 부모클래스의 매개변수값 지정
-        super("Kim");
+    String name;
+
+    public Child(String name){
+        super("Kim"); // 부모클래스의 매개변수값 지정
+        this.name = name;
     }
-
-    // 아래 코드 생략
-
 }
 ```
 
@@ -341,8 +338,8 @@ class Child extends Parent{
 public class Sample{
     public static void main(String[] args){
         Child child = new Child("BABY", 20); // 자식 객체 생성
-        System.out.println(child.getParentName()); // 자식객체에서 부모 클래스에 선언된 메소드 호출
-        System.out.println(child.getChildName()); // 자식 객체에서 자식 클래스에 선언된 메소드 호출
+        System.out.println(child.getParentName()); // PAPA(부모객체 name 출력)
+        System.out.println(child.getChildName()); // BABY(자식객체 name 출력)
     }
 }
 
@@ -376,13 +373,7 @@ class Child extends Parent{
 }
 ```
 
-### 결과값
-```
-PAPA // 부모객체 name
-BABY // 자시객체 name
-```
-
-위 예제에서 보면 자식 클래스에 선언되어 있지 않다면 부모 클래스에서 호출해온다. 이때 부모 클래스의 메소드를 호출하는 것이기 때문에 메소드에서 가르키는 **this의 대상은 부모 클래스**가 된다.
+위 예제에서 보면 호출된 메소드가 자식 클래스에 선언되어 있지 않다면 부모 클래스에서 호출해온다. 이때 부모 클래스의 메소드를 호출하는 것이기 때문에 메소드에서 가르키는 **this의 대상은 부모 클래스**가 된다.
 
 이처럼 부모 클래스에만 선언된 메소드를 통해 자식 클래스의 변수를 가져오려 하는 것이 불가능하기 때문에 **오버라이딩**을 활용해야 한다.
 
