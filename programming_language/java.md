@@ -993,3 +993,48 @@ StringBuffer와 StringBuilder의 차이점은 **쓰레드 동기화 지원** 유
 > [참고 사이트 1](https://ifuwanna.tistory.com/221)
 
 > [참고 사이트 2](https://popcorntree.tistory.com/65)
+
+<br>
+
+## :pushpin: String 주요 메소드 정리
+### 비교 & 검색
+|Return Type|Method Name|Description|
+|--|--|--|
+|int|length()|문자열 길이를 출력|
+|boolean|isEmpty()|문자열이 비어있는지 확인. 비어있다면 true|
+|boolean|equals()|대상이 되는 문자열과 매개변수로 받아온 문자열이 동일한지 확인|
+|boolean|equalsIgnoreCase()|equals()와 같은 기능이지만 대소문자를 구분하지 않고 비교|
+|int|compareTo()|두 문자열이 같은지 확인하고 상대적인 위치값을 리턴|
+|int|compareToIgnoreCase()|compareTo()와 같은 기능이지만 대소문자를 구분하지 않고 비교|
+|boolean|contentEquals()|매개변수로 받는 CharSequence와 StringBuffer 객체가 String 객체와 같은지 비교|
+|boolean|startsWith()||
+|boolean|endsWith()||
+|boolean|contains()||
+|boolean|matches()||
+|boolean|regionMatches()||
+
+#### 길이 확인
+- `length()`
+
+#### 비어 있는지 확인
+- `isEmpty()`
+
+#### 같은지 비교
+- `equals()`
+- `equalsIgnoreCase()`
+- `compareTo()`
+- `compareToIgnoreCase()`
+- `contentEquals()`
+
+#### 특정 조건에 맞는 문자열 확인
+- `startsWith()`
+- `endsWith()`
+- `contains()`
+- `matches()`
+- `regionMatches()`
+
+### 위치 탐색
+
+### 추출
+
+### 변경
