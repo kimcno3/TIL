@@ -997,7 +997,7 @@ StringBuffer와 StringBuilder의 차이점은 **쓰레드 동기화 지원** 유
 <br>
 
 ## :pushpin: String 주요 메소드 정리
-> 자세한 설명 및 매개변수 종류는 [API](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#matches(java.lang.String)) 참고
+> **자세한 설명 및 매개변수 종류는 [API](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#matches(java.lang.String)) 참고**
 
 ### 비교 & 검색
 |Return Type|Method Name|Description|
