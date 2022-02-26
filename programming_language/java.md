@@ -1050,7 +1050,7 @@ StringBuffer와 StringBuilder의 차이점은 **쓰레드 동기화 지원** 유
 
 <br>
 
-## ✔️ Reflection API(리플렉션)
+## :pushpin: Reflection API(리플렉션)
 Reflection은 자바에서 기본으로 제공해주는 API로 클래스, 메소드 인터페이스 등의 정보를 클래스를 생성하지 않고 확인할 수 있습니다.
 
 Reflection에서 가져올 수 있는 클래스 종류는 대표적으로 아래 4개의 클래스로 분류할 수 있다.
@@ -1087,7 +1087,7 @@ public class Dog {
 	}
 }
 ```
-예제로 만든 Dog 클래스에 대한 정보를 Reflection을 활용해 하나씩 가져와 보면서 추가 설명을 해보겠다.
+구체적인 설명을 위해 Dog 클래스를 생성하고 Dog 클래스의 정보를 Reflection을 통해 가져와 보면서 알아보자
 
 <br>
 
