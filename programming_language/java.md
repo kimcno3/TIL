@@ -21,6 +21,8 @@ bin 디렉토리에는 자바의 컴파일러인 `javac.exe` 파일과 컴파일
 
 - 다만 `MacOS`의 경우에는 터미널을 통해서 `.bash_profile` 이라는 파일에 환경변수를 추가해준다.
 
+> [참고사이트](https://shinjekim.github.io/java/2020/01/03/%EC%9E%90%EB%B0%94-%ED%99%98%EA%B2%BD%EB%B3%80%EC%88%98-%EC%84%A4%EC%A0%95%EC%9D%B4-%ED%95%84%EC%9A%94%ED%95%9C-%EC%9D%B4%EC%9C%A0/)
+
 <br>
 
 ## :pushpin: 사용자변수와 시스템변수의 차이
