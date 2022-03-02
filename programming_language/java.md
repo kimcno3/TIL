@@ -134,10 +134,6 @@ JVM은 크게 **네가지 구성요소**로 나눌 수 있다.
     - 대신, 현재 클래스 로더를 삭제하고 새로운 클래스 로더를 생성하는 방법을 사용할 수 있다.
 
 ### :heavy_check_mark: 클래스 로더 위임 모델
-![](https://blog.kakaocdn.net/dn/bEqBUG/btq09zbhICU/a7HNVdflRVBGafrORBBvmk/img.png)
-
-출처 : [링크](https://homoefficio.github.io/2018/10/13/Java-%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A1%9C%EB%8D%94-%ED%9B%91%EC%96%B4%EB%B3%B4%EA%B8%B0/)
-
 1. **부트스트랩 클래스 로더(Bootstrap Class Loader)**
     - JDK의 기본 API를 로딩한다.
     - 기본 API는 `jre/lib/rt.jar`(JRE 기본 API) 또는 `JAVA_HOME/lib`(JDK 기본 API)에 저장되어 있다.
