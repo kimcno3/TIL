@@ -60,12 +60,12 @@ bin 디렉토리에는 자바의 컴파일러인 `javac.exe` 파일과 컴파일
 JVM은 크게 **네가지 구성요소**로 나눌 수 있다.
 
 ![](https://blog.kakaocdn.net/dn/pjywN/btqSduBXLIK/2QEL5c2nEJXRm0cyhvwxF1/img.png)
+
 출처 : https://steady-coding.tistory.com/305
 
 1. **클래스 로더(Class loader)**
     - JVM 내로 클래스 파일을 로딩하는 역할을 수행하는 모듈로써 런타임 내에서 동적으로 파일을 로딩합니다.
     - JVM이 동작하는 중에 클래스 파일을 참조하는 순간 클래스 로더를 통해 파일을 로딩해 온다고 이해할 수 있다.
-
 2. **실행 엔진(Execution Engine)**
     - 클래스 로더를 통해 메모리에 할당된 클래스 파일들에 담긴 바이트 코드를 컴퓨터가 이해할 수 있는 네이티브 코드로 변환하는 역할을 한다. 변환하는 과정에서 인터프리터와 JIT 컴파일러가 사용 목적에 맞게 사용된다.
     - 인터프리터(Interpreter)
@@ -74,11 +74,9 @@ JVM은 크게 **네가지 구성요소**로 나눌 수 있다.
     - JIT 컴파일러("Just In Time" Compiler)
         - 인터프리터의 단점을 보안하기 위해 만들어진 컴파일러
         - 바이트 코드 해석 전에 중복 코드를 체크해두고 인터프리터로 해석을 하다가 미리 체크한 중복코드가 나온다면 해당 결과값을 미리 캐싱해뒀다가 중복 코드가 나올 때마다 캐싱값을 가져오는 방식으로 작동한다.
-
 3. **가비지 콜렉터(Garbage Collector)**
     - 메모리 영역 중 힙 메모리 영역에서 더 이상 사용되지 않는 메모리를 삭제하는 역할을 수행합니다.
     - GC의 존재로 인해 개발자가 직접 메모리 정리에 대한 고민을 하지 않아도 되게 되었다.
-
 4. **런타임 데이터 영역(Runtime Data Area)**
     - JVM 동작 시 로딩 및 생성되는 데이터를 목적에 맞게 구분하여 저장하는 공간을 의미한다.
     - Method Area
@@ -95,6 +93,11 @@ JVM은 크게 **네가지 구성요소**로 나눌 수 있다.
         - JVM이 현재 수행하는 명령의 주소를 가진다.
     - Native Method Stack   
         - 바이트 코드 외 네이티브 코드를 저장하는 공간
+> [참고사이트](https://steady-coding.tistory.com/305)
+
+> [참고사이트](https://coding-nyan.tistory.com/85)
+
+> [참고사이트](https://joomn11.tistory.com/15?category=854732#recentComments)
 
 <br>
 
