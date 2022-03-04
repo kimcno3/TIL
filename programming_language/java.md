@@ -308,11 +308,11 @@ short 타입으로 생성된 `256`과 `255`를 byte로 캐스팅 하는 경우, 
 
 > A switch can essentially be implemented in two ways (or in principle, a combination): for a small number of cases, or ones whose values are widely dispersed, a switch essentially becomes the equivalent of a series of ifs on a temporary variable (the value being switched on must only be evaluated once). For a moderate number of cases that are more or less consecutive in value, a switch table is used (the TABLESWITCH instruction in Java), whereby the location to jump to is effectively looked up in a table.
 >
->Either of these methods could in principle use a long value rather than an integer. But I think it was probably just a practical decision to balance up the complexity of the instruction set and compiler with actual need: the cases where you really need to switch over a long are rare enough that it's acceptable to have to re-write as a series of IF statements, or work round in some other way (if the long values in question are close together, you can in your Java code switch over the int result of subtracting the lowest value).
+>Either of these methods could in principle use a long value rather than an integer. But **I think it was probably just a practical decision to balance up the complexity of the instruction set and compiler with actual need**: the cases where you really need to switch over a long are rare enough that it's acceptable to have to re-write as a series of IF statements, or work round in some other way (**if the long values in question are close together, you can in your Java code switch over the int result of subtracting the lowest value**).
 
-결론은 `switch`문은 비교대상변수를 분기하면서 나눠진 값의 범위에 따라 작성할 코드를 나누기 위해 사용되는 조건문인데, 그 변수로 `long` 타입의 큰 수를 지정할 경우가 거의 없고 비효율적이라는 판단이다. 
+결론은 `switch`문은 비교대상변수를 분기하면서 나눠진 값의 범위에 따라 작성할 코드를 나누기 위해 사용되는 조건문인데, 그 변수로 `long` 타입의 **큰 수를 지정할 경우가 거의 없고 비효율적**이라는 판단이다. 
 
-`long` 타입으로 선언해야 하는 매우 큰 정수를 가지고 switch문을 만들어야 한다면 이른 int타입으로 쪼개서 활용하는 것이 좋을 것이라는 의견이다.
+`long` 타입으로 선언해야 하는 매우 큰 정수를 가지고 switch문을 만들어야 한다면 **int타입으로 쪼개서 활용하는 것이 좋을 것**이라는 의견이다.
 
 <br>
 
