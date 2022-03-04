@@ -302,17 +302,13 @@ short 타입으로 생성된 `256`과 `255`를 byte로 캐스팅 하는 경우, 
 굳이 `long` 타입만 제외한 이유가 궁금해서 구글링을 해본 결과 stackoverflow에 올라와 있는 몇몇 답변을 참고해봤다.
 
 **답변1** : [링크](https://stackoverflow.com/questions/2676210/why-cant-your-switch-statement-data-type-be-long-java)
-```
-Obviously, one can have a long that has only a few possible values, so that it is reasonable to use it as a switch expression, but that is unusual. Mainly, long is used when there are too many values for int, and so far too many values for a switch expression.
-```
+> Obviously, one can have a long that has only a few possible values, so that it is reasonable to use it as a switch expression, but that is unusual. Mainly, long is used when there are too many values for int, and so far too many values for a switch expression.
 
 **답변2** : [링크](https://stackoverflow.com/questions/13951419/why-cant-java-switch-over-the-primitive-long)
 
-```
-A switch can essentially be implemented in two ways (or in principle, a combination): for a small number of cases, or ones whose values are widely dispersed, a switch essentially becomes the equivalent of a series of ifs on a temporary variable (the value being switched on must only be evaluated once). For a moderate number of cases that are more or less consecutive in value, a switch table is used (the TABLESWITCH instruction in Java), whereby the location to jump to is effectively looked up in a table.
-
-Either of these methods could in principle use a long value rather than an integer. But I think it was probably just a practical decision to balance up the complexity of the instruction set and compiler with actual need: the cases where you really need to switch over a long are rare enough that it's acceptable to have to re-write as a series of IF statements, or work round in some other way (if the long values in question are close together, you can in your Java code switch over the int result of subtracting the lowest value).
-```
+> A switch can essentially be implemented in two ways (or in principle, a combination): for a small number of cases, or ones whose values are widely dispersed, a switch essentially becomes the equivalent of a series of ifs on a temporary variable (the value being switched on must only be evaluated once). For a moderate number of cases that are more or less consecutive in value, a switch table is used (the TABLESWITCH instruction in Java), whereby the location to jump to is effectively looked up in a table.
+>
+>Either of these methods could in principle use a long value rather than an integer. But I think it was probably just a practical decision to balance up the complexity of the instruction set and compiler with actual need: the cases where you really need to switch over a long are rare enough that it's acceptable to have to re-write as a series of IF statements, or work round in some other way (if the long values in question are close together, you can in your Java code switch over the int result of subtracting the lowest value).
 
 결론은 `switch`문은 비교대상변수를 분기하면서 나눠진 값의 범위에 따라 작성할 코드를 나누기 위해 사용되는 조건문인데, 그 변수로 `long` 타입의 큰 수를 지정할 경우가 거의 없고 비효율적이라는 판단이다. 
 
