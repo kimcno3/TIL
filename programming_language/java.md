@@ -316,6 +316,27 @@ short 타입으로 생성된 `256`과 `255`를 byte로 캐스팅 하는 경우, 
 
 <br>
 
+## :pushpin: Collection Framework
+Collection FrameWork는 다수의 데이터를 쉽고 효과적으로 처리할 수 있는 표준화된 방법을 제공하는 클래스의 집합을 의미합니다.
+
+자료구조에 따라 인터페이스를 구분하고, 이를 구체적인 클래스들로 구현되어 있습니다.
+
+핵심 인터페이스는 다음과 같습니다.
+
+### ✔️List
+
+### ✔️Set
+
+### ✔️Map
+
+> [참고사이트](http://www.tcpschool.com/java/java_collectionFramework_concept)
+
+https://www.crocus.co.kr/1553
+
+https://crazykim2.tistory.com/557
+
+<br>
+
 ## :pushpin: toSting()
 - `toSting()` 메소드는 객체가 가지고 있는 정보를 문자열로 리턴하는 메소드
 - Java의 모든 클래스 중 가장 최상위 클래스인 'Object' 클래스의 메소드로서 사용자가 생성하는 클래스가 기본적으로 상속받게 되는 메소드
