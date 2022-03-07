@@ -364,7 +364,9 @@ DTO(Data Transfer Object)
 
 VO(Value Object)
 - 값을 위해서만 사용되는 값 오브젝트
-- ReadOnly 특징을 가지고 있다.
+- ReadOnly 특징을 가지고 있다.(getter만)
+
+사용자로부터 받아온 데이터를 DTO를 통해 클래스화 한 다음 전송되면, DAO가 DTO에서 저장된 데이터를 가져와 DB에 저장하는 방식으로 작동됩니다.
 
 > [참고 사이트 1(DTO, DAO)](https://java117.tistory.com/8?category=806351)
 
@@ -402,6 +404,23 @@ public class ReferenceStaticVariable{
 그러므로 `name`은 `Kim`으로 한번, `Lee`로 한번씩 값을 할당받은 것이다.
 
 > [참고 사이트](https://wikidocs.net/228)
+
+<br>
+
+## :pushpin: System.out.println() 추가 설명
+`System.out.println()` 를 좀 더 자세히 분리해서 호출 과정을 살펴보았다.
+
+- `System` 클래스 : **표준 입력과 출력, 에러**와 관련된 필드나 메소드가 선언된 클래스
+- `out` : 표준 출력과 관련된 메소드를 가진 `PrintStream` 타입의 **객체**이자 **static 변수(클래스 변수)**
+- `println()` : `PrintStream` 클래스에 선언된 메소드로 매개변수에 할당된 데이터값을 콘솔에 출력
+
+클래스 변수를 호출할 때에는 클래스 변수를 선언한 클래스 타입의 객체를 통해서가 아니라, 클래스명을 그대로 가져와 호출한다.
+- `System.out` : `System`클래스의 클래스 변수인 `out`을 호출한다.
+
+static으로 선언되지 않은 변수나 메소드는 객체를 통해 호출해온다.
+- `System.out.println()` : `out` 객체를 통해 해당 타입(`PrintStream`)에 선언된 public 메소드인 `println()`메소드를 호출한다.
+
+> [참고사이트](https://www.quora.com/Why-is-System-out-written-before-print-in-Java)
 
 <br>
 
