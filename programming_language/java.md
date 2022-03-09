@@ -113,7 +113,7 @@ JVM은 크게 **네가지 구성요소**로 나눌 수 있다.
 <br>
 
 ## :pushpin: JVM 클래스 로더
-### :heavy_check_mark: 특징
+:heavy_check_mark: 특징
 1. **계층 구조**
     - JVM 내 클래스 로더의 종류도 여러가지인에 이 클래스 로더들 사이에는 계층이 존재한다.
     - `부모-자식관계`를 생성
@@ -135,7 +135,7 @@ JVM은 크게 **네가지 구성요소**로 나눌 수 있다.
     - 로드는 가능하지만 언로더는 불가능하다.
     - 대신, 현재 클래스 로더를 삭제하고 새로운 클래스 로더를 생성하는 방법을 사용할 수 있다.
 
-### :heavy_check_mark: 클래스 로더 위임 모델
+:heavy_check_mark: 클래스 로더 위임 모델
 1. **부트스트랩 클래스 로더(Bootstrap Class Loader)**
     - JDK의 기본 API를 로딩한다.
     - 기본 API는 `jre/lib/rt.jar`(JRE 기본 API) 또는 `JAVA_HOME/lib`(JDK 기본 API)에 저장되어 있다.
@@ -147,7 +147,7 @@ JVM은 크게 **네가지 구성요소**로 나눌 수 있다.
     - 개발자가 만든 클래스들이 여기서 로딩된다고 보면 된다.
     - `classpath`란 말 그대로 클래스가 저장된 경로라는 의미이며 이를 따로 지정하지 않을 경우에는 클래스파일이 위치한 현재 디렉토리가 기본 `classpath`로 설정된다.
 
-### :heavy_check_mark: 로딩 과정
+:heavy_check_mark: 로딩 과정
 1. **로딩**
     - 읽어온 `.class` 파일 내 바이트코드를 내용에 따라 적절한 바이너리코드로 변환한 다음, 메모리 영역 내 `메소드 영역`에 저장한다.
     
@@ -334,7 +334,6 @@ short 타입으로 생성된 `256`과 `255`를 byte로 캐스팅 하는 경우, 
 
 이 중에서 `List`와 `Set`인터페이스는 같은 `Collection` 인터페이스를 상속받지만, `Map` 인터페이스는 자료 구조상 차이점으로 인해 별도로 정의되어 있습니다. 
 
-### ✔️ Collection Framework 구조
 ![](https://blog.kakaocdn.net/dn/4wkUX/btq44bqazqr/80s6KaCrGqfETw4Pk5CGqK/img.png)
 <br> 출처 : https://crazykim2.tistory.com/557
 
@@ -474,9 +473,7 @@ Lee의 나이는27입니다.
 
 반대로 `this.변수명`은 **해당 클래스의 인스턴스 변수를 지정**하게 된다.
 
-### 자동으로 super()이란 코드가 추가되어 컴파일?
-
-말 그대로 자식클래스를 컴파일할 때 코드 작성자가 굳이 적지 않아도 `super()`라는 코드가 추가된다는 말이였다. 이 말을 코드로 표현해보면 아래 예시와 같다.
+`자동으로 super()이란 코드가 추가되어 컴파일된다`는 것은 말 그대로 자식클래스를 컴파일할 때 코드 작성자가 굳이 적지 않아도 `super()`라는 코드가 추가된다는 말이였다. 이 말을 코드로 표현해보면 아래 예시와 같다.
 
 **예제 코드**
 ```java
@@ -530,7 +527,7 @@ class Child extends Parent{
 
 그래서 자식 객체에서 호출한 메소드가 자식 클래스에 선언되어 있지 않다면, 자식 클래스에 호출되어있는 부모 클래스에서 호출해온다.
 
-### 예제
+**예제코드**
 ```java
 public class Sample{
     public static void main(String[] args){
@@ -668,11 +665,11 @@ breed : cocker
 <br>
 
 ## :pushpin: 상속 클래스 형변환 추가 설명
-### 참조자료형 형변환
+### ✔️ 참조자료형 형변환 특징
 - 자식 객체를 부모 객체로 형변환은 가능
 - 부모 객체를 자식 객체로 형변환하는 것은 불가능
 
-### 예제 코드
+**예제 코드**
 아래 예제에 example() 메소드에는 세가지 경우로 생성한 객체가 존재한다.
 
 ```java
@@ -724,10 +721,9 @@ class Child extends Parent{
 
 객체 타입과 생성자에 따라 3가지 경우로 나눴다.
 
-### 1. 부모 클래스 생성자로 부모타입의 객체를 생성한 경우
+### ✔️ 부모 클래스 생성자로 부모타입의 객체를 생성한 경우
 이런 경우는 자식 클래스에 어떠한 영향을 받지 않는다.
-
-### 2. 자식 클래스 생성자로 부모타입 객체를 생선한 경우
+### ✔️ 자식 클래스 생성자로 부모타입 객체를 생선한 경우
 이런 경우에 자식 클래스에서 부모 클래스로부터 상속받은 변수나 메소드만 호출할 수 있다.
 
 즉, 자식 클래스에만 선언된 `str2` 변수나 `printByChild()` 메소드는 호출이 불가능하다.
@@ -740,7 +736,7 @@ parent2.printByChild(); // 에러 발생(결국 부모타입이라)
 또한 오버라이딩되어 자식 클래스에 재선언된 메소드나 변수는 오버라이딩된 상태로 호출된다.
 > 이런 현상을 책에서는 폴리몰피즘(다형성)이라고 한다.
 
-### 3. 자식타입 객체 - 부모생성자(처럼 보이는 자식 생성자)
+### ✔️ 자식타입 객체 - 부모생성자(처럼 보이는 자식 생성자)
 자식 클래스 타입의 객체를 생성하는데 **그 생성자를 자식생성자로 만든 부모타입의 객체로 만든 경우**이다.
 
 말이 많이 어렵지만 사실상 자식클래스 객체이지만 부모클래스 타입으로 보이는 객체로 이해하면 되겠다.
@@ -753,7 +749,7 @@ Child child2 = parent2; // 에러발생(겉보기는 부모타입)
 
 하지만 형변환을 통해 객체를 생성했다면 자식클래스의 변수와 메소드를 호출한다.
 
-### 정리하자면
+**정리하자면**
 - 결국 생성자에 따라 호출되는 변수나 메소드가 결정된다.
 - 그렇기에 오버라이딩된 변수나 메소드는 그 상태로 호출된다.
 - 자식 생성자로 만든 부모 객체는 겉으로는 부모의 형상을 띄기 때문에 이 객체를 이용해 자식 객체를 만들려면 형변환이 필요하다.
@@ -839,7 +835,7 @@ hashCode() 메소드는 equals()와 함께 Overriding 하여 사용하는 것이
 
 위와 같은 설정을 위해 대부분의 IDE에서 제공해주는 hashcode()의 오버라이딩 기본코드가 있다.
 
-### hashcode() 오버라이딩 코드
+**hashcode() 오버라이딩 코드**
 ```java
 @Override
 public int hashCode() {
@@ -851,7 +847,7 @@ public int hashCode() {
     return result;
 }
 ```
-### 코드 구동 순서 설명
+**코드 구동 순서 설명**
 1. hashcode로 전환할 변수의 값을 `variableValue1 ~ 3`으로 정한다.
 2. variableValue1의 값이 null 이라면 result에 0을 더한다.
 3. 그렇지 않다면 variableValue1의 hashCode()값을 result에 더한다.
@@ -860,14 +856,13 @@ public int hashCode() {
 
 위 코드가 호출되는 상황은 **이미 eqauls()를 통해 비교할 두 객체의 값이 동일하다는 것을 확인한 이후**이다. 그래서 두 객체에 선언된 변수나 메소드의 hashCode값들의 총합을 result로써 리턴하여 두 합계를 같게 만들어 주는 것이다. 그래야 두 객체의 hashcode, 즉 두 객체의 위치값이 같다고 말할 수 있다.
 
-### 31을 사용하는 이유
-Prime 변수에 31을 할당하고 result에 이 값을 곱하여 합계를 구한다. 그냥 null값이 아니면 해당 hashcode값만 더해서 result를 구해도 무방할 것처럼 보이는데 굳이 31이라는 값을 곱하는 이유는 무엇일까?
+**31을 사용하는 이유**는 Prime 변수에 31을 할당하고 result에 이 값을 곱하여 합계를 구한다. 그냥 null값이 아니면 해당 hashcode값만 더해서 result를 구해도 무방할 것처럼 보이는데 굳이 31이라는 값을 곱하는 이유는 무엇일까?
 
 이는 result값을 구할 때 생겨날 에러를 방지하기 위해 상수로 곱해주는 것인데 자바의 hashCode()를 오버라이딩할 때는 주로 31을 사용할 뿐이다. 31이 에러를 방지할 수 있는 이유는 31이 **홀수**이자 **소수**이기 때문이다.
 
 만약 31과 같은 홀수가 아닌 짝수를 곱한다면 비트를 왼쪽으로 Shift하는 것과 같기 때문에 에러를 발생할 수 있다.
 
-#### 비트 이동 예시
+**비트 이동 예시**
 |num1|X|num2|==|result|shift|
 |:--:|:--:|:--:|:--:|:--:|:--:|
 |0001(1)|X|0010(2)|==|0010(2)|0001(1) -> 0010(2)|
@@ -891,7 +886,7 @@ enum 클래스는 객체를 생성할 때는 다음과 같이 상수를 지정�
 
 `enum 클래스명.상수명`
 
-### 예제코드
+**예제코드**
 ```java
 public class Sample{
     public enum EnumName{
@@ -909,7 +904,7 @@ public class Sample{
 
 `상수명(매개변수값)`
 
-### 예제코드2
+**예제코드2**
 ```java
 public class Sample{
     public enum EnumName{
@@ -936,144 +931,17 @@ public class Sample{
 <br>
 
 ## :pushpin: gitignore 파일 활용법
-### gitignore 파일이란?
-원격 저장소에서 사용되지 않는 파일들을 지정하여 커밋하지 못하게 설정하는 파일로 설정된 확장자 파일은 commit track에 올라오지 않는다.
+`gitignore 파일`이란, 원격 저장소에서 사용되지 않는 파일들을 지정하여 커밋하지 못하게 설정하는 파일로 설정된 확장자 파일은 commit track에 올라오지 않는다.
 
 자바의 경우, `.metadata` 파일들이 commit track에 올라오는 것을 막기 위해 생성하는 파일이다.
 
-### 설정 순서
+**설정 순서**
 1. gitignore 파일을 생성한다.
     - 파일 생성시 최상위 디렉토리에 위치해야 한다.
     - [https://www.gitignore.io/](https://www.toptal.com/developers/gitignore)을 이용하면 사용하는 OS, 프로그래밍 언어, IDE에 맞는 gitingore파일을 생성할 수 있다.
 2. 생성한 gitignore 파일을 commit 및 원격저장소에 push한다.
 3. 이후 커밋할 때 설정한 파일들은 track에 올라오지 않는다.
 
-**windows, java, eclipse 전용 gitignore 파일**
-```
-
-# Created by https://www.toptal.com/developers/gitignore/api/eclipse,java,windows
-# Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java,windows
-
-### Eclipse ###
-.metadata
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.settings/
-.loadpath
-.recommenders
-
-# External tool builders
-.externalToolBuilders/
-
-# Locally stored "Eclipse launch configurations"
-*.launch
-
-# PyDev specific (Python IDE for Eclipse)
-*.pydevproject
-
-# CDT-specific (C/C++ Development Tooling)
-.cproject
-
-# CDT- autotools
-.autotools
-
-# Java annotation processor (APT)
-.factorypath
-
-# PDT-specific (PHP Development Tools)
-.buildpath
-
-# sbteclipse plugin
-.target
-
-# Tern plugin
-.tern-project
-
-# TeXlipse plugin
-.texlipse
-
-# STS (Spring Tool Suite)
-.springBeans
-
-# Code Recommenders
-.recommenders/
-
-# Annotation Processing
-.apt_generated/
-.apt_generated_test/
-
-# Scala IDE specific (Scala & Java development for Eclipse)
-.cache-main
-.scala_dependencies
-.worksheet
-
-# Uncomment this line if you wish to ignore the project description file.
-# Typically, this file would be tracked if it contains build/dependency configurations:
-#.project
-
-### Eclipse Patch ###
-# Spring Boot Tooling
-.sts4-cache/
-
-### Java ###
-# Compiled class file
-*.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
-
-### Windows ###
-# Windows thumbnail cache files
-Thumbs.db
-Thumbs.db:encryptable
-ehthumbs.db
-ehthumbs_vista.db
-
-# Dump file
-*.stackdump
-
-# Folder config file
-[Dd]esktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# End of https://www.toptal.com/developers/gitignore/api/eclipse,java,windows
-```
 > [참고사이트](https://velog.io/@psk84/.gitignore-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0#gitignore%EC%9D%B4%EB%9E%80)
 
 <br>
@@ -1111,9 +979,10 @@ JAVA에서 String 객체를 생성하는 방법은 두가지가 있다.
 
 을 권장하는 것이다.
 
-## :pushpin: String, CharSequence 추가 설명
-### String 객체 리터럴 생성 방법(`""` 사용)으로 CharSequence 객체도 선언 가능
+<br>
 
+## :pushpin: String, CharSequence 추가 설명
+**String 객체 리터럴 생성 방법(`""` 사용)으로 CharSequence 객체도 선언 가능**
 CharSequence는 인터페이스이며 String은 클래스이다. 그리고 String은 CharSequence를 구현한 클래스이다.
 
 그렇기 때문에 **CharSequence 타입의 객체를 선언할 때, 생성자는 String 클래스의 생성자를 사용할 수 있는 것**이다.
@@ -1146,7 +1015,7 @@ public class Sample{
 <br>
 
 ## :pushpin:String, StringBuffer, StringBuilder 추가 설명
-### String
+### ✔️ String
 String은 불변한 성격(immutable)을 가지고 있습니다. 즉 한번 생성한 문자열은 수정이 불가능합니다.
 
 이러한 특성때문에 이미 생성된 String 객체에 문자열을 수정할 경우, 같은 메모리에 저장된 값만 수정되는 것이 아니라 통째로 새로운 메모리 주소에 저장됩니다.
@@ -1161,7 +1030,7 @@ System.out.println(str); // output : 안녕하세요. 반갑습니다.
 
 그래서 String 클래스는 문자열에 대한 수정 작업이 일어나지 않는 경우에 사용하는 것이 효율적입니다.
 
-### StringBuffer, StringBuilder
+### ✔️ StringBuffer, StringBuilder
 StringBuffer와 StringBuilder 클래스는 String과 다르게 mutable한 성격을 가진 클래스입니다. 즉, **문자열의 수정이 가능한 클래스**입니다.
 
 그래서 두 클래스는 문자열에 대한 수정이 빈번한 경우에 사용하는 것이 좋고 연산이 아닌 `append()`, `delete()`와 같은 메소드를 사용하여 수정할 수 있습니다.
@@ -1172,7 +1041,7 @@ str.append(" 반갑습니다."); // 문자열 수정
 System.out.println(str); // output : 안녕하세요. 반갑습니다.
 ```
 
-### StringBuffer와 StringBuilder 차이점
+### ✔️ StringBuffer와 StringBuilder 차이점
 StringBuffer와 StringBuilder의 차이점은 **쓰레드 동기화 지원** 유무이며 StringBuffer가 쓰레드 동기화를 지원하는 클래스입니다.
 
 > **용어 설명**
@@ -1196,7 +1065,7 @@ StringBuffer와 StringBuilder의 차이점은 **쓰레드 동기화 지원** 유
 ## :pushpin: String 주요 메소드 정리
 > **자세한 설명 및 매개변수 종류는 [API](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html#matches(java.lang.String)) 참고**
 
-### 비교 & 검색
+### ✔️ 비교 & 검색
 |Return Type|Method Name|Description|
 |--|--|--|
 |int|length()|문자열 길이를 출력|
@@ -1212,7 +1081,7 @@ StringBuffer와 StringBuilder의 차이점은 **쓰레드 동기화 지원** 유
 |boolean|matches()|contains()와 같은 기능을 하지만 매개변수가 **정규표현식**인 점이 contains()와 차이점|
 |boolean|regionMatches()|문자열 중 특정 영역이 매개변수로 넘어온 값과 동일한지 확인|
 
-### 위치 탐색
+### ✔️ 위치 탐색
 |Return Type|Method Name|Description|
 |--|--|--|
 |int|indexOf()|매개변수로 받는 값(String, char 등)과 동일한 문자열 중 가장 앞에 있는 위치값을 리턴|
@@ -1220,7 +1089,7 @@ StringBuffer와 StringBuilder의 차이점은 **쓰레드 동기화 지원** 유
 
 > 두 메소드는 탐색 시작 위치를 매개변수를 통해 설정할 수 있고, 시작 위치값은 문자열의 가장 왼쪽부터 계산한다.
 
-### 추출
+### ✔️ 추출
 |Return Type|Method Name|Description|
 |--|--|--|
 |char|charAt()|특정 위치의 문자열에 해당하는 char을 리턴|
@@ -1235,7 +1104,7 @@ StringBuffer와 StringBuilder의 차이점은 **쓰레드 동기화 지원** 유
 |CharSequence|subSequence()|매개변수값으로 지정된 위치의 문자열을 잘라내서 CharSequence 객체로 리턴|
 |String[]|split()|매개변수값(정규표현신)을 기준으로 문자열을 나눠, String 배열로 리턴|
 
-### 변경
+### ✔️ 변경
 |Return Type|Method Name|Description|
 |--|--|--|
 |String|trim()|문자열 맨 앞과 맨 뒤에 있는 공백을 제거|
@@ -1260,7 +1129,7 @@ Class 클래스는 `java.lang.Class`로 선언되어 있기 때문에 따로 imp
 
 하지만 다른 세개의 클래스(`Constructor`, `Method`, `Field`)는 `java.lang.reflect` 패키지에 선언되어 있기 때문에, 해당 클래스 객체를 생성해야 할 때 따로 import해야만 해당 클래스를 호출하여 사용할 수 있다.
 
-### Dog 클래스
+**Dog 클래스**
 ```java
 public class Dog {
 	// Fields
@@ -1288,13 +1157,13 @@ public class Dog {
 
 <br>
 
-### Class 클래스
-#### 예제코드
+### ✔️ Class 클래스
+**예제코드**
 ```java
 Class classOfDog = Dog.class; // Dog 클래스 정보를 담은 Class 객체 생성
 System.out.println(classOfDog.getName()); //생성한 Dog 타입 객체의 클래스 이름을 출력
 ```
-#### 출력결과
+**출력결과**
 ```java
 패키지명.Dog
 ```
@@ -1304,10 +1173,10 @@ System.out.println(classOfDog.getName()); //생성한 Dog 타입 객체의 클�
 
 <br>
 
-### Constructor, Method, Field 클래스
+### ✔️ Constructor, Method, Field 클래스
 생성자, 메소드, 필드 정보는 위에서 생성한 클래스 타입 객체에서 Class 클래스에 선언된 메소드를 사용해서 정보를 가져올 수 있다.
 
-#### 예제코드 - Constuctor 클래스
+**예제코드 - Constuctor 클래스**
 ```java
 // 기본 생성자 정보
 Constructor constructorOfDog = classOfDog.getDeclaredConstructor();
@@ -1320,7 +1189,7 @@ System.out.println(constructorOfDog);
 System.out.println(constructorOfDog2);
 System.out.println(constructorsOfDog.length);
 ```
-#### 출력 결과
+**출력 결과**
 ```
 public 패키지명.Dog()
 public 패키지명.Dog(java.lang.String,int)
@@ -1334,7 +1203,7 @@ public 패키지명.Dog(java.lang.String,int)
 
 <br>
 
-#### 예제코드 - Method 클래스
+**예제코드 - Method 클래스**
 ```java
 // 메소드 정보(매소드명, 매개변수 타입)
 Method methodOfDog = classOfDog.getDeclaredMethod("move", String.class);
@@ -1344,7 +1213,7 @@ Method[] methodsOfDog = classOfDog.getDeclaredMethods();
 System.out.println(methodOfDog);
 System.out.println(methodsOfDog.length);
 ```
-#### 출력 결과
+**출력 결과**
 ```
 public void 패키지명.Dog.move(java.lang.String)
 2 // 선언된 메소드 개수
@@ -1357,7 +1226,7 @@ public void 패키지명.Dog.move(java.lang.String)
 
 <br>
 
-#### 예제코드 - Field 클래스
+**예제코드 - Field 클래스**
 ```java
 // 변수 정보(변수명)
 Field fieldOfDog = classOfDog.getDeclaredField("name");
@@ -1367,7 +1236,7 @@ Field[] fieldsOfDog = classOfDog.getDeclaredFields();
 System.out.println(fieldOfDog);
 System.out.println(fieldsOfDog.length);
 ```
-#### 출력 결과
+**출력 결과**
 ```
 java.lang.String 패키지명.Dog.name
 2 // 선언된 변수 개수
@@ -1378,5 +1247,4 @@ java.lang.String 패키지명.Dog.name
 
 > [참고 사이트](https://codechacha.com/ko/reflection/)
 
-> tes test branch
 <br>
