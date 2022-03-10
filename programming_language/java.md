@@ -492,8 +492,24 @@ static으로 선언되지 않은 변수나 메소드는 객체를 통해 호출�
 
 <br>
 
-## :pushpin: super() 상세 내용
-`super()`가 정확히 어떤 의미를 가지는지 간단하게 설명하자면 **부모 클래스**를 가르킨다고 말할 수 있다. 반대의 개념으로는 `this`가 된다.
+## :pushpin: super 상세 내용
+`super`가 부모 객체를 가르킨다고 하는데 JVM의 메모리 영역에서 상속 클래스가 할당되는 과정을 보면서 설명해보자.
+
+
+![](https://media.vlpt.us/images/cham/post/5ff85e45-6b48-491c-bc07-8fa4e0838bac/image.png)<br>
+출처 : https://velog.io/@cham/%EB%B0%B1%EA%B8%B0%EC%84%A0%EB%8B%98%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-6%EC%A3%BC%EC%B0%A8-%EC%83%81%EC%86%8D
+
+위 그림을 보면 자식 클래스 객체(`Iphone`)가 생성되면서 이에 관련된 데이터는 Heap 영역에 저장되고 참조 변수(`iphone`)는 Stack 영역에 저장된다.
+
+그런데 자식클래스 객체의 생성자에는 `super()` 라는 코드가 자동으로 추가된다고 했다. 이 `super()`은 부모 클래스의 생성자를 의미하며 자식 클래스의 객체가 생성되는 과정에서 부모 클래스의 객체(`CellPhone`)도 Heap 영역에 생성된다고 보면 된다.
+
+두 객체의 연결은 `super`라는 이름으로 선언되는 참조변수에 의해 연결된다. `super`는 자식 객체에 선언되며 이 변수에 담긴 값은 부모 객체의 메모리 주소이다.
+
+![](https://t1.daumcdn.net/cfile/tistory/156CAE444F5EF9D101)<br>
+출처 : https://stellan.tistory.com/entry/Java-%EC%83%81%EC%86%8D
+
+
+그러므로 자식 클래스 내에서 `super.변수명` 또는 `super.메소드명`으로 코드를 작성하면, 부모 객체에 선언되어 있는 변수명과 메소드명을 호출할 수 있다.
 
 **예제 코드**
 ```java
@@ -507,16 +523,19 @@ public class PrintInfo{
 }
 // 부모 클래스
 class Parent{
-    public Parent(){}
     String name = "Kim";
     int age = 56;
+    public Parent(){
+    }
 }
 // 자식 클래스
 class Child extends Parent{
-    public Child(){}
     String name = "Lee";
     int age = 27;
-    // 자식클래스에서 부모클래스 변수 지정(super)
+    public Child(){
+        // super(); 부모 객체 생성
+    }
+    // 자식클래스에서 부모클래스 변수 지정(super == 부모 객체)
     public void printParentAge(){
         System.out.println(super.name + "의 나이는" + super.age + "입니다.");
     }
@@ -536,22 +555,6 @@ Lee의 나이는27입니다.
 
 반대로 `this.변수명`은 **해당 클래스의 인스턴스 변수를 지정**하게 된다.
 
-`자동으로 super()이란 코드가 추가되어 컴파일된다`는 것은 말 그대로 자식클래스를 컴파일할 때 코드 작성자가 굳이 적지 않아도 `super()`라는 코드가 추가된다는 말이였다. 이 말을 코드로 표현해보면 아래 예시와 같다.
-
-**예제 코드**
-```java
-// 위 코드 생략
-
-class Child extends Parent{
-    public Child(){
-        super();  // 가장 첫 줄에 자동으로 추가된다.
-        String name = "Lee";
-    }
-
-    // 아래 코드 생략
-}
-```
-
 그렇다면 부모 클래스의 생성자가 매개변수를 가지고 있다면 당연히 문제가 생기는 구조였다.
 
 자식 클래스에서 자동으로 생성되면서 부모클래스의 생성자를 가르키는 `super()` 코드는 매개변수값이 지정되어있지 않기 때문에 부모 클래스에서 매개변수를 가진 생성자를 선언했다면 자식 클래스에서도 매개변수값을 지정해줘야 하는 것이 맞다.
@@ -563,7 +566,7 @@ class Parent{
 
     // 매개변수를 가진 생성자 선언
     public Parent(String name){
-        this.name = name; // 매개변수 -> 인스턴스 변수로 지정
+        this.name = name;
     }
 }
 
@@ -580,6 +583,10 @@ class Child extends Parent{
 위 예제처럼 부모 클래스에서 매개변수를 가진 생성자를 선언했다면 자식클래스의 생성자에서 `super()`를 사용해 매개변수값을 동일한 자료형으로 지정해줘야 한다.
 
 > [참고사이트](https://crazykim2.tistory.com/551)
+
+> [참고사이트](https://velog.io/@cham/%EB%B0%B1%EA%B8%B0%EC%84%A0%EB%8B%98%EC%9E%90%EB%B0%94%EC%8A%A4%ED%84%B0%EB%94%94-6%EC%A3%BC%EC%B0%A8-%EC%83%81%EC%86%8D)
+
+> [참고사이트](https://stellan.tistory.com/entry/Java-%EC%83%81%EC%86%8D)
 
 <br>
 
