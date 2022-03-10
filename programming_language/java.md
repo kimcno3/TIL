@@ -251,7 +251,7 @@ public class Sample{
 
 가장 나중에 호출된 메소드가 끝나는 시점에 해당 Stack 메모리가 pop되어 제거되며 pop되는 메소드에서 선언된 지역변수나 매개 변수는 함께 제거됩니다.
 
-> [참고사이트](https://yaboong.github.io/java/2018/05/26/java-memory-management/)
+> [참고사이트](https://yaboong.github.io/java/2018/05/26/java-memory-management/) (예제를 활용한 설명글)
 
 > [참고사이트](https://blog.wanzargen.me/17)
 
