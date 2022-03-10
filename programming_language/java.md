@@ -112,6 +112,7 @@ JVM은 크게 **네가지 구성요소**로 나눌 수 있다.
 > [참고사이트 3](https://joomn11.tistory.com/15?category=854732#recentComments)
 
 > [참고사이트 4](https://catch-me-java.tistory.com/11)
+
 <br>
 
 ## :pushpin: JVM 클래스 로더
@@ -196,6 +197,66 @@ JVM은 크게 **네가지 구성요소**로 나눌 수 있다.
 > [참고사이트 7](https://happy-coding-day.tistory.com/123)
 
 > [참고사이트 8(영문 사이트)](https://www.geeksforgeeks.org/jvm-works-jvm-architecture/)
+
+<br>
+
+## :pushpin: 변수 종류에 따른 메모리 위치
+자바에서 변수의 종류는 4가지로 나눠볼 수 있다.
+1. 클래스 변수
+2. 인스턴스 변수
+3. 매개 변수
+4. 지역 변수
+
+- `클래스 변수`는 클래스 자체가 가지는 값이기 때문에 처음 클래스 파일이 로딩되는 과정에서 **메소드 영역**에 저장됩니다. 그렇기 때문에 모든 객체가 하나의 클래스 변수 메모리 공간을 공유합니다.
+
+- `인스턴스 변수`는 객체가 생성될 때 메모리를 할당받고 각각의 객체마다 다른 메모리 공간을 가집니다. 객체 생성 또한 new 예약어를 사용하기 때문에 인스턴스 변수 또한 **Heap 영역**에 저장됩니다.
+
+- `매개 변수`와 `지역 변수`는 `기본자료형`과 `참조자료형`에 따라 메모리 영역이 나뉘어집니다.
+
+    - `기본 자료형`에 경우, 해당 변수가 선언된 메소드가 호출되면서 `Stack Area`에 하나의 Stack 메모리가 생성되면 그 위치에 데이터 자체가 함께 저장됩니다.
+
+    - `참조 자료형`의 경우, Stack Area에는 참조 메모리 주소가 저장되며, 실제 데이터는 메모리 주소가 가르키는 `Heap Area` 메모리 공간에 저장됩니다. 그러므로 참조 변수에는 실제 데이터가 아닌 데이터가 저장된 위치가 저장됩니다.
+
+    - 또한 매개 변수는 하나의 메소드가 호출되면서 생성되기 때문에 이 전에 생성된 메소드에 할당된 Stack 메모리와는 다른 Stack 메모리에 저장됩니다.
+
+**예제 코드**
+```java
+public class Sample{
+    static String classStr = "Class Variable"; // 클래스 로딩과정에서 이미 메소드 영역에 메모리 할당
+    String instantStr = "Instant Variable";
+    
+	public static void main(String[] args){
+        // 클래스 변수
+        System.out.println(Sample.classStr);
+
+        // 인스턴스 변수
+        Sample sample = new Sample(); // 이 시점에 Heap 영역에서 인스턴스 변수 메모리 할당
+        System.out.println(sample.instantStr);
+        
+        // 지역 변수
+        String localStr = "Local Variable"; // main메소드에 대한 Stack 메모리가 생성된 이후, Heap 영역에 메모리 할당
+                                            // Stack Area에는 메모리 주소가 할당
+        System.out.println(localStr);
+        
+        // 매개 변수
+        sample.print(localStr); // 새로운 메소드 실행과 동시에 새로운 Stack 메모리 생성, 그 안에 매개변수 값을 메모리에 할당
+                                // 변수값의 저장 위치는 로컬변수와 동일
+	}
+    public void print(String paraStr){
+        paraStr = "Parameter Variable";
+        System.out.println(paraStr);
+    }
+}
+```
+
+이처럼 클래스 변수를 제외한 변수들은 `Stack Area`와 `Heap Area` 중에 저장되며 해당 변수의 타입이 기본형인지 참조형인지에 따라 저장 위치가 결정됩니다.
+
+변수가 저장되는 시점은 메소드가 호출됨에 따라 Stack 메모리가 할당되고 가장 나중에 호출된 메소드가 끝나는 시점에 해당 Stack 메모리가 pop되어 제거됩니다.
+
+이 과정에서 pop되는 메소드에서 선언된 지역변수나 매개 변수는 함께 제거됩니다.
+
+> [참고사이트](https://yaboong.github.io/java/2018/05/26/java-memory-management/)
+
 <br>
 
 ## :pushpin: java파일 실행시 파일명만 필요한 이유
