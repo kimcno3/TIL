@@ -217,7 +217,7 @@ JVM은 크게 **네가지 구성요소**로 나눌 수 있다.
 ```java
 public class Sample{
     static String classStr = "Class Variable"; // 클래스 로딩과정에서 이미 메소드 영역에 메모리 할당
-    String instantStr = "Instant Variable";
+    String instanceStr = "Instance Variable";
     
 	public static void main(String[] args){
         // 클래스 변수
@@ -225,9 +225,9 @@ public class Sample{
 
         // 인스턴스 변수
         Sample sample = new Sample(); // 이 시점에 Heap 영역에서 인스턴스 변수 메모리 할당
-        System.out.println(sample.instantStr);
+        System.out.println(sample.instanceStr);
         
-        // 지역 변수
+        // 지역 변수    
         String localStr = "Local Variable"; // main메소드에 대한 Stack 메모리가 생성된 이후, Heap 영역에 메모리 할당
                                             // Stack Area에는 메모리 주소가 할당
         System.out.println(localStr);
