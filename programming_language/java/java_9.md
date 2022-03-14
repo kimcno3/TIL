@@ -43,7 +43,7 @@ public boolean equals(Object obj){
 
 <br>
 
-## :pushpin: hashcode()메소드 오버라이딩
+## :pushpin: hashcode() 오버라이딩
 `hashCode()` 메소드도 Java에서 Object 객체에 선언된 메소드 중 하나로 객체의 **주소값을 int 타입의 16진수로 리턴**하는 메소드이다.
 
 `hashCode()` 메소드는 `equals()`와 함께 오버라이딩하여 사용하는 것이 일반적이다. 그 이유는 **해시코드 규약**을 보면 이해할 수 있다.
