@@ -9,7 +9,7 @@
 </br>
 
 ## :pushpin: Programming Language
-- ### [Java](https://github.com/kimcno3/TIL/blob/main/programming_language/java.md)
+- ### [Java](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java.md)
 - ### [Javascript](https://github.com/kimcno3/TIL/blob/main/programming_language/javascript.md)
 
 </br>
