@@ -55,7 +55,7 @@ public boolean equals(Object obj){
 |메소드명|리턴값1|리턴값2|
 |--|--|--|
 |`equals()`|`true`|`false`|
-|`hashCode()`|동일해야 한다.|동일하지 않는 것이 좋다.|
+|`hashCode()`|동일해야 한다.|필수는 아니지만 동일한 것이 좋다.|
 
 위 해시코드 규약을 참고했을 때, `eqauls()`가 `true`라면 `hashCode()` 또한 같은 값으로 리턴되어야 한다.
 
