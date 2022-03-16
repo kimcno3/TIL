@@ -66,3 +66,7 @@ public class Sample{
 > [참고사이트](https://seeminglyjs.tistory.com/257)
 
 > [참고사이트(이미지 출처)](https://honbabzone.com/java/java-enum/#enum-%EC%B6%94%EA%B0%80-%EC%86%8D%EC%84%B1%EA%B3%BC-%EC%83%9D%EC%84%B1%EC%9E%90)
+
+> [참고사이트](https://onsil-thegreenhouse.github.io/programming/java/2017/11/25/java_tutorial_1-13_enum/)
+
+>[참고사이트](https://tecoble.techcourse.co.kr/post/2020-11-07-singleton/)
