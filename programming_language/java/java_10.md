@@ -1,57 +1,67 @@
 ## :pushpin: Enum 클래스 추가설명
+
+### Enum 클래스 메모리 할당 과정
 선언된 `enum 클래스`는 로딩 과정에서 `Method 영역`에 저장되며 각각의 상수들이 `public static final 필드`이자 `객체`로서 메모리를 할당받는다. Method 영역에 메모리를 할당받기 때문에 프로그램이 끝날 때가지 메모리에 존재한다.
 
-그 다음, Method 영역에 저장된 각각의 상수 메모리에는 Heap 영역에 생성된 해당 상수들의 객체 메모리 주소가 저장된다. 
+그 다음, 어떤 클래스에서든 해당 Enum 클래스를 만나면 Heap 영역에 각각의 상수별로 객체가 생성됩니다. 그리고 각각의 객체 별 메모리 주소가 Method 영역에 할당된 메모리에 저장됩니다.
 
 ![](https://honbabzone.com/assets/images/post/java/emum-memory2.png)
 
-stack에서 어느 상수에 대한 참조변수가 선언될 경우, 참조 변수에도 Method 영역의 상수 객체와 같은 메모리 주소가 저장된다.
+그 이후, stack 영역에서 어느 상수에 대한 참조변수가 선언될 경우, 참조 변수에도 Method 영역의 상수 객체와 같은 메모리 주소가 할당됩니다.
+
+이러한 이유는, enum 클래스는 new 예약어를 통해 객체를 생성하는 것이 불가능하고 클래스변수로 선언된 각각의 열거 상수들을 통해서만 Heap 영역의 객체에 접근할 수 있습니다.
 
 ![](https://honbabzone.com/assets/images/post/java/emum-memory3.png)
 
 > 이미지 출처는 설명란 하단에 기재하였습니다.
 
-**예제코드**
+### 예제코드
+**Enum 클래스**
+```java
+public enum Week{
+    MON,
+    TUE,
+    WEN,
+    THU,
+    FRI,
+    SAT,
+    SUN;
+}
+```
+**Sample 클래스**
 ```java
 public class Sample{
-    public enum EnumName{
-        // 각각의 상수가 하나의 필드이자 객체로 Method 영역에 저장
-        PRIME_ONE,
-        PRIME_TWO;
-    }
     public static void main(String[] args){
-        EnumName primeNumber = EnumName.PRIME_ONE;
-        // primeNumber : 참조변수로 stack 영역에 저장, Heap 영역에 있는 PRIME_ONE 객체의 메모리 주소 할당
-        // EnumName.PRIME_ONE; : EnumName 클래스의 PRIME_ONE 필드(클래스변수이므로 객체 선언 X)
+        Week today = Week.MON;
     }
 }
 ```
+1. Week 클래스는 JVM의 메모리 영역에 로딩시, 각각의 열거상수별(요일별)로 Method 영역에 메모리를 할당받고 클래스 변수로 저장된다.
 
-<br>
+2. 그 이후, 코드 실행 중에 Week 클래스가 발견되었고 이 시점에 각 열거상수에 대한 인스턴스가 Heap영역에 생성된다.
 
-또한 각 상수 선언시, 각 상수에 대응하는 생성자 매개변수를 지정할 수 있고, 생성자는 `private` 또는 `package-protect`로 선언할 수 있다.
+3. 그리고 각각의 인스턴스의 메모리 주소는 Week클래스의 클래스변수(Method 영역)들에 할당된다.
 
-**예제코드2**
-```java
-public class Sample{
-    public enum EnumName{
-        PRIME_ONE(1), // 상수에 대응하는 매개변수값을 소괄호에 지정
-        PRIME_TWO(2);
+4. 그래서 today 변수에는 Week클래스의 클래스 변수를 호출하여 해당 변수가 가르키는 인스턴스 주소를 저장한다.(new 예약어 사용 X)
 
-        private final int number;
+### SingleTon 패턴 & clone() 메소드
 
-        // 생성자 선언
-        EnumName(int number){
-            this.number = number; // 매개변수값을 인스턴스 변수에 지정
-        }
-    }
-    public static void main(String[] args){
-        EnumName primeNumber = EnumName.PRIME_ONE; // 객체 생성시 인스턴스변수값도 함께 Heap 영역에 저장
-        System.out.println(primeNumber.number);
-    }
-}
-```
-출력된 값은 상수인 `PRIME_ONE` 객체의 인스턴스 변수인 `number`의 값이라고 할 수 있다.
+위 예제에서도 확인할 수 있듯이 enum 클래스는 new 예약어가 아닌 클래스 변수를 통해서만 객체 메모리 주소를 가져올 수 있다. 
+
+즉, 새로운 객체 생성이 안된다는 말이다. enum 클래스에 선언된 상수는 Heap 영역에 하나의 인스턴스로만 존재하고 접근만 가능하게 구현되어 있다. 
+
+이와 비슷한 맥락으로 Object 클래스를 상속받기 때문에 `clone()` 메소드를 호출할 수 있는데 `clone(`) 메소드 호출시, 예외가 발생하도록 오버라이딩 되어있다. 
+
+이 또한 값을 가진 객체가 다른 메모리에 추가로 생성되는 것을 방지하기 위함이다. 
+
+이를 `SingleTon` 패턴을 유지하기 위함이라고도 표현하는데 `SingleTon` 패턴이란 객체의 인스턴스를 단 1개만 생성할 수 있도록 하는 패턴을 의미한다.
+
+**결론적으로**
+
+상수라는 값도 프로그램이 실행되는 과정 속에서 변하지 않는 불변의 값으로 활용하기 위해 선언되는 것이기에 `SingleTon` 패턴의 일종이라고 볼 수 있고, 이를 유지하고 보호하기 위해 `clone()` 메소드의 사용을 제한하는 것이다.
+
+또한 선언하는 과정속에서도 상수는 `private static final` 변수로 선언된다. 직접 해당 상수에 접근할 수 없고 `public` 메소드를 통해서만 접근이 가능하도록 하여 상수가 변경될 수 있는 가능성을 최대한 배재한다.
+
 
 > [참고사이트](https://seeminglyjs.tistory.com/257)
 
