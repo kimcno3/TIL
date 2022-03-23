@@ -36,5 +36,9 @@
 [상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_reflection.md)
 ### :pushpin: 제네릭 타입
 [상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_generic.md)
+### :pushpin: HashMap
+[상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_hashmap.md)
+### :pushpin: 쓰레드(Thread)
+[상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_thread.md)
 ### :pushpin: 기타 정리글
 [상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_etc.md)
