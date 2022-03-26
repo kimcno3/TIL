@@ -71,6 +71,8 @@ public boolean remove(Object o) {
 
 <br>
 
+> [참고사이트 : HashMap() 내부 코드](https://bepoz-study-diary.tistory.com/328?category=833599)
+
 > [참고사이트_Custom Key](http://www.gisdeveloper.co.kr/?p=5332)
 
 > [참고사이트_equals()와 hashCode()](https://nesoy.github.io/articles/2018-06/Java-equals-hashcode)
