@@ -1,4 +1,51 @@
-## :pushpin: HashMap
+# :pushpin: Set & Map
+
+## HashSet
+HashSet은 Set 구조를 구현한 클래스 중 하나로 중복과 순서가 없는 자료구조이다.
+
+근데 HashSet의 내부 코드를 보면 **내부는 HashMap**으로 구현되어 있다.
+
+### HashSet 구현 코드
+```java
+// PRESENT 상수
+private static final Object PRESENT = new Object();
+
+// 생성자
+public HashSet() {
+    map = new HashMap<>();
+}
+
+// add()     
+public boolean add(E e) {
+        return map.put(e, PRESENT)==null;
+    }
+
+// remove() 
+public boolean remove(Object o) {
+    return map.remove(o)==PRESENT;
+}
+
+```
+자세히 말하면 HashMap의 키가 HashSet에선 요소에 해당하며 모든 HashMap의 value들은 PRESENT라는 이름의 객체로 채워져 있다. 
+
+결론적으로 HashSet은 HashMap으로 구현된 클래스이며 Map의 성질을 활용하여 구현한 것이라고 볼 수 있다.
+
+<br>
+
+## HashMap
+그렇다면 HashMap은 어떻게 구현되어 있을까?
+> 상세한 내부 코드 설명은 블로그 링크로 대체합니다.(https://bepoz-study-diary.tistory.com/328?category=833599)
+
+위 블로그 글의 내용을 간략하게 말하면
+
+- 만약 키가 객체라면, 객체를 hashCode()를 통해 int값으로 바꿔서 활용하는데 이 hashcode값은 다른 객체들도 같은 값으로 치환될 수 있다.
+- 그렇다면 같은 hashCode를 가지게 된 다른 키들은 하나의 버킷을 할당받게 된다.(해시 충돌)
+- 그래서 HashMap의 키에 대한 버킷은 LinkedList로 되어 있다.
+- 이미 값이 존재하는 키에 또 다른 값이 저장되어야 하는 경우, LinkedList로 오는 순서에 맞게 값을 저장한다.
+- 이러한 구조에 맞게 add(), remove()등 요소를 처리하는 메소드들이 구현되어 있다.
+
+이러한 구조로 인해 HashMap에서 Object 클래스의 메소드인 equals()와 hashCode()가 필수적으로 사용되며 이 둘의 오버라이딩은 필수적이라고 할 수 있다.
+
 ### equals(), hashCode() 오버라이딩이 필수적인 이유
 > `equals()`와 `hasCode()` 오버라이딩 관련 설명은 다음 [링크](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_equals_and_hashcode.md)를 참고하세요.
 
