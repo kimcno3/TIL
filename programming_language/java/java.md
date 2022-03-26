@@ -10,10 +10,10 @@
 [상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_opp.md)
 ### :pushpin: JVM
 [상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_jvm.md)
+### :pushpin: GC(Garbage Collecter)
+[상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_gc.md)
 ### :pushpin: 기본자료형 : 오버플로우, 형변환
 [상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_overflow.md)
-### :pushpin: Collection Framework
-[상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_collection.md)
 ### :pushpin: 클래스 변수
 [상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_class_variable.md)
 ### :pushpin: super가 부모 객체??
@@ -36,8 +36,14 @@
 [상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_reflection.md)
 ### :pushpin: 제네릭 타입
 [상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_generic.md)
-### :pushpin: HashMap
-[상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_hashmap.md)
+### :pushpin: Collection Framework
+[상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_collection.md)
+### :pushpin: List
+[상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_list.md)
+### :pushpin: Set
+[상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_set.md)
+### :pushpin: Map
+[상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_map.md)
 ### :pushpin: 쓰레드(Thread)
 [상세설명](https://github.com/kimcno3/TIL/blob/main/programming_language/java/java_thread.md)
 ### :pushpin: 기타 정리글
