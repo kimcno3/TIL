@@ -19,3 +19,4 @@
 - ### [미정리파일](https://github.com/kimcno3/TIL/blob/main/ETC/unprocessed.md)
 - ### [취업관련](https://github.com/kimcno3/TIL/blob/main/ETC/recruitment.md)
 - ### [Markdown 문법](https://github.com/kimcno3/TIL/blob/main/ETC/markdown.md)
+- ### [시간 복잡도](https://github.com/kimcno3/TIL/blob/main/ETC/big_o.md)
